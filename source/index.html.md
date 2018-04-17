@@ -447,25 +447,14 @@ userLanguage | string | Yes | The language of the browser of the person browsing
 locale | string | No | Specifies the response language. Default: "US"
 _type | string/enum | No | The response format. One of `xml` or `json`. Default: `json`.
 
-## Hotel Reservation Request
-
-.....
+## Hotel Reservation Creation
 
 ```shell
-curl "https://api.travsrv.com/hotel.aspx?\
+curl -X POST "https://api.travsrv.com/hotel.aspx?\
 username=API-USERNAME\
 &password=API-PASSWORD\
 &siteid=SITEID\
-&hotelIds=272393\
-&inDate=2018-10-20\
-&outDate=2018-10-22\
-&maxResults=1\
-&rooms=1\
-&adults=2\
-&children=0\
-&gateway=51\
-&ratePlanCode=F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935\
-&roomcode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ\
+...
 &ipAddress=127.0.0.1\
 &userAgent=shell\
 &userLanguage=en\
@@ -559,3 +548,33 @@ _type | string/enum | No | The response format. One of `xml` or `json`. Default:
 #### `roomCostCurrencyCode`
 
 #### `bookingFeeAmount`
+
+## Hotel Reservation Cancellation
+
+```shell
+curl -X POST "https://api.travsrv.com/hotel.aspx?\
+username=API-USERNAME\
+&password=API-PASSWORD\
+&siteid=SITEID\
+...
+&ipAddress=127.0.0.1\
+&userAgent=shell\
+&userLanguage=en\
+&_type=json"
+```
+
+> The above command returns JSON structured like this (edited for brevity):
+
+```json
+{
+}
+```
+
+### HTTP Request
+
+`POST https://api.travsrv.com/hotel.aspx`
+
+### Query Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
