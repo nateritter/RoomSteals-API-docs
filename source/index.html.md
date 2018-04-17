@@ -46,7 +46,14 @@ username=API-USERNAME\
 &radius=10\
 &inDate=2018-10-20\
 &outDate=2018-10-22\
-&maxresults=1"
+&maxresults=1\
+&rooms=1\
+&adults=2\
+&children=0\
+&ipAddress=127.0.0.01\
+&userAgent=shell\
+&userLanguage=en\
+&_type=json"
 ```
 
 > The above command returns JSON structured like this (edited for brevity):
@@ -57,8 +64,8 @@ username=API-USERNAME\
     "Info": {
       "@SiteID": "SITEID",
       "@Username": "API-USERNAME",
-      "@IpAddress": "127.0.0.1",
-      "@TimeReceived": "2018-04-13T16:01:13.510",
+      "@IpAddress": "127.0.0.1", 
+      "@TimeReceived": "2018-04-13T16:01:13.510", 
       "@TimeCompleted": "2018-04-13T16:01:13.651",
       "@Version": "1.0.0.0",
       "@ServiceUrl": "https://api.travsrv.com/hotel.aspx?inDate=2018-10-20&latitude=30.099016&longitude=-81.601370&maxresults=1&outDate=2018-10-22&password=API-PASSWORD&radius=10&siteid=SITEID&username=API-USERNAME",
@@ -84,7 +91,7 @@ username=API-USERNAME\
               "@CommissionStatus": "Commissionable",
               "@BalanceDueAtHotel": "false",
               "Room": {
-                "@Code": "",
+                "@Code": "HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ",
                 "@Name": "Standard room",
                 "@Description": "- 1 King Bed - Nonsmoking Room - Free Breakfast, Free Wifi, Fridge, Microwave",
                 "@CurrencyCode": "USD",
@@ -267,3 +274,118 @@ Gateway ID | Gateway Name
 48 | Jack Travel
 49 | Travellanda
 
+
+## Hotel Detail
+
+```shell
+curl "https://api.travsrv.com/hotel.aspx?\
+username=API-USERNAME\
+&password=API-PASSWORD\
+&siteid=SITEID\
+&hotelids=272393\
+&inDate=2018-10-20\
+&outDate=2018-10-22\
+&maxresults=1\
+&rooms=1\
+&adults=2\
+&children=0\
+&gateway=51\
+&rateplancode=F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935\
+&roomcode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ\
+&ipAddress=127.0.0.01\
+&userAgent=shell\
+&userLanguage=en\
+&_type=json"
+```
+
+> The above command returns JSON structured like this (edited for brevity):
+
+```json
+{
+  "ArnResponse": {
+    "Info": {
+      "@SiteID": "SITEID",
+      "@Username": "API-USERNAME",
+      "@IpAddress": "24.113.225.28",
+      "@TimeReceived": "2018-04-17T00:41:27.367",
+      "@TimeCompleted": "2018-04-17T00:41:27.804",
+      "@Version": "1.0.0.0",
+      "@ServiceUrl": "http://api.travsrv.com/hotel.aspx?_type=json&adults=2&children=0&gateway=51&hotelids=272393&inDate=2018-10-20&ipAddress=127.0.0.01&maxresults=1&outDate=2018-10-22&password=API-PASSWORD&rateplancode=&roomcode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ&rooms=1&siteid=SITEID&userAgent=shell&userLanguage=en&username=API-USERNAME",
+      "@RequestID": "2999AB6A-6DB9-4FFF-9586-BBED51BB6108"
+    },
+    "Availability": {
+      "@DisplayCurrency": "USD",
+      "HotelAvailability": {
+        "@InDate": "2018-10-20",
+        "@OutDate": "2018-10-22",
+        "@Rooms": "1",
+        "@Adults": "2",
+        "@Children": "0",
+        "Hotel": {
+          "@HotelID": "272393",
+          "@IsEphemeral": "true",
+          "RatePlan": [
+            {
+              "@Code": "F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935",
+              "@Description": "Best Available",
+              "@BuyerOnly": "false",
+              "@Gateway": "41",
+              "@CommissionStatus": "Commissionable",
+              "@BalanceDueAtHotel": "false",
+              "Room": {
+                "@Code": "",
+                "@Name": "Standard room",
+                "@Description": "- 1 King Bed - Nonsmoking Room - Free Breakfast, Free Wifi, Fridge, Microwave",
+                "@CurrencyCode": "USD",
+                "@DisplayCurrencyMultiplier": "1",
+                "@USDMultiplier": "1",
+                "@ExchangeGMT": "2018-04-17T00:00:06.027",
+                "@MaximumBookable": "99",
+                "NightlyRate": [
+                  {
+                    "@Date": "2018-10-20",
+                    "@Price": "114.44"
+                  },
+                  {
+                    "@Date": "2018-10-21",
+                    "@Price": "114.43"
+                  }
+                ],
+                "Tax": {
+                  "@Percent": "11.51",
+                  "@Amount": "29.77"
+                },
+                "GatewayFee": {
+                  "@Amount": "0.00"
+                },
+                "Total": {
+                  "@Amount": "258.64",
+                  "@IncludesBookingFee": "false"
+                },
+                "BookingFee": {
+                  "@Amount": "0.00",
+                  "@CurrencyCode": "USD",
+                  "@DisplayCurrencyMultiplier": "1",
+                  "@RoomCurrencyMultiplier": "1",
+                  "@ExchangeGMT": "2018-04-17T00:00:06.027"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+This endpoint retrieves all hotels which have availability for the dates and locations (or individual hotels) specified.
+
+### HTTP Request
+
+`GET https://api.travsrv.com/hotel.aspx`
+
+### Query Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
