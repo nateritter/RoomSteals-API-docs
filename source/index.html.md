@@ -114,11 +114,11 @@ Property Type ID | Property Type
 9 | Bed and breakfast
 12 | Vacation rental
 
-#### `roomCode`
+## `roomCode`
 
 This is the `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code` value specified in the Availability Search results for the room type you are interested.
 
-#### `ratePlanCode`
+## `ratePlanCode`
 
 This is the `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.@Code` value specified in the Availability Search results for the rate plan you are interested in.
 
