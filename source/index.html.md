@@ -492,12 +492,10 @@ currency | string | No | Default: `USD`. See common value map.
 ratePlanCode | string | Yes | See common value map.
 roomCode | string | Yes | See common value map.
 gateway | int | No | See common value map.
-campaignCode | string | No | See below. ***
-recordLocator | string | No | See below. ***
+campaignCode | string | No | See below.
 guestTitle | string | No | Primary guest's title (e.g., "Mr.", "Mrs.", etc.)
 guestFirstName | string | Yes | Primary guest's first name
 guestLastName | string | Yes | Primary guest's last name.
-guestMessage | string | No | See below. ***
 guestEmail | string | Yes | Primary guest's email address.
 guestPhoneCountry | string | Yes | Primary guest's phone number country code.
 guestPhoneArea | string | Yes | Primary guest's phone number area code. 
@@ -508,13 +506,12 @@ addressCity | string | Yes | Primary guest's city.
 addressRegion | string | Yes | Primary guest's state / region.
 addressPostalCode | string | Yes | Primary guest's postal code.
 addressCountryCode | string | Yes | Primary guest's country code.
-addressExtraInfo | string | No | See below. ***
-roomCostPrice | decimal | Yes | See below. ***
-roomCostTaxAmount | decimal | Yes | See below. ***
-roomCostGatewayFee | decimal | Yes | See below. ***
-roomCostTotalAmount | decimal | Yes | See below. ***
-roomCostCurrencyCode | string | Yes | See below. ***
-bookingFeeAmount | decimal | Yes | See below. ***
+roomCostPrice | decimal | Yes | See below.
+roomCostTaxAmount | decimal | Yes | See below.
+roomCostGatewayFee | decimal | Yes | See below.
+roomCostTotalAmount | decimal | Yes | See below.
+roomCostCurrencyCode | string | Yes | See below.
+bookingFeeAmount | decimal | Yes | See below.
 creditCardType | string | Yes | Credit card type ("AMEX", "MasterCard", "VISA", etc.)
 creditCardNumber | string | Yes | Credit card number.
 creditCardExpiration | string | Yes | Credit card expiration date (format: `YYYY-MM-DD`)
@@ -533,23 +530,31 @@ _type | string/enum | No | The response format. One of `xml` or `json`. Default:
 
 #### `campaignCode`
 
-#### `recordLocator`
-
-#### `guestMessage`
-
-#### `addressExtraInfo`
+You may pass in a string which you want to persist with the reservation.  This is analagous to a "subid" and can be used for reconciling with your own marketing campaigns, or really anything else you want to do with it.  The string you provide in this parameter will be added to the reservation being made and available in available reporting.
 
 #### `roomCostPrice`
 
+Send the exact same information received from the Hotel Detail Request (assuming the same `currency` designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.
+
 #### `roomCostTaxAmount`
+
+Send the exact same information received from the Hotel Detail Request (assuming the same `currency` designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.
 
 #### `roomCostGatewayFee`
 
+Send the exact same information received from the Hotel Detail Request (assuming the same `currency` designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.
+
 #### `roomCostTotalAmount`
+
+Send the exact same information received from the Hotel Detail Request (assuming the same `currency` designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.
 
 #### `roomCostCurrencyCode`
 
+Send the exact same information received from the Hotel Detail Request (assuming the same `currency` designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.
+
 #### `bookingFeeAmount`
+
+Send the exact same information received from the Hotel Detail Request (assuming the same `currency` designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.
 
 ## Hotel Reservation Cancellation
 
