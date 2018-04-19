@@ -28,7 +28,7 @@ Hotels For Hope uses a querystring username and password to allow access to the 
 
 The API credentials are expected in all API requests to the server in the querystring like the following:
 
-`&username=API-USERNAME&password=API-PASSWORD`
+`&username=API-USERNAME&password=API-PASSWORD&siteid=SITEID`
 
 <aside class="notice">
 You must replace <code>API-USERNAME</code>, <code>API-PASSWORD</code>, and <code>SITEID</code> with your personal API credentials and Site ID.
@@ -467,6 +467,210 @@ username=API-USERNAME\
 
 ```json
 {
+  "ArnResponse": {
+    "Info": {
+      "@SiteID": "SITEID",
+      "@Username": "API-USERNAME",
+      "@IpAddress": "127.0.0.1",
+      "@TimeReceived": "2018-04-01T19:16:35.581",
+      "@TimeCompleted": "2018-04-01T19:16:36.065",
+      "@Version": "1.0.0.0",
+      "@ServiceUrl": "https://api.travsrv.com/hotel.aspx",
+      "@RequestID": "52AEC4E5-BBB9-44CB-BF09-CFEE7462FE97"
+    },
+    "Cancellation": {
+      "@DisplayCurrency": "USD",
+      "@ItineraryID": "733525",
+      "HotelCancellation": {
+        "@Success": "true",
+        "@CancelGMT": "2018-04-01T19:16:36.065",
+        "@CancellationID": "ARN342559-C",
+        "@InDate": "2018-04-10",
+        "@OutDate": "2018-04-12",
+        "@Rooms": "1",
+        "@Adults": "2",
+        "@Children": "0",
+        "@ReservationID": "915892",
+        "@CustomerConfirmationNumber": "ARN342559",
+        "Hotel": {
+          "@HotelID": "219295",
+          "RatePlan": {
+            "@Code": "ARN",
+            "@Description": "Internet Special",
+            "@Gateway": "1",
+            "Room": {
+              "@Code": "3979",
+              "@Name": "Double Room",
+              "@Description": "Double Room - one double bed, satellite television, minibar, coffee maker, in-room safe, work desk, air conditioning, hairdryer, private bathroom, complimentary breakfast buffet. Rate includes transportation from the airport to the hotel. Please enter your Airline and Flight Number in the 'Other Special Requests' field when placing your reservation. Rates based on single or double occupancy. (Maximum 2 people)",
+              "@CurrencyCode": "USD",
+              "@DisplayCurrencyMultiplier": "1",
+              "@USDMultiplier": "1",
+              "@ExchangeGMT": "2018-04-01T17:15:03.443",
+              "@MaximumBookable": "5",
+              "NightlyRate": {
+                "@Date": "2018-04-10",
+                "@Price": "144.00"
+              },
+              "Tax": {
+                "@Percent": "20.00",
+                "@Amount": "28.80"
+              },
+              "GatewayFee": {
+                "@Amount": "0.00"
+              },
+              "Total": {
+                "@Amount": "172.80",
+                "@IncludesBookingFee": "false"
+              },
+              "BookingFee": {
+                "@Amount": "3.60",
+                "@CurrencyCode": "USD",
+                "@DisplayCurrencyMultiplier": "1",
+                "@RoomCurrencyMultiplier": "1",
+                "@ExchangeGMT": "2018-04-01T17:15:03.443"
+              }
+            },
+            "Policy": {
+              "ExtraPersonPrice": {
+                "@Adult": "0.00",
+                "@Child": "0.00",
+                "@CurrencyCode": "USD",
+                "@DisplayCurrencyMultiplier": "1",
+                "@USDMultiplier": "1",
+                "@ExchangeGMT": "2018-04-01T17:15:03.443"
+              },
+              "Guarantee": {
+                "@Description": "No prices or hotel availability are guaranteed until full payment is received. Booking fee is not included in the total and it's value is expressed in United States Dollars. Booking fee will be charged at the time of the booking."
+              },
+              "Cancel": {
+                "@Description": "You must cancel your reservation before 2:00 pm hotel time at least 1 day(s) prior to check-in or you will be charged for one night's room plus taxes & fees.",
+                "@LatestCancelTime": "2018-04-08T14:00:00.000",
+                "@GMTOffSet": "0",
+                "Fee": {
+                  "@Amount": "10.00",
+                  "@CurrencyCode": "USD",
+                  "@DisplayCurrencyMultiplier": "1",
+                  "@RoomCurrencyMultiplier": "1",
+                  "@ExchangeGMT": "2018-04-01T17:15:03.443"
+                },
+                "Penalty": {
+                  "@Amount": "172.80",
+                  "@CurrencyCode": "USD",
+                  "@DisplayCurrencyMultiplier": "1",
+                  "@USDMultiplier": "1",
+                  "@ExchangeGMT": "2018-04-01T17:15:03.443"
+                }
+              },
+              "Deposit": {
+                "@Description": "Credit card is charged for the total cost of the room at the time of booking."
+              },
+              "Payment": [
+                {
+                  "@Description": "Tax is included in the total."
+                },
+                {
+                  "@Description": "Total Room Cost includes tax recovery charge and fees."
+                },
+                {
+                  "@Description": "This discount rate requires full payment of reservation at time of booking."
+                },
+                {
+                  "@Description": "Payment will appear on your credit card under Alliance Reservations Network, Phoenix, AZ"
+                },
+                {
+                  "@Description": "Rooms are guaranteed once full payment is received."
+                }
+              ],
+              "Property": [
+                {
+                  "@Description": "Check-In Time",
+                  "@Value": "1600"
+                },
+                {
+                  "@Description": "Check-Out Time",
+                  "@Value": "1100"
+                }
+              ]
+            }
+          }
+        },
+        "Guests": {
+          "Primary": {
+            "@Title": "",
+            "@FirstName": "Mary",
+            "@MiddleName": "",
+            "@LastName": "Andersen",
+            "@Message": "Non-smoking room requested.",
+            "@Email": "karianan@xxx.com",
+            "@PhoneCountry": "0047",
+            "@PhoneArea": "0",
+            "@PhoneNumber": "5555555",
+            "@PhoneExtension": "",
+            "@AgeGroup": "Adult",
+            "Address": {
+              "@Address": "Vaar Frue gt 2",
+              "@City": "Zeud",
+              "@Region": "",
+              "@PostalCode": "7013",
+              "@CountryCode": "NO",
+              "@ExtraInfo": ""
+            }
+          }
+        },
+        "Service": {
+          "@ExchangeGMT": "2018-04-01T17:15:03.443",
+          "RoomCurrency": {
+            "@CurrencyCode": "USD",
+            "Cost": {
+              "@Price": "144.00",
+              "@TaxPercent": "20.00",
+              "@TaxAmount": "28.80",
+              "@GatewayFee": "0.00",
+              "@BookingFee": "3.60",
+              "@TotalAmount": "176.40",
+              "@TotalAmountIncludesBookingFee": "true"
+            },
+            "Charge": {
+              "@Paid": "176.40",
+              "@Due": "0.00"
+            }
+          },
+          "DisplayCurrency": {
+            "@CurrencyCode": "USD",
+            "Cost": {
+              "@Price": "144.00",
+              "@TaxPercent": "20.00",
+              "@TaxAmount": "28.80",
+              "@GatewayFee": "0.00",
+              "@BookingFee": "3.60",
+              "@TotalAmount": "176.40",
+              "@TotalAmountIncludesBookingFee": "true"
+            },
+            "Charge": {
+              "@Paid": "176.40",
+              "@Due": "0.00"
+            }
+          },
+          "USD": {
+            "@CurrencyCode": "USD",
+            "Cost": {
+              "@Price": "144.00",
+              "@TaxPercent": "20.00",
+              "@TaxAmount": "28.80",
+              "@GatewayFee": "0.00",
+              "@BookingFee": "3.60",
+              "@TotalAmount": "176.40",
+              "@TotalAmountIncludesBookingFee": "true"
+            },
+            "Charge": {
+              "@Paid": "176.40",
+              "@Due": "0.00"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -574,6 +778,202 @@ username=API-USERNAME\
 
 ```json
 {
+  "ArnResponse": {
+    "Info": {
+      "@SiteID": "SITEID",
+      "@Username": "API-USERNAME",
+      "@IpAddress": "127.0.0.1",
+      "@TimeReceived": "2007-03-30T22:14:28.484",
+      "@TimeCompleted": "2007-03-30T22:14:32.046",
+      "@Version": "1.0.0.0",
+      "@ServiceUrl": "https://api.travsrv.com/hotel.aspx",
+      "@RequestID": "D392A38B-79EC-4064-9C8F-E2C9AFC2EEE6"
+    },
+    "Reservation": {
+      "@DisplayCurrency": "USD",
+      "@ItineraryID": "678595",
+      "@RecordLocator": "4fa67dc1-9d40-46f4-aa34-eb236117781c",
+      "HotelReservation": {
+        "@InDate": "2007-03-30",
+        "@OutDate": "2007-03-31",
+        "@Rooms": "1",
+        "@Adults": "2",
+        "@Children": "0",
+        "@ReservationID": "860964",
+        "@CustomerConfirmationNumber": "40156457",
+        "Hotel": {
+          "@HotelID": "10731",
+          "RatePlan": {
+            "@Code": "AAA",
+            "@Description": "QUALIFYING MEMBER RATE: Aaa/CAA Rate 1 King Bed /1 Room Suite/Partial Room Divider /Microwave Refrigerator/Computer Hookup Guest Must Show Some Form Of Aaa Membership Rate Is Applicable To AAA Members Only And Only On Rooms They Stay In Themselv",
+            "@Gateway": "4",
+            "Room": {
+              "@Code": "Z303AAA",
+              "@Name": "Room",
+              "@Description": "QUALIFYING MEMBER RATE: Aaa/CAA Rate 1 King Bed /1 Room Suite/Partial Room Divider /Microwave Refrigerator/Computer Hookup Guest Must Show Some Form Of Aaa Membership Rate Is Applicable To AAA Members Only And Only On Rooms They Stay In Themselv",
+              "@CurrencyCode": "USD",
+              "@DisplayCurrencyMultiplier": "1",
+              "@USDMultiplier": "1",
+              "@ExchangeGMT": "2007-03-30T17:15:04.627",
+              "@MaximumBookable": "1",
+              "NightlyRate": {
+                "@Date": "2007-03-30",
+                "@Price": "98.95"
+              },
+              "Tax": {
+                "@Percent": "0.00",
+                "@Amount": "0.00"
+              },
+              "GatewayFee": {
+                "@Amount": "0.00"
+              },
+              "Total": {
+                "@Amount": "98.95",
+                "@IncludesBookingFee": "false"
+              },
+              "BookingFee": {
+                "@Amount": "5.00",
+                "@CurrencyCode": "USD",
+                "@DisplayCurrencyMultiplier": "1",
+                "@RoomCurrencyMultiplier": "1",
+                "@ExchangeGMT": "2007-03-30T17:15:04.627"
+              }
+            },
+            "Policy": {
+              "ExtraPersonPrice": {
+                "@Adult": "5.00",
+                "@Child": "0.00",
+                "@CurrencyCode": "USD",
+                "@DisplayCurrencyMultiplier": "1",
+                "@USDMultiplier": "1",
+                "@ExchangeGMT": "2007-03-30T17:15:04.627"
+              },
+              "Guarantee": {
+                "@Description": "RESERVATION WILL BE HELD TILL 4PM LOCAL TIME Booking fee is not included in the total and it's value is expressed in United States Dollars. Booking fee will be charged at the time of the booking."
+              },
+              "Cancel": {
+                "@Description": "CANCEL BY 4 PM LOCAL HTL TIME DOA",
+                "@LatestCancelTime": "2007-03-29T10:00:00.000",
+                "@GMTOffSet": "0",
+                "Fee": {
+                  "@Amount": "0.00",
+                  "@CurrencyCode": "USD",
+                  "@DisplayCurrencyMultiplier": "1",
+                  "@RoomCurrencyMultiplier": "1",
+                  "@ExchangeGMT": "2007-03-30T17:15:04.627"
+                },
+                "Penalty": {
+                  "@Amount": "98.95",
+                  "@CurrencyCode": "USD",
+                  "@DisplayCurrencyMultiplier": "1",
+                  "@USDMultiplier": "1",
+                  "@ExchangeGMT": "2007-03-30T17:15:04.627"
+                }
+              },
+              "Deposit": {
+                "@Description": "None"
+              },
+              "Payment": [
+                {
+                  "@Description": "Tax is not included in the total."
+                },
+                {
+                  "@Description": "With your credit card information, the room(s) you book are guaranteed for late arrival."
+                },
+                {
+                  "@Description": "This discount rate requires a $5.00 (USD) per room per night non-refundable service fee at time of reservation and will appear on your credit card under Alliance Reservations Network, Phoenix, AZ."
+                }
+              ],
+              "Property": [
+                {
+                  "@Description": "Check-In Time",
+                  "@Value": "150000"
+                },
+                {
+                  "@Description": "Check-Out Time",
+                  "@Value": "1100"
+                }
+              ]
+            }
+          }
+        },
+        "Guests": {
+          "Primary": {
+            "@Title": "",
+            "@FirstName": "Eddie",
+            "@MiddleName": "",
+            "@LastName": "Collins",
+            "@Message": "Smoking room requested.",
+            "@Email": "nobody@yahoo.com",
+            "@PhoneCountry": "1",
+            "@PhoneArea": "313",
+            "@PhoneNumber": "5555555",
+            "@PhoneExtension": "",
+            "@AgeGroup": "Adult",
+            "Address": {
+              "@Address": "main st",
+              "@City": "detroit",
+              "@Region": "MI",
+              "@PostalCode": "48234",
+              "@CountryCode": "US",
+              "@ExtraInfo": ""
+            }
+          }
+        },
+        "Service": {
+          "@ExchangeGMT": "2007-03-30T17:15:04.627",
+          "RoomCurrency": {
+            "@CurrencyCode": "USD",
+            "Cost": {
+              "@Price": "98.95",
+              "@TaxPercent": "0.00",
+              "@TaxAmount": "0.00",
+              "@GatewayFee": "0.00",
+              "@BookingFee": "5.00",
+              "@TotalAmount": "103.95",
+              "@TotalAmountIncludesBookingFee": "true"
+            },
+            "Charge": {
+              "@Paid": "5.00",
+              "@Due": "98.95"
+            }
+          },
+          "DisplayCurrency": {
+            "@CurrencyCode": "USD",
+            "Cost": {
+              "@Price": "98.95",
+              "@TaxPercent": "0.00",
+              "@TaxAmount": "0.00",
+              "@GatewayFee": "0.00",
+              "@BookingFee": "5.00",
+              "@TotalAmount": "103.95",
+              "@TotalAmountIncludesBookingFee": "true"
+            },
+            "Charge": {
+              "@Paid": "5.00",
+              "@Due": "98.95"
+            }
+          },
+          "USD": {
+            "@CurrencyCode": "USD",
+            "Cost": {
+              "@Price": "98.95",
+              "@TaxPercent": "0.00",
+              "@TaxAmount": "0.00",
+              "@GatewayFee": "0.00",
+              "@BookingFee": "5.00",
+              "@TotalAmount": "103.95",
+              "@TotalAmountIncludesBookingFee": "true"
+            },
+            "Charge": {
+              "@Paid": "5.00",
+              "@Due": "98.95"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 ```
 
