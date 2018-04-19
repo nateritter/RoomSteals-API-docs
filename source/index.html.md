@@ -466,7 +466,6 @@ username=API-USERNAME\
 > The above command returns JSON structured like this (edited for brevity):
 
 ```json
-
 {
   "ArnResponse": {
     "Info": {
@@ -669,7 +668,7 @@ username=API-USERNAME\
 
 ### HTTP Request
 
-`POST https://api.travsrv.com/hotel.aspx`
+`POST https://api.travsrv.com/hotel.aspx?type=Reservation`
 
 ### Query Parameters
 
@@ -980,9 +979,12 @@ username=API-USERNAME\
 
 ### HTTP Request
 
-`POST https://api.travsrv.com/hotel.aspx`
+`POST https://api.travsrv.com/hotel.aspx?type=Cancellation`
 
 ### Query Parameters
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
+reservationId | string | Yes | The `reservationId` from the reservation creation response.
+itineraryId | string | Yes | The `itineraryId` from the reservation creation response.
+_type | string/enum | No | The response format. One of `xml` or `json`. Default: `json`.
