@@ -449,12 +449,49 @@ _type | string/enum | No | The response format. One of `xml` or `json`. Default:
 
 ## Hotel Reservation Creation
 
+Generally speaking this call should be self explanatory. The parameters you will be sending in regarding the fees and costs will come from the detail request you likely would have just made. This is used to double confirm the costs the user was given will match up with the costs in the suppliers / gateways.
+
 ```shell
 curl -X POST "https://api.travsrv.com/hotel.aspx?\
 username=API-USERNAME\
 &password=API-PASSWORD\
 &siteid=SITEID\
-...
+&rooms=1\
+&hotelIds=10731\
+&rooms=1\
+&inDate=2007-03-30\
+&outDate=2007-03-31\
+&adults=2\
+&children=1\
+&ratePlanCode=AAA\
+&roomCode=Z303AAA\
+&guestFirstName=Eddie\
+&guestLastName=Collins\
+&guestEmail=nobody@yahoo.com\
+&guestPhoneCountry=1\
+&guestPhoneArea=313\
+&guestPhoneNumber=5555555\
+&guestMessage=Smoking room requested.\
+&addressAddress=123 main st\
+&addressCity=detroit\
+&addressRegion=MI\
+&addressPostalCode=48234\
+&addressCountryCode=US\
+&roomCostPrice=98.95\
+&roomCostTaxAmount=0.00\
+&roomCostGatewayFee=0.00\
+&roomCostTotalAmount=103.95\
+&roomCostCurrencyCode=USD\
+&bookingFeeAmount=5.00\
+&creditCardType=VISA\
+&creditCardNumber=4242424242424242\
+&creditCardExpiration=2018-12\
+&creditCardCVV2=123\
+&creditCardHolder=Eddie Collins\
+&creditCardCity=Detroit\
+&creditCardRegion=MI\
+&creditCardPostalCode=48234\
+&creditCardCountryCode=US\
 &ipAddress=127.0.0.1\
 &userAgent=shell\
 &userLanguage=en\
@@ -598,7 +635,7 @@ username=API-USERNAME\
             "@PhoneExtension": "",
             "@AgeGroup": "Adult",
             "Address": {
-              "@Address": "main st",
+              "@Address": "123 main st",
               "@City": "detroit",
               "@Region": "MI",
               "@PostalCode": "48234",
@@ -675,9 +712,9 @@ Parameter | Type | Required | Description
 username | string | Yes | Provided by Hotels For Hope
 password | string | Yes | Provided by Hotels For Hope
 siteid | integer | Yes | Provided by Hotels For Hope
-hotelIds | int | No | The particular hotel id for which more detail is being requested.
+hotelIds | int | Yes | The particular hotel id to reserve the room at.
 agentRefNumber | string | No | A reference ID you may use for your own tracking purposes. This is included in a reservation webhook, if used.
-rooms | int | Yes | Number of rooms needed. When searching for more than one room, responses are based on the same room type and occupancy for every room. Maximum: 9 (best results with no more than 4).
+rooms | int | Yes | Number of rooms needed. Maximum: 9.
 inDate | date | Yes | Desired check-in date (format: `YYYY-MM-DD` based on UTC -7 (MST) time zone)
 outDate | date | Yes | Desired check-out date (format: `YYYY-MM-DD` based on UTC -7 (MST) time zone)
 adults | int | Yes | Total number of adults. For instance, if `rooms=2&adults=2`, the search is for 1 room per adult. Maximum 8 adults per room. Uneven/odd numbers of adults/rooms will be rounded up to support legacy providers.
@@ -685,7 +722,7 @@ children | int | Yes | Total number of children. Maximum: 8. Note: Some legacy p
 currency | string | No | Default: `USD`. See common value map.
 ratePlanCode | string | Yes | See common value map.
 roomCode | string | Yes | See common value map.
-gateway | int | No | See common value map.
+gateway | int | yes | See common value map.
 campaignCode | string | No | See below.
 guestTitle | string | No | Primary guest's title (e.g., "Mr.", "Mrs.", etc.)
 guestFirstName | string | Yes | Primary guest's first name
@@ -695,6 +732,7 @@ guestPhoneCountry | string | Yes | Primary guest's phone number country code.
 guestPhoneArea | string | Yes | Primary guest's phone number area code. 
 guestPhoneNumber | string | Yes | Primary guest's phone number (without country or area code)
 guestPhoneExtension | string | No | Primary guest's phone number extension.
+guestMessage | string | No | Guest special requests.
 addressAddress | string | Yes | Primary guest's address.
 addressCity | string | Yes | Primary guest's city.
 addressRegion | string | Yes | Primary guest's state / region.
@@ -708,7 +746,7 @@ roomCostCurrencyCode | string | Yes | See below.
 bookingFeeAmount | decimal | Yes | See below.
 creditCardType | string | Yes | Credit card type ("AMEX", "MasterCard", "VISA", etc.)
 creditCardNumber | string | Yes | Credit card number.
-creditCardExpiration | string | Yes | Credit card expiration date (format: `YYYY-MM-DD`)
+creditCardExpiration | string | Yes | Credit card expiration date (format: `YYYY-MM`)
 creditCardCVV2 | int | Yes | Credit card CVV2 number.
 creditCardHolder | string | Yes | Name on credit card.
 creditCardAddress | string | Yes | Credit card billing address.
@@ -752,12 +790,15 @@ Send the exact same information received from the Hotel Detail Request (assuming
 
 ## Hotel Reservation Cancellation
 
+To cancel a reservation you will need the `reservationId` and `itineraryId` returned in the reservation creation response.
+
 ```shell
 curl -X POST "https://api.travsrv.com/hotel.aspx?\
 username=API-USERNAME\
 &password=API-PASSWORD\
 &siteid=SITEID\
-...
+&reservationId=915892\
+&itineraryId=733525\
 &ipAddress=127.0.0.1\
 &userAgent=shell\
 &userLanguage=en\
@@ -983,6 +1024,9 @@ username=API-USERNAME\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
+username | string | Yes | Provided by Hotels For Hope
+password | string | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by Hotels For Hope
 reservationId | string | Yes | The `reservationId` from the reservation creation response.
 itineraryId | string | Yes | The `itineraryId` from the reservation creation response.
 _type | string/enum | No | The response format. One of `xml` or `json`. Default: `json`.
