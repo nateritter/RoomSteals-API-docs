@@ -607,18 +607,18 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 
 <p>The JSON data to stringify may look something like this (formatted for readability, not encoded):</p>
 
-<pre>
+<p><code>
 {
-    "Names": [{
-        "ReferralId": "mytestuser1@gmail.com",
-        "FirstName": "Testme",
-        "LastName": "Tester",
-        "Email": "mytestuser1@gmail.com",
-        "Address1": "123 Main Street",
-        "HomePhone": "5551231212"
+    &quot;Names&quot;: [{
+        &quot;ReferralId&quot;: &quot;mytestuser1@gmail.com&quot;,
+        &quot;FirstName&quot;: &quot;Testme&quot;,
+        &quot;LastName&quot;: &quot;Tester&quot;,
+        &quot;Email&quot;: &quot;mytestuser1@gmail.com&quot;,
+        &quot;Address1&quot;: &quot;123 Main Street&quot;,
+        &quot;HomePhone&quot;: &quot;5551231212&quot;
     }]
 }
-</pre>
+</code></p>
 <pre class="highlight shell tab-shell"><code>curl  -X POST <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;token={ADMIN-TOKEN}"</span> -d <span class="s2">"siteid={SITEID}</span><span class="se">\</span><span class="s2">
