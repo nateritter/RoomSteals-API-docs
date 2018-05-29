@@ -259,7 +259,7 @@
             <a href="#users" class="toc-h1 toc-link" data-title="users">Users</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-a-token-for-a-site-39-s-admin-user" class="toc-h2 toc-link" data-title="get-a-token-for-a-site-s-admin-user">Get a Token for a Site's Admin User</a>
+                    <a href="#get-a-token-for-a-site-39-s-admin" class="toc-h2 toc-link" data-title="get-a-token-for-a-site-s-admin">Get a Token for a Site's Admin</a>
                   </li>
                   <li>
                     <a href="#create-a-new-member" class="toc-h2 toc-link" data-title="create-a-new-member">Create a New Member</a>
@@ -574,10 +574,10 @@ If you use our portal's UI and wanted to linking directly to a particuilar page 
 <p>This section is only for those using the SSO Authentication feature and pertains to managing users and their authentication tokens.  </p>
 
 <p>You will need a Site Admin user in your closed user group site. If you don&#39;t already have one, please <a href="mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User">request one</a> be added.</p>
-<h2 id='get-a-token-for-a-site-39-s-admin-user'>Get a Token for a Site&#39;s Admin User</h2>
+<h2 id='get-a-token-for-a-site-39-s-admin'>Get a Token for a Site&#39;s Admin</h2>
 <p>This endpoint returns an auth token for an administrative user, valid for 1 hour, which may be used to create or update new (non-administrative) users and their tokens.</p>
 
-<p><code>ADMINUSERNAME</code> is the username the Site Admin user uses to login to the site/portal.</p>
+<p>Replace <code>{ADMINUSERNAME}</code> with the username the Site Admin user uses to login to the site/portal.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
 username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 &amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
