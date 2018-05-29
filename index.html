@@ -631,7 +631,45 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code></code></pre><h3 id='http-request'>HTTP Request</h3>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"MemberId"</span><span class="p">:</span><span class="w"> </span><span class="mi">554642</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Rewards"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Points"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"RedemptionMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EarnMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Names"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"FirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tester"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"BirthDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main Street"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Address2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"City"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Postal"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551231212"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DeleteMember"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"UpdateMemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"FullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme Tester"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful creation of Member RT-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"CurrentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"TransactionResponse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MetaTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.travsrv.com/MemberAPI.aspx</code></p>
 <h3 id='memberdata-json-object-properties'>memberData JSON Object Properties</h3>
 <table><thead>
