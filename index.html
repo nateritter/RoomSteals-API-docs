@@ -583,19 +583,19 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 &amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;token=ARNUSER-{ADMINUSERNAME}"</span>
-</code></pre><pre class="highlight plaintext"><code>{
-  "ArnResponse": {
-    "Info": {
-      "@SiteID": "{SITEID}",
-      "@Username": "{API-USERNAME}",
-      "@IpAddress": "127.0.0.1", 
-      "@TimeReceived": "2018-04-13T16:01:13.510", 
-      "@TimeCompleted": "2018-04-13T16:01:13.651",
-      "@Version": "1.0.0.0"
-    }
-  }
-}
-</code></pre><h2 id='create-a-new-member'>Create a New Member</h2>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ArnResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{SITEID}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{API-USERNAME}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T16:01:13.510"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T16:01:13.651"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='create-a-new-member'>Create a New Member</h2>
 <ol>
 <li>Create a member user using the Site Admin&#39;s token</li>
 <li>Use the member&#39;s token in queries on the user&#39;s behalf</li>
