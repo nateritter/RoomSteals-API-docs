@@ -603,25 +603,84 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='create-a-new-member'>Create a New Member</h2>
-<p>Using the Site Admin&#39;s token you may create a new member by POSTing an encoded JSON string to this endpoint.</p>
+<p>Using the Site Admin&#39;s token you may create a new member by POSTing a <em>URL encoded</em> JSON string to this endpoint.</p>
 
-<p>The JSON data to stringify may look something like this (formatted for readability):</p>
+<p>The JSON data to stringify may look something like this (formatted for readability, not encoded):</p>
 
 <p><code>
 {
-  This:
-  {
-    [that]
-  }
+    &quot;Names&quot;: [{
+        &quot;ReferralId&quot;: &quot;mytestuser1@gmail.com&quot;,
+        &quot;FirstName&quot;: &quot;Testme&quot;,
+        &quot;LastName&quot;: &quot;Tester&quot;,
+        &quot;Email&quot;: &quot;mytestuser1@gmail.com&quot;,
+        &quot;Address1&quot;: &quot;123 Main Street&quot;,
+        &quot;HomePhone&quot;: &quot;5551231212&quot;
+    }]
 }
 </code></p>
-<pre class="highlight shell tab-shell"><code>curl -d <span class="s2">"siteid={SITEID}&amp;token={ADMIN-TOKEN}&amp;memberdata="</span> -X POST <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
+<pre class="highlight shell tab-shell"><code>curl -d <span class="s2">"siteid={SITEID}</span><span class="se">\</span><span class="s2">
+&amp;token={ADMIN-TOKEN}</span><span class="se">\</span><span class="s2">
+&amp;memberData=%7B+%22Names%22%3A+%5B+%7B+%22ReferralId%22%3A+%22mytestuser1%40gmail.com</span><span class="se">\</span><span class="s2">
+%22%2C+%22FirstName%22%3A+%22Testme</span><span class="se">\</span><span class="s2">
+%22%2C+%22LastName%22%3A+%22Tester</span><span class="se">\</span><span class="s2">
+%22%2C+%22Email%22%3A+%22mytestuser1%40gmail.com</span><span class="se">\</span><span class="s2">
+%22%2C+%22Address1%22%3A+%22123+Main+Street</span><span class="se">\</span><span class="s2">
+%22%2C+%22HomePhone%22%3A+%225551231212%22+%7D+%5D+%7D"</span> -X POST <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;token={ADMIN-TOKEN}"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
+<pre class="highlight json tab-json"><code></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.travsrv.com/MemberAPI.aspx</code></p>
+<h3 id='memberdata-json-object-properties'>memberData JSON Object Properties</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ReferralId</td>
+<td>string</td>
+<td>Yes</td>
+<td>The email address of the user (used as the &quot;username&quot;)</td>
+</tr>
+<tr>
+<td>FirstName</td>
+<td>string</td>
+<td>Yes</td>
+<td>The user&#39;s first name</td>
+</tr>
+<tr>
+<td>LastName</td>
+<td>string</td>
+<td>Yes</td>
+<td>The user&#39;s last name</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>string</td>
+<td>Yes</td>
+<td>The email address of the user</td>
+</tr>
+<tr>
+<td>Address1</td>
+<td>string</td>
+<td>No</td>
+<td>The user&#39;s full address</td>
+</tr>
+<tr>
+<td>HomePhone</td>
+<td>string</td>
+<td>No</td>
+<td>The user&#39;s phone number</td>
+</tr>
+</tbody></table>
 <h2 id='get-member-by-token'>Get Member by Token</h2><h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
 <p>This endpoint retrieves all hotels which have availability for the dates and locations (or individual hotels) specified.</p>
 
@@ -737,7 +796,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.travsrv.com/hotel.aspx</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -1059,7 +1118,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.travsrv.com/hotel.aspx</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
@@ -1433,7 +1492,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST https://api.travsrv.com/hotel.aspx?type=Reservation</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
@@ -1981,7 +2040,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://api.travsrv.com/hotel.aspx?type=Cancellation</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
