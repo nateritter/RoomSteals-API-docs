@@ -259,10 +259,10 @@
             <a href="#users" class="toc-h1 toc-link" data-title="users">Users</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-an-admin-bearer-token" class="toc-h2 toc-link" data-title="get-an-admin-bearer-token">Get an Admin Bearer Token</a>
+                    <a href="#get-a-token-for-a-site-39-s-admin-user" class="toc-h2 toc-link" data-title="get-a-token-for-a-site-s-admin-user">Get a Token for a Site's Admin User</a>
                   </li>
                   <li>
-                    <a href="#create-a-token" class="toc-h2 toc-link" data-title="create-a-token">Create a Token</a>
+                    <a href="#create-a-new-member" class="toc-h2 toc-link" data-title="create-a-new-member">Create a New Member</a>
                   </li>
                   <li>
                     <a href="#get-member-by-token" class="toc-h2 toc-link" data-title="get-member-by-token">Get Member by Token</a>
@@ -317,18 +317,14 @@ You must replace <code>{API-USERNAME}</code>, <code>{API-PASSWORD}</code>, and <
 <p>Process: </p>
 
 <ol>
-<li>Get an Admin Bearer Token</li>
-<li>Use the Admin Bearer Token in queries on the user&#39;s behalf</li>
+<li><a href="mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User">Request a Site Admin</a> to be added to your closed user group site (if you don&#39;t already have one)</li>
+<li>Get a token for the Site Admin user</li>
+<li>Create a member user using the Site Admin&#39;s token</li>
+<li>Use the member&#39;s token in queries on the user&#39;s behalf</li>
 </ol>
 
-<p>Here is an example of using the user&#39;s token in a closed user group setting with the aforementioned authentication credentials:</p>
-
-<p><code>&amp;username={API-USERNAME}&amp;password={API-PASSWORD}&amp;siteid={SITEID}&amp;token={TOKEN}</code></p>
-
 <aside class="notice">
-You must replace <code>{API-USERNAME}</code>, <code>{API-PASSWORD}</code>, <code>{SITEID}</code>, and <code>{TOKEN}</code> with your personal API credentials, Site ID, and the user's Admin Bearer Token respectively.
-
-If you use our portal's UI and wanted to linking directly to a particuilar page without requiring login, use the parameter `memberToken={TOKEN}` in the URL.
+If you use our portal's UI and wanted to linking directly to a particuilar page without requiring login, use the parameter `memberToken={TOKEN}` in the URL (replacing <code>{TOKEN}</code> with the browsing user's token).
 </aside>
 <h1 id='common-value-maps'>Common value maps</h1><h2 id='currency'><code>currency</code></h2>
 <p>Supported currencies are located in our static database files. Request access if needed. Major 3-letter currency references (e.g., &quot;USD&quot;, &quot;CNY&quot;, &quot;CAD&quot;, etc.) are supported.</p>
@@ -575,28 +571,36 @@ If you use our portal's UI and wanted to linking directly to a particuilar page 
 <h2 id='rateplancode'><code>ratePlanCode</code></h2>
 <p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.@Code</code> value specified in the Availability Search results for the rate plan you are interested in.</p>
 <h1 id='users'>Users</h1>
-<p>This section is only for those using the SSO Authentication feature.</p>
-<h2 id='get-an-admin-bearer-token'>Get an Admin Bearer Token</h2>
-<p>This endpoint returns an &quot;admin bearer token&quot;, which should be used in all subsequent queries for a user who is a member of a closed user group.</p>
+<p>This section is only for those using the SSO Authentication feature and pertains to managing users and their authentication tokens.  </p>
+
+<p>You will need a Site Admin user in your closed user group site. If you don&#39;t already have one, please <a href="mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User">request one</a> be added.</p>
+<h2 id='get-a-token-for-a-site-39-s-admin-user'>Get a Token for a Site&#39;s Admin User</h2>
+<p>This endpoint returns an auth token for an administrative user, valid for 1 hour, which may be used to create or update new (non-administrative) users and their tokens.</p>
+
+<p><code>ADMINUSERNAME</code> is the username the Site Admin user uses to login to the site/portal.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
 username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 &amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
-&amp;token=ARNUSER-{ADMINUSERNAM}
-&amp;latitude=30.099016</span><span class="se">\</span><span class="s2">
-&amp;longitude=-81.601370</span><span class="se">\</span><span class="s2">
-&amp;radius=10</span><span class="se">\</span><span class="s2">
-&amp;inDate=2018-10-20</span><span class="se">\</span><span class="s2">
-&amp;outDate=2018-10-22</span><span class="se">\</span><span class="s2">
-&amp;maxResults=1</span><span class="se">\</span><span class="s2">
-&amp;rooms=1</span><span class="se">\</span><span class="s2">
-&amp;adults=2</span><span class="se">\</span><span class="s2">
-&amp;children=0</span><span class="se">\</span><span class="s2">
-&amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
-&amp;userAgent=shell</span><span class="se">\</span><span class="s2">
-&amp;userLanguage=en</span><span class="se">\</span><span class="s2">
-&amp;_type=json"</span>
-</code></pre><h2 id='create-a-token'>Create a Token</h2><h2 id='get-member-by-token'>Get Member by Token</h2><h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
+&amp;token=ARNUSER-{ADMINUSERNAME}"</span>
+</code></pre><pre class="highlight plaintext"><code>{
+  "ArnResponse": {
+    "Info": {
+      "@SiteID": "{SITEID}",
+      "@Username": "{API-USERNAME}",
+      "@IpAddress": "127.0.0.1", 
+      "@TimeReceived": "2018-04-13T16:01:13.510", 
+      "@TimeCompleted": "2018-04-13T16:01:13.651",
+      "@Version": "1.0.0.0"
+    }
+  }
+}
+</code></pre><h2 id='create-a-new-member'>Create a New Member</h2>
+<ol>
+<li>Create a member user using the Site Admin&#39;s token</li>
+<li>Use the member&#39;s token in queries on the user&#39;s behalf</li>
+</ol>
+<h2 id='get-member-by-token'>Get Member by Token</h2><h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
 <p>This endpoint retrieves all hotels which have availability for the dates and locations (or individual hotels) specified.</p>
 
 <p>Make this request for the total number of rooms and the total number of guests.  The response will return a maximum of 50 hotels per request, thus you must use pagination techniques if you need more than 50. That said, 50 is the maximum but may not be the best performing. Use smaller batches to get faster responses.</p>
@@ -638,13 +642,13 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"ArnResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"Info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SITEID"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{SITEID}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{API-USERNAME}"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"> 
       </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T16:01:13.510"</span><span class="p">,</span><span class="w"> 
       </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T16:01:13.651"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.travsrv.com/hotel.aspx?inDate=2018-10-20&amp;latitude=30.099016&amp;longitude=-81.601370&amp;maxResults=1&amp;outDate=2018-10-22&amp;password=API-PASSWORD&amp;radius=10&amp;siteid=SITEID&amp;username=API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.travsrv.com/hotel.aspx?inDate=2018-10-20&amp;latitude=30.099016&amp;longitude=-81.601370&amp;maxResults=1&amp;outDate=2018-10-22&amp;password={API-PASSWORD}&amp;radius=10&amp;siteid={SITEID}&amp;username={API-USERNAME}"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@RequestID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"436E177E-558F-4287-B55A-5DBD9F4C7579"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -960,13 +964,13 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"ArnResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"Info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SITEID"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{SITEID}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{API-USERNAME}"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24.113.225.28"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-17T00:41:27.367"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-17T00:41:27.804"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.travsrv.com/hotel.aspx?_type=json&amp;adults=2&amp;children=0&amp;gateway=51&amp;hotelIds=272393&amp;inDate=2018-10-20&amp;ipAddress=127.0.0.1&amp;maxResults=1&amp;outDate=2018-10-22&amp;password=API-PASSWORD&amp;ratePlanCode=&amp;roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ&amp;rooms=1&amp;siteid=SITEID&amp;userAgent=shell&amp;userLanguage=en&amp;username=API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.travsrv.com/hotel.aspx?_type=json&amp;adults=2&amp;children=0&amp;gateway=51&amp;hotelIds=272393&amp;inDate=2018-10-20&amp;ipAddress=127.0.0.1&amp;maxResults=1&amp;outDate=2018-10-22&amp;password={API-PASSWORD}&amp;ratePlanCode=&amp;roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ&amp;rooms=1&amp;siteid={SITEID}&amp;userAgent=shell&amp;userLanguage=en&amp;username={API-USERNAME}"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@RequestID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2999AB6A-6DB9-4FFF-9586-BBED51BB6108"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1212,8 +1216,8 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"ArnResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"Info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SITEID"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{SITEID}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{API-USERNAME}"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30T22:14:28.484"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30T22:14:32.046"</span><span class="p">,</span><span class="w">
@@ -1752,8 +1756,8 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"ArnResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"Info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SITEID"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{SITEID}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{API-USERNAME}"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T19:16:35.581"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T19:16:36.065"</span><span class="p">,</span><span class="w">
