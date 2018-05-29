@@ -578,6 +578,10 @@ If you use our portal's UI and wanted to linking directly to a particuilar page 
 <p>This endpoint returns an auth token for an administrative user, valid for 1 hour, which may be used to create or update new (non-administrative) users and their tokens.</p>
 
 <p>Along with the other common parameters to replace, additionally you must replace <code>{ADMIN-USERNAME}</code> with the username the Site Admin user uses to login to the site/portal.</p>
+
+<aside class="notice">
+The token will be encoded to ensure a valid JSON response. Be sure to decode the token before using it in another API call.
+</aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
 username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 &amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
@@ -602,8 +606,44 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='create-a-new-member'>Create a New Member</h2>
-<p>Using the Site Admin&#39;s token you may create a new member by POSTing a <em>URL encoded</em> JSON string to this endpoint.</p>
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.travsrv.com/MemberAPI.aspx</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>siteid</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Yes</td>
+<td><code>ARNUSER-</code> concatonated with the Site Admin&#39;s username</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-new-member'>Create a New Member</h2>
+<p>Using the Site Admin&#39;s token you may create a new member (or generate a new token for an existing member) by POSTing a <em>URL encoded</em> JSON string to this endpoint.</p>
 
 <blockquote>
 <p>The JSON data to stringify may look something like this (not yet encoded):</p>
@@ -669,7 +709,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://api.travsrv.com/MemberAPI.aspx</code></p>
 <h3 id='memberdata-json-object-properties'>memberData JSON Object Properties</h3>
 <table><thead>
@@ -680,6 +720,18 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>siteid</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Yes</td>
+<td>Site Admin Token</td>
+</tr>
 <tr>
 <td>ReferralId</td>
 <td>string</td>
@@ -717,7 +769,78 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>The user&#39;s phone number</td>
 </tr>
 </tbody></table>
-<h2 id='get-member-by-token'>Get Member by Token</h2><h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
+<h2 id='get-member-by-token'>Get Member by Token</h2>
+<p>This endpoint retrieves a member using their member token.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
+&amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
+&amp;token={MEMBER-TOKEN}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"MemberId"</span><span class="p">:</span><span class="w"> </span><span class="mi">554642</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Rewards"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Points"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"RedemptionMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EarnMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Names"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"FirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tester"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"BirthDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main Street"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Address2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"City"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Postal"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551231212"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DeleteMember"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"UpdateMemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"FullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme Tester"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful creation of Member RT-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"CurrentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"TransactionResponse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MetaTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://api.travsrv.com/MemberAPI.aspx</code></p>
+<h3 id='memberdata-json-object-properties-2'>memberData JSON Object Properties</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>siteid</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Yes</td>
+<td>Token for the member you want returned</td>
+</tr>
+</tbody></table>
+<h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
 <p>This endpoint retrieves all hotels which have availability for the dates and locations (or individual hotels) specified.</p>
 
 <p>Make this request for the total number of rooms and the total number of guests.  The response will return a maximum of 50 hotels per request, thus you must use pagination techniques if you need more than 50. That said, 50 is the maximum but may not be the best performing. Use smaller batches to get faster responses.</p>
@@ -832,9 +955,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://api.travsrv.com/hotel.aspx</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1154,9 +1277,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://api.travsrv.com/hotel.aspx</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1528,9 +1651,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST https://api.travsrv.com/hotel.aspx?type=Reservation</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2076,9 +2199,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-5'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST https://api.travsrv.com/hotel.aspx?type=Cancellation</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
