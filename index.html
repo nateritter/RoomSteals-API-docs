@@ -256,6 +256,20 @@
               </ul>
           </li>
           <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-an-admin-bearer-token" class="toc-h2 toc-link" data-title="get-an-admin-bearer-token">Get an Admin Bearer Token</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-token" class="toc-h2 toc-link" data-title="create-a-token">Create a Token</a>
+                  </li>
+                  <li>
+                    <a href="#get-member-by-token" class="toc-h2 toc-link" data-title="get-member-by-token">Get Member by Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#hotels" class="toc-h1 toc-link" data-title="hotels">Hotels</a>
               <ul class="toc-list-h2">
                   <li>
@@ -292,10 +306,10 @@
 
 <p>The API credentials are expected in all API requests to the server in the querystring like the following:</p>
 
-<p><code>&amp;username=API-USERNAME&amp;password=API-PASSWORD&amp;siteid=SITEID</code></p>
+<p><code>&amp;username={API-USERNAME}&amp;password={API-PASSWORD}&amp;siteid={SITEID}</code></p>
 
 <aside class="notice">
-You must replace <code>API-USERNAME</code>, <code>API-PASSWORD</code>, and <code>SITEID</code> with your personal API credentials and Site ID respectively.
+You must replace <code>{API-USERNAME}</code>, <code>{API-PASSWORD}</code>, and <code>{SITEID}</code> with your personal API credentials and Site ID respectively.
 </aside>
 <h2 id='single-sign-on-sso'>Single Sign On (SSO)</h2>
 <p>If you wish to integrate our closed user group portal/site with your own applications and user group, you can utilize our SSO functionality.</p>
@@ -309,7 +323,7 @@ You must replace <code>API-USERNAME</code>, <code>API-PASSWORD</code>, and <code
 
 <p>Here is an example of using the user&#39;s token in a closed user group setting with the aforementioned authentication credentials:</p>
 
-<p><code>&amp;username=API-USERNAME&amp;password=API-PASSWORD&amp;siteid=SITEID&amp;token=TOKEN</code></p>
+<p><code>&amp;username={API-USERNAME}&amp;password={API-PASSWORD}&amp;siteid={SITEID}&amp;token={TOKEN}</code></p>
 
 <aside class="notice">
 You must replace <code>API-USERNAME</code>, <code>API-PASSWORD</code>, <code>SITEID</code>, and <code>TOKEN</code> with your personal API credentials, Site ID, and the user's Admin Bearer Token respectively.
@@ -560,7 +574,29 @@ If you use our portal's UI and wanted to linking directly to a particuilar page 
 <p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code</code> value specified in the Availability Search results for the room type you are interested.</p>
 <h2 id='rateplancode'><code>ratePlanCode</code></h2>
 <p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.@Code</code> value specified in the Availability Search results for the rate plan you are interested in.</p>
-<h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
+<h1 id='users'>Users</h1>
+<p>This section is only for those using the SSO Authentication feature.</p>
+<h2 id='get-an-admin-bearer-token'>Get an Admin Bearer Token</h2>
+<p>This endpoint returns an &quot;admin bearer token&quot;, which should be used in all subsequent queries for a user who is a member of a closed user group.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
+username={API-USERNAME}</span><span class="se">\</span><span class="s2">
+&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
+&amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
+&amp;token=ARNUSER-{ADMINUSERNAM}
+&amp;latitude=30.099016</span><span class="se">\</span><span class="s2">
+&amp;longitude=-81.601370</span><span class="se">\</span><span class="s2">
+&amp;radius=10</span><span class="se">\</span><span class="s2">
+&amp;inDate=2018-10-20</span><span class="se">\</span><span class="s2">
+&amp;outDate=2018-10-22</span><span class="se">\</span><span class="s2">
+&amp;maxResults=1</span><span class="se">\</span><span class="s2">
+&amp;rooms=1</span><span class="se">\</span><span class="s2">
+&amp;adults=2</span><span class="se">\</span><span class="s2">
+&amp;children=0</span><span class="se">\</span><span class="s2">
+&amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
+&amp;userAgent=shell</span><span class="se">\</span><span class="s2">
+&amp;userLanguage=en</span><span class="se">\</span><span class="s2">
+&amp;_type=json"</span>
+</code></pre><h2 id='create-a-token'>Create a Token</h2><h2 id='get-member-by-token'>Get Member by Token</h2><h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
 <p>This endpoint retrieves all hotels which have availability for the dates and locations (or individual hotels) specified.</p>
 
 <p>Make this request for the total number of rooms and the total number of guests.  The response will return a maximum of 50 hotels per request, thus you must use pagination techniques if you need more than 50. That said, 50 is the maximum but may not be the best performing. Use smaller batches to get faster responses.</p>
@@ -579,9 +615,9 @@ We do not advise programming in a gateway-specific manner. Gateways may respond 
 If an availability search fails to return rates, we suggest not showing the hotel in your user interface.
 </aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
-username=API-USERNAME</span><span class="se">\</span><span class="s2">
-&amp;password=API-PASSWORD</span><span class="se">\</span><span class="s2">
-&amp;siteid=SITEID</span><span class="se">\</span><span class="s2">
+username={API-USERNAME}</span><span class="se">\</span><span class="s2">
+&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
+&amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;latitude=30.099016</span><span class="se">\</span><span class="s2">
 &amp;longitude=-81.601370</span><span class="se">\</span><span class="s2">
 &amp;radius=10</span><span class="se">\</span><span class="s2">
@@ -900,9 +936,9 @@ username=API-USERNAME</span><span class="se">\</span><span class="s2">
 
 <p>All room prices are based on the number of adults per room specified in the request.  A response containing an extra adult fee of <code>0</code> may simply mean the pricing is not available. Adding more than the specified number of adults to the room because the extra adult fee is <code>0</code> will likely incur a price difference when the guest arrives at the hotel. To avoid this, we advise not depend on the extra adult fee specified in the response when it comes to pricing.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
-username=API-USERNAME</span><span class="se">\</span><span class="s2">
-&amp;password=API-PASSWORD</span><span class="se">\</span><span class="s2">
-&amp;siteid=SITEID</span><span class="se">\</span><span class="s2">
+username={API-USERNAME}</span><span class="se">\</span><span class="s2">
+&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
+&amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;hotelIds=272393</span><span class="se">\</span><span class="s2">
 &amp;inDate=2018-10-20</span><span class="se">\</span><span class="s2">
 &amp;outDate=2018-10-22</span><span class="se">\</span><span class="s2">
@@ -1126,9 +1162,9 @@ username=API-USERNAME</span><span class="se">\</span><span class="s2">
 <h2 id='hotel-reservation-creation'>Hotel Reservation Creation</h2>
 <p>Generally speaking this call should be self explanatory. The parameters you will be sending in regarding the fees and costs will come from the detail request you likely would have just made. This is used to double confirm the costs the user was given will match up with the costs in the suppliers / gateways.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
-username=API-USERNAME</span><span class="se">\</span><span class="s2">
-&amp;password=API-PASSWORD</span><span class="se">\</span><span class="s2">
-&amp;siteid=SITEID</span><span class="se">\</span><span class="s2">
+username={API-USERNAME}</span><span class="se">\</span><span class="s2">
+&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
+&amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;rooms=1</span><span class="se">\</span><span class="s2">
 &amp;hotelIds=10731</span><span class="se">\</span><span class="s2">
 &amp;rooms=1</span><span class="se">\</span><span class="s2">
@@ -1700,9 +1736,9 @@ username=API-USERNAME</span><span class="se">\</span><span class="s2">
 <h2 id='hotel-reservation-cancellation'>Hotel Reservation Cancellation</h2>
 <p>To cancel a reservation you will need the <code>reservationId</code> and <code>itineraryId</code> returned in the reservation creation response.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
-username=API-USERNAME</span><span class="se">\</span><span class="s2">
-&amp;password=API-PASSWORD</span><span class="se">\</span><span class="s2">
-&amp;siteid=SITEID</span><span class="se">\</span><span class="s2">
+username={API-USERNAME}</span><span class="se">\</span><span class="s2">
+&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
+&amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;reservationId=915892</span><span class="se">\</span><span class="s2">
 &amp;itineraryId=733525</span><span class="se">\</span><span class="s2">
 &amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
