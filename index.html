@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,9 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -222,31 +219,64 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#single-sign-on-sso" class="toc-h2 toc-link" data-title="single-sign-on-sso">Single Sign On (SSO)</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#common-value-maps" class="toc-h1 toc-link" data-title="common-value-maps">Common value maps</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#currency" class="toc-h2 toc-link" data-title="code-currency-code"><code>currency</code></a>
+                  </li>
+                  <li>
+                    <a href="#gateway" class="toc-h2 toc-link" data-title="code-gateway-code"><code>gateway</code></a>
+                  </li>
+                  <li>
+                    <a href="#propertyamenities" class="toc-h2 toc-link" data-title="code-propertyamenities-code"><code>propertyAmenities</code></a>
+                  </li>
+                  <li>
+                    <a href="#propertyclasses" class="toc-h2 toc-link" data-title="code-propertyclasses-code"><code>propertyClasses</code></a>
+                  </li>
+                  <li>
+                    <a href="#propertytypes" class="toc-h2 toc-link" data-title="code-propertytypes-code"><code>propertyTypes</code></a>
+                  </li>
+                  <li>
+                    <a href="#roomcode" class="toc-h2 toc-link" data-title="code-roomcode-code"><code>roomCode</code></a>
+                  </li>
+                  <li>
+                    <a href="#rateplancode" class="toc-h2 toc-link" data-title="code-rateplancode-code"><code>ratePlanCode</code></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#hotels" class="toc-h1 toc-link" data-title="hotels">Hotels</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#availability-search" class="toc-h2 toc-link" data-title="availability-search">Availability Search</a>
+                  </li>
+                  <li>
+                    <a href="#hotel-detail" class="toc-h2 toc-link" data-title="hotel-detail">Hotel Detail</a>
+                  </li>
+                  <li>
+                    <a href="#hotel-reservation-creation" class="toc-h2 toc-link" data-title="hotel-reservation-creation">Hotel Reservation Creation</a>
+                  </li>
+                  <li>
+                    <a href="#hotel-reservation-cancellation" class="toc-h2 toc-link" data-title="hotel-reservation-cancellation">Hotel Reservation Cancellation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -254,188 +284,1691 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Hotels For Hope API! You can use our API to access Hotels For Hope API endpoints, which can get information on hundreds of thousands of hotels, their availability, details, as well as create and cancel reservations.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>We have examples using a shell. You can view code examples in the dark area to the right, and (when languages become available) you can switch the programming language of the examples with the tabs in the top right.</p>
 <h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>Hotels For Hope uses a querystring username and password to allow access to the API. You can request Hotels For Hope API credentials by partnering with us and emailing <a href="mailto:hello@hotelsforhope.com">support</a>.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>The API credentials are expected in all API requests to the server in the querystring like the following:</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<p><code>&amp;username=API-USERNAME&amp;password=API-PASSWORD&amp;siteid=SITEID</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>API-USERNAME</code>, <code>API-PASSWORD</code>, and <code>SITEID</code> with your personal API credentials and Site ID respectively.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h2 id='single-sign-on-sso'>Single Sign On (SSO)</h2>
+<p>If you wish to integrate our closed user group portal/site with your own applications and user group, you can utilize our SSO functionality.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>Process: </p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<ol>
+<li>Get an Admin Bearer Token</li>
+<li>Use the Admin Bearer Token in queries on the user&#39;s behalf</li>
+</ol>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<p>Here is an example of using the user&#39;s token in a closed user group setting with the aforementioned authentication credentials:</p>
+
+<p><code>&amp;username=API-USERNAME&amp;password=API-PASSWORD&amp;siteid=SITEID&amp;token=TOKEN</code></p>
+
+<aside class="notice">
+You must replace <code>API-USERNAME</code>, <code>API-PASSWORD</code>, <code>SITEID</code>, and <code>TOKEN</code> with your personal API credentials, Site ID, and the user's Admin Bearer Token respectively.
+
+If you use our portal's UI and wanted to linking directly to a particuilar page without requiring login, use the parameter `memberToken=TOKEN` in the URL.
+</aside>
+<h1 id='common-value-maps'>Common value maps</h1><h2 id='currency'><code>currency</code></h2>
+<p>Supported currencies are located in our static database files. Request access if needed. Major 3-letter currency references (e.g., &quot;USD&quot;, &quot;CNY&quot;, &quot;CAD&quot;, etc.) are supported.</p>
+<h2 id='gateway'><code>gateway</code></h2>
+<p>Optional filter. This should be either left empty to return all sources of supply or specified by a single integer or comma separated list of integers represented by the following:</p>
+
+<table><thead>
+<tr>
+<th>Gateway ID</th>
+<th>Gateway Name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>ARN Hotel Wholesale</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Travelport Negotiated Commissionable</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Travelport Wholesale</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Travelport Commissionable</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tourico Hotel Wholesale</td>
+</tr>
+<tr>
+<td>16</td>
+<td>ARN Group Commissionable</td>
+</tr>
+<tr>
+<td>17</td>
+<td>ARN Hotel Commissionable</td>
+</tr>
+<tr>
+<td>20</td>
+<td>ARN On-Hold Commissionable</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Expedia</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Miki</td>
+</tr>
+<tr>
+<td>32</td>
+<td>GetARoom</td>
+</tr>
+<tr>
+<td>33</td>
+<td>ARN Group Wholesale</td>
+</tr>
+<tr>
+<td>34</td>
+<td>HotelBeds</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Bonotel</td>
+</tr>
+<tr>
+<td>36</td>
+<td>GTA</td>
+</tr>
+<tr>
+<td>37</td>
+<td>CiiRUS</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Interval International</td>
+</tr>
+<tr>
+<td>39</td>
+<td>RCI</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Priceline Wholesale</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Priceline Commissionable</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Priceline Booking.com​</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Mark International</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Amadeus Commitionable</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Amadeus Negotiated Commissionable</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Lots Of Hotels</td>
+</tr>
+<tr>
+<td>48</td>
+<td>Jack Travel</td>
+</tr>
+<tr>
+<td>49</td>
+<td>Travellanda</td>
+</tr>
+</tbody></table>
+<h2 id='propertyamenities'><code>propertyAmenities</code></h2>
+<p>Optional filter. This should either be an integer or a list of comma separated integers represented by the following:</p>
+
+<table><thead>
+<tr>
+<th>Amenity ID</th>
+<th>Amenity</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Airport shuttle</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Social hour</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Fitness center</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Internet access</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Free local calls</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Complimentary breakfast</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Pets allowed</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Pool</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Restaurant on-site</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Kitchen / kitchenette</td>
+</tr>
+</tbody></table>
+<h2 id='propertyclasses'><code>propertyClasses</code></h2>
+<p>Optional filter. This should either be an integer or a list of comma separated integers represented by the following.</p>
+
+<table><thead>
+<tr>
+<th>Property Class</th>
+<th>Star Rating</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>Economy</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>Budget</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>Premium</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>Luxury</td>
+</tr>
+</tbody></table>
+<h2 id='propertytypes'><code>propertyTypes</code></h2>
+<p>Optional filter. This should either be an integer or a list of comma separated integers represented by the following:</p>
+
+<table><thead>
+<tr>
+<th>Property Type ID</th>
+<th>Property Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Hotel</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Motel</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Resort</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Extended stay property</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Bed and breakfast</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Vacation rental</td>
+</tr>
+</tbody></table>
+<h2 id='roomcode'><code>roomCode</code></h2>
+<p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code</code> value specified in the Availability Search results for the room type you are interested.</p>
+<h2 id='rateplancode'><code>ratePlanCode</code></h2>
+<p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.@Code</code> value specified in the Availability Search results for the rate plan you are interested in.</p>
+<h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
+<p>This endpoint retrieves all hotels which have availability for the dates and locations (or individual hotels) specified.</p>
+
+<p>Make this request for the total number of rooms and the total number of guests.  The response will return a maximum of 50 hotels per request, thus you must use pagination techniques if you need more than 50. That said, 50 is the maximum but may not be the best performing. Use smaller batches to get faster responses.</p>
+
+<p>Responses will contain available rate plans and room types from various suppliers we call &quot;gateways&quot;.</p>
+
+<p>Responses may contain full nightly rates and tax information, only first night rates with or without tax information, or the highest or average nightly rate.  This response depends on the supplier/gateway but the most common from most gateways is the first night&#39;s rate, thus the property name in our responses (<code>FirstNightRate</code>).</p>
+
+<p>Rates are always returned in the hotel&#39;s native currency.  If you request another <code>currency</code>, the correct conversion rate from the hotel&#39;s native currency to the desired <code>DisplayCurrency</code> will be returned as <code>DisplayCurrencyMultiplier</code>. You may use this value to convert the hotel currency to the desired currency for display in your UI. This allows you to show both the original currency and display currency side by side.</p>
+
+<aside class="notice">
+We do not advise programming in a gateway-specific manner. Gateways may respond with varying amounts of information at any time. Also, new gateways could be added at any time.
+</aside>
+
+<aside class="notice">
+If an availability search fails to return rates, we suggest not showing the hotel in your user interface.
+</aside>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
+username=API-USERNAME</span><span class="se">\</span><span class="s2">
+&amp;password=API-PASSWORD</span><span class="se">\</span><span class="s2">
+&amp;siteid=SITEID</span><span class="se">\</span><span class="s2">
+&amp;latitude=30.099016</span><span class="se">\</span><span class="s2">
+&amp;longitude=-81.601370</span><span class="se">\</span><span class="s2">
+&amp;radius=10</span><span class="se">\</span><span class="s2">
+&amp;inDate=2018-10-20</span><span class="se">\</span><span class="s2">
+&amp;outDate=2018-10-22</span><span class="se">\</span><span class="s2">
+&amp;maxResults=1</span><span class="se">\</span><span class="s2">
+&amp;rooms=1</span><span class="se">\</span><span class="s2">
+&amp;adults=2</span><span class="se">\</span><span class="s2">
+&amp;children=0</span><span class="se">\</span><span class="s2">
+&amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
+&amp;userAgent=shell</span><span class="se">\</span><span class="s2">
+&amp;userLanguage=en</span><span class="se">\</span><span class="s2">
+&amp;_type=json"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured like this (edited for brevity):</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ArnResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SITEID"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T16:01:13.510"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T16:01:13.651"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.travsrv.com/hotel.aspx?inDate=2018-10-20&amp;latitude=30.099016&amp;longitude=-81.601370&amp;maxResults=1&amp;outDate=2018-10-22&amp;password=API-PASSWORD&amp;radius=10&amp;siteid=SITEID&amp;username=API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@RequestID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"436E177E-558F-4287-B55A-5DBD9F4C7579"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@DisplayCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"HotelAvailability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"@InDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@OutDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Rooms"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Adults"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Children"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Hotel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"@HotelID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"272393"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"@IsEphemeral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Available"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@BuyerOnly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@CommissionStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Commissionable"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@BalanceDueAtHotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"Room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard room"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"- 1 King Bed - Nonsmoking Room - Free Breakfast, Free Wifi, Fridge, Microwave"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@USDMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T11:00:26.790"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@MaximumBookable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"NightlyRate"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"@Date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-20"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114.44"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"@Date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114.43"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"Tax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.51"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29.77"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"GatewayFee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"Total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"258.64"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@IncludesBookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"BookingFee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@RoomCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T11:00:26.790"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.travsrv.com/hotel.aspx</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>username</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>password</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>siteid</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>int</td>
+<td>No</td>
+<td>Maximum time to allow for searching gateways, measured in seconds. Default: 15</td>
+</tr>
+<tr>
+<td>maxResults</td>
+<td>int</td>
+<td>No</td>
+<td>Number of results to return. Default: 20. Maximum: 50.</td>
+</tr>
+<tr>
+<td>hotelIds</td>
+<td>int*</td>
+<td>No</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>refHotelId</td>
+<td>int</td>
+<td>No</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>float</td>
+<td>No</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>float</td>
+<td>No</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>radius</td>
+<td>float</td>
+<td>No</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>rooms</td>
+<td>int</td>
+<td>Yes</td>
+<td>Number of rooms needed. When searching for more than one room, responses are based on the same room type and occupancy for every room. Maximum: 9 (best results with no more than 4).</td>
+</tr>
+<tr>
+<td>inDate</td>
+<td>date</td>
+<td>Yes</td>
+<td>Desired check-in date (format: <code>YYYY-MM-DD</code> based on UTC -7 (MST) time zone)</td>
+</tr>
+<tr>
+<td>outDate</td>
+<td>date</td>
+<td>Yes</td>
+<td>Desired check-out date (format: <code>YYYY-MM-DD</code> based on UTC -7 (MST) time zone)</td>
+</tr>
+<tr>
+<td>adults</td>
+<td>int</td>
+<td>Yes</td>
+<td>Total number of adults. For instance, if <code>rooms=2&amp;adults=2</code>, the search is for 1 room per adult. Maximum 8 adults per room. Uneven/odd numbers of adults/rooms will be rounded up to support legacy providers.</td>
+</tr>
+<tr>
+<td>children</td>
+<td>int</td>
+<td>Yes</td>
+<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter.</td>
+</tr>
+<tr>
+<td>sortType</td>
+<td>string/enum</td>
+<td>No</td>
+<td>One of <code>bestvalue</code>, <code>dealpercent</code>, <code>dealamount</code>. Default: <code>bestvalue</code>. See below.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>No</td>
+<td>Default: <code>USD</code>. See common value map.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>No</td>
+<td>Partial hotel name filter. E.g., passing &quot;ilton&quot; would return properties like &quot;Hilton Garden Inn&quot;, etc.</td>
+</tr>
+<tr>
+<td>propertyClasses</td>
+<td>int*</td>
+<td>No</td>
+<td>See common value map.</td>
+</tr>
+<tr>
+<td>propertyAmenities</td>
+<td>int*</td>
+<td>No</td>
+<td>See common value map.</td>
+</tr>
+<tr>
+<td>propertyTypes</td>
+<td>int*</td>
+<td>No</td>
+<td>See common value map.</td>
+</tr>
+<tr>
+<td>gateway</td>
+<td>int*</td>
+<td>No</td>
+<td>See common value map.</td>
+</tr>
+<tr>
+<td>ipAddress</td>
+<td>string</td>
+<td>Yes</td>
+<td>The IPv4 address of the person browsing your website. This is used for fraud checking and preventing booking failures.</td>
+</tr>
+<tr>
+<td>userAgent</td>
+<td>string</td>
+<td>Yes</td>
+<td>The userAgent of the app/browser of the person browsing your website. This is used for fraud checking and preventing booking failures.</td>
+</tr>
+<tr>
+<td>userLanguage</td>
+<td>string</td>
+<td>Yes</td>
+<td>The language of the browser of the person browsing your website. This is used for fraud checking and preventing booking failures.</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>No</td>
+<td>Specifies the response language. Default: &quot;US&quot;</td>
+</tr>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>No</td>
+<td>Specifies the results page to return (when more than one page of results is available).</td>
+</tr>
+<tr>
+<td>_type</td>
+<td>string/enum</td>
+<td>No</td>
+<td>The response format. One of <code>xml</code> or <code>json</code>. Default: <code>json</code>.</td>
 </tr>
 </tbody></table>
+<h4 id='hotelids-locationid-refhotelid-latitude-longitude-radius'><code>hotelIds</code>, <code>locationId</code>, <code>refHotelId</code>, <code>latitude</code>+<code>longitude</code>+<code>radius</code></h4>
+<p>One of the following is required:</p>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<ul>
+<li><code>hotelIds</code>: A list of integers, separated by commas if more than one. Max of 50 hotel IDs may be specified at one time. May be substituted with <code>refHotelId</code> or <code>locationId</code> or <code>latitude</code>+<code>longitude</code>+<code>radius</code>.</li>
+<li><code>refHotelId</code>: A single hotel ID used to look up the city and return results from that city, as if we had searched by <code>locationId</code>. May be substituted with <code>hotelIds</code> or <code>locationId</code> or <code>latitude</code>+<code>longitude</code>+<code>radius</code>.</li>
+<li><code>locationId</code>: A location ID used to return hotels from within the location&#39;s city. May be substituted with <code>hotelIds</code> or <code>refHotelId</code> or <code>latitude</code>+<code>longitude</code>+<code>radius</code>.</li>
+<li><code>latitude</code> + <code>longitude</code> + <code>radius</code> (Do not send <code>radius</code> if doing <code>latitude</code>/<code>longitude</code> based deal search)
+** <code>radius</code>: Measured in miles.  NOTE: If doing a market deal search, leave off radius and just pass <code>latitude</code> and <code>longitude</code>.</li>
+</ul>
+<h4 id='sorttype'><code>sortType</code></h4>
+<table><thead>
+<tr>
+<th>Sort Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bestvalue</code></td>
+<td>The default sort type, based on previous booking trends and manual sorting options.</td>
+</tr>
+<tr>
+<td><code>dealpercent</code></td>
+<td>Sorts the hotel results based on prices last seen and returns the best percentage savings we have found historically for the specified dates.</td>
+</tr>
+<tr>
+<td><code>dealamount</code></td>
+<td>Sorts the hotel results based on prices last seen and returns the best amount savings we have found historically and for those dates.</td>
+</tr>
+</tbody></table>
+<h2 id='hotel-detail'>Hotel Detail</h2>
+<p>This call confirms availability with the supplier / gateway (requests to skip any caching they have in place) and retrieves cancellation and booking policies to display prior to the user placing a reservation.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>This call is only available for a single hotel ID, room code, and rate code.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<p>Responses will contain nightly rates, taxes and fees associated with the room, and hotel, payment, and cancellation policies which apply to the rate.</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<p>This request is rate limited as it is an expensive request to make. Responses with a 429 status code are in response to over use, should you exceed the rate limit. </p>
+
+<p>Failed responses indicate the rate is sold out. Subsequent availability calls will flush and re-cache this hotel&#39;s rates.</p>
+
+<p><strong>All fees, penalties, and policies from this response must be shown to the user before creating a reservation.</strong></p>
+
+<p>All room prices are based on the number of adults per room specified in the request.  A response containing an extra adult fee of <code>0</code> may simply mean the pricing is not available. Adding more than the specified number of adults to the room because the extra adult fee is <code>0</code> will likely incur a price difference when the guest arrives at the hotel. To avoid this, we advise not depend on the extra adult fee specified in the response when it comes to pricing.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
+username=API-USERNAME</span><span class="se">\</span><span class="s2">
+&amp;password=API-PASSWORD</span><span class="se">\</span><span class="s2">
+&amp;siteid=SITEID</span><span class="se">\</span><span class="s2">
+&amp;hotelIds=272393</span><span class="se">\</span><span class="s2">
+&amp;inDate=2018-10-20</span><span class="se">\</span><span class="s2">
+&amp;outDate=2018-10-22</span><span class="se">\</span><span class="s2">
+&amp;maxResults=1</span><span class="se">\</span><span class="s2">
+&amp;rooms=1</span><span class="se">\</span><span class="s2">
+&amp;adults=2</span><span class="se">\</span><span class="s2">
+&amp;children=0</span><span class="se">\</span><span class="s2">
+&amp;gateway=51</span><span class="se">\</span><span class="s2">
+&amp;ratePlanCode=F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935</span><span class="se">\</span><span class="s2">
+&amp;roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ</span><span class="se">\</span><span class="s2">
+&amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
+&amp;userAgent=shell</span><span class="se">\</span><span class="s2">
+&amp;userLanguage=en</span><span class="se">\</span><span class="s2">
+&amp;_type=json"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured like this (edited for brevity):</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"ArnResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SITEID"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24.113.225.28"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-17T00:41:27.367"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-17T00:41:27.804"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.travsrv.com/hotel.aspx?_type=json&amp;adults=2&amp;children=0&amp;gateway=51&amp;hotelIds=272393&amp;inDate=2018-10-20&amp;ipAddress=127.0.0.1&amp;maxResults=1&amp;outDate=2018-10-22&amp;password=API-PASSWORD&amp;ratePlanCode=&amp;roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ&amp;rooms=1&amp;siteid=SITEID&amp;userAgent=shell&amp;userLanguage=en&amp;username=API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@RequestID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2999AB6A-6DB9-4FFF-9586-BBED51BB6108"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@DisplayCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"HotelAvailability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"@InDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@OutDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Rooms"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Adults"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Children"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Hotel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"@HotelID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"272393"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"@IsEphemeral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Available"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@BuyerOnly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@CommissionStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Commissionable"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@BalanceDueAtHotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"Room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard room"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"- 1 King Bed - Nonsmoking Room - Free Breakfast, Free Wifi, Fridge, Microwave"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@USDMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-17T00:00:06.027"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@MaximumBookable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"NightlyRate"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"@Date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-20"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114.44"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"@Date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114.43"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"Tax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.51"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29.77"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"GatewayFee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"Total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"258.64"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@IncludesBookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"BookingFee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@RoomCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-17T00:00:06.027"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.travsrv.com/hotel.aspx</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>username</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>siteid</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>int</td>
+<td>No</td>
+<td>Maximum time to allow for searching gateways, measured in seconds. Default: 15</td>
+</tr>
+<tr>
+<td>hotelIds</td>
+<td>int</td>
+<td>No</td>
+<td>The particular hotel id for which more detail is being requested.</td>
+</tr>
+<tr>
+<td>rooms</td>
+<td>int</td>
+<td>Yes</td>
+<td>Number of rooms needed. When searching for more than one room, responses are based on the same room type and occupancy for every room. Maximum: 9 (best results with no more than 4).</td>
+</tr>
+<tr>
+<td>inDate</td>
+<td>date</td>
+<td>Yes</td>
+<td>Desired check-in date (format: <code>YYYY-MM-DD</code> based on UTC -7 (MST) time zone)</td>
+</tr>
+<tr>
+<td>outDate</td>
+<td>date</td>
+<td>Yes</td>
+<td>Desired check-out date (format: <code>YYYY-MM-DD</code> based on UTC -7 (MST) time zone)</td>
+</tr>
+<tr>
+<td>adults</td>
+<td>int</td>
+<td>Yes</td>
+<td>Total number of adults. For instance, if <code>rooms=2&amp;adults=2</code>, the search is for 1 room per adult. Maximum 8 adults per room. Uneven/odd numbers of adults/rooms will be rounded up to support legacy providers.</td>
+</tr>
+<tr>
+<td>children</td>
+<td>int</td>
+<td>Yes</td>
+<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>No</td>
+<td>Default: <code>USD</code>. See common value map.</td>
+</tr>
+<tr>
+<td>ratePlanCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>See common value map.</td>
+</tr>
+<tr>
+<td>roomCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>See common value map.</td>
+</tr>
+<tr>
+<td>gateway</td>
+<td>int</td>
+<td>No</td>
+<td>See common value map.</td>
+</tr>
+<tr>
+<td>ipAddress</td>
+<td>string</td>
+<td>Yes</td>
+<td>The IPv4 address of the person browsing your website. This is used for fraud checking and preventing booking failures.</td>
+</tr>
+<tr>
+<td>userAgent</td>
+<td>string</td>
+<td>Yes</td>
+<td>The userAgent of the app/browser of the person browsing your website. This is used for fraud checking and preventing booking failures.</td>
+</tr>
+<tr>
+<td>userLanguage</td>
+<td>string</td>
+<td>Yes</td>
+<td>The language of the browser of the person browsing your website. This is used for fraud checking and preventing booking failures.</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>No</td>
+<td>Specifies the response language. Default: &quot;US&quot;</td>
+</tr>
+<tr>
+<td>_type</td>
+<td>string/enum</td>
+<td>No</td>
+<td>The response format. One of <code>xml</code> or <code>json</code>. Default: <code>json</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h2 id='hotel-reservation-creation'>Hotel Reservation Creation</h2>
+<p>Generally speaking this call should be self explanatory. The parameters you will be sending in regarding the fees and costs will come from the detail request you likely would have just made. This is used to double confirm the costs the user was given will match up with the costs in the suppliers / gateways.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
+username=API-USERNAME</span><span class="se">\</span><span class="s2">
+&amp;password=API-PASSWORD</span><span class="se">\</span><span class="s2">
+&amp;siteid=SITEID</span><span class="se">\</span><span class="s2">
+&amp;rooms=1</span><span class="se">\</span><span class="s2">
+&amp;hotelIds=10731</span><span class="se">\</span><span class="s2">
+&amp;rooms=1</span><span class="se">\</span><span class="s2">
+&amp;inDate=2007-03-30</span><span class="se">\</span><span class="s2">
+&amp;outDate=2007-03-31</span><span class="se">\</span><span class="s2">
+&amp;adults=2</span><span class="se">\</span><span class="s2">
+&amp;children=1</span><span class="se">\</span><span class="s2">
+&amp;ratePlanCode=AAA</span><span class="se">\</span><span class="s2">
+&amp;roomCode=Z303AAA</span><span class="se">\</span><span class="s2">
+&amp;guestFirstName=Eddie</span><span class="se">\</span><span class="s2">
+&amp;guestLastName=Collins</span><span class="se">\</span><span class="s2">
+&amp;guestEmail=nobody@yahoo.com</span><span class="se">\</span><span class="s2">
+&amp;guestPhoneCountry=1</span><span class="se">\</span><span class="s2">
+&amp;guestPhoneArea=313</span><span class="se">\</span><span class="s2">
+&amp;guestPhoneNumber=5555555</span><span class="se">\</span><span class="s2">
+&amp;guestMessage=Smoking room requested.</span><span class="se">\</span><span class="s2">
+&amp;addressAddress=123 main st</span><span class="se">\</span><span class="s2">
+&amp;addressCity=detroit</span><span class="se">\</span><span class="s2">
+&amp;addressRegion=MI</span><span class="se">\</span><span class="s2">
+&amp;addressPostalCode=48234</span><span class="se">\</span><span class="s2">
+&amp;addressCountryCode=US</span><span class="se">\</span><span class="s2">
+&amp;roomCostPrice=98.95</span><span class="se">\</span><span class="s2">
+&amp;roomCostTaxAmount=0.00</span><span class="se">\</span><span class="s2">
+&amp;roomCostGatewayFee=0.00</span><span class="se">\</span><span class="s2">
+&amp;roomCostTotalAmount=103.95</span><span class="se">\</span><span class="s2">
+&amp;roomCostCurrencyCode=USD</span><span class="se">\</span><span class="s2">
+&amp;bookingFeeAmount=5.00</span><span class="se">\</span><span class="s2">
+&amp;creditCardType=VISA</span><span class="se">\</span><span class="s2">
+&amp;creditCardNumber=4242424242424242</span><span class="se">\</span><span class="s2">
+&amp;creditCardExpiration=2018-12</span><span class="se">\</span><span class="s2">
+&amp;creditCardCVV2=123</span><span class="se">\</span><span class="s2">
+&amp;creditCardHolder=Eddie Collins</span><span class="se">\</span><span class="s2">
+&amp;creditCardCity=Detroit</span><span class="se">\</span><span class="s2">
+&amp;creditCardRegion=MI</span><span class="se">\</span><span class="s2">
+&amp;creditCardPostalCode=48234</span><span class="se">\</span><span class="s2">
+&amp;creditCardCountryCode=US</span><span class="se">\</span><span class="s2">
+&amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
+&amp;userAgent=shell</span><span class="se">\</span><span class="s2">
+&amp;userLanguage=en</span><span class="se">\</span><span class="s2">
+&amp;_type=json"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured like this (edited for brevity):</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="s2">"ArnResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SITEID"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30T22:14:28.484"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30T22:14:32.046"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.travsrv.com/hotel.aspx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@RequestID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D392A38B-79EC-4064-9C8F-E2C9AFC2EEE6"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Reservation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@DisplayCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@ItineraryID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"678595"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@RecordLocator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fa67dc1-9d40-46f4-aa34-eb236117781c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"HotelReservation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"@InDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@OutDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-31"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Rooms"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Adults"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Children"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@ReservationID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"860964"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@CustomerConfirmationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40156457"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Hotel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"@HotelID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10731"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QUALIFYING MEMBER RATE: Aaa/CAA Rate 1 King Bed /1 Room Suite/Partial Room Divider /Microwave Refrigerator/Computer Hookup Guest Must Show Some Form Of Aaa Membership Rate Is Applicable To AAA Members Only And Only On Rooms They Stay In Themselv"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Z303AAA"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QUALIFYING MEMBER RATE: Aaa/CAA Rate 1 King Bed /1 Room Suite/Partial Room Divider /Microwave Refrigerator/Computer Hookup Guest Must Show Some Form Of Aaa Membership Rate Is Applicable To AAA Members Only And Only On Rooms They Stay In Themselv"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@USDMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30T17:15:04.627"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@MaximumBookable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"NightlyRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98.95"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Tax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"GatewayFee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98.95"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@IncludesBookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"BookingFee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@RoomCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30T17:15:04.627"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"Policy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"ExtraPersonPrice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Adult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Child"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@USDMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30T17:15:04.627"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Guarantee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESERVATION WILL BE HELD TILL 4PM LOCAL TIME Booking fee is not included in the total and it's value is expressed in United States Dollars. Booking fee will be charged at the time of the booking."</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Cancel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCEL BY 4 PM LOCAL HTL TIME DOA"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@LatestCancelTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-29T10:00:00.000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@GMTOffSet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@RoomCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30T17:15:04.627"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"Penalty"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98.95"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@USDMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30T17:15:04.627"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Deposit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tax is not included in the total."</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"With your credit card information, the room(s) you book are guaranteed for late arrival."</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This discount rate requires a $5.00 (USD) per room per night non-refundable service fee at time of reservation and will appear on your credit card under Alliance Reservations Network, Phoenix, AZ."</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"Property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check-In Time"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150000"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check-Out Time"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1100"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"Guests"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"Primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"@Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@FirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Eddie"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@MiddleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Collins"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smoking room requested."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nobody@yahoo.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@PhoneCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@PhoneArea"</span><span class="p">:</span><span class="w"> </span><span class="s2">"313"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@PhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555555"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@PhoneExtension"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@AgeGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adult"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 main st"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"detroit"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MI"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@PostalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48234"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@CountryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@ExtraInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"Service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-03-30T17:15:04.627"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"RoomCurrency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Cost"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98.95"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@GatewayFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@BookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103.95"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmountIncludesBookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"Charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Due"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98.95"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"DisplayCurrency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Cost"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98.95"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@GatewayFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@BookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103.95"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmountIncludesBookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"Charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Due"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98.95"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"USD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Cost"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98.95"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@GatewayFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@BookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103.95"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmountIncludesBookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"Charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Due"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98.95"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://api.travsrv.com/hotel.aspx?type=Reservation</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>username</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>siteid</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>hotelIds</td>
+<td>int</td>
+<td>Yes</td>
+<td>The particular hotel id to reserve the room at.</td>
+</tr>
+<tr>
+<td>agentRefNumber</td>
+<td>string</td>
+<td>No</td>
+<td>A reference ID you may use for your own tracking purposes. This is included in a reservation webhook, if used.</td>
+</tr>
+<tr>
+<td>rooms</td>
+<td>int</td>
+<td>Yes</td>
+<td>Number of rooms needed. Maximum: 9.</td>
+</tr>
+<tr>
+<td>inDate</td>
+<td>date</td>
+<td>Yes</td>
+<td>Desired check-in date (format: <code>YYYY-MM-DD</code> based on UTC -7 (MST) time zone)</td>
+</tr>
+<tr>
+<td>outDate</td>
+<td>date</td>
+<td>Yes</td>
+<td>Desired check-out date (format: <code>YYYY-MM-DD</code> based on UTC -7 (MST) time zone)</td>
+</tr>
+<tr>
+<td>adults</td>
+<td>int</td>
+<td>Yes</td>
+<td>Total number of adults. For instance, if <code>rooms=2&amp;adults=2</code>, the search is for 1 room per adult. Maximum 8 adults per room. Uneven/odd numbers of adults/rooms will be rounded up to support legacy providers.</td>
+</tr>
+<tr>
+<td>children</td>
+<td>int</td>
+<td>Yes</td>
+<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>No</td>
+<td>Default: <code>USD</code>. See common value map.</td>
+</tr>
+<tr>
+<td>ratePlanCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>See common value map.</td>
+</tr>
+<tr>
+<td>roomCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>See common value map.</td>
+</tr>
+<tr>
+<td>gateway</td>
+<td>int</td>
+<td>yes</td>
+<td>See common value map.</td>
+</tr>
+<tr>
+<td>campaignCode</td>
+<td>string</td>
+<td>No</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>guestTitle</td>
+<td>string</td>
+<td>No</td>
+<td>Primary guest&#39;s title (e.g., &quot;Mr.&quot;, &quot;Mrs.&quot;, etc.)</td>
+</tr>
+<tr>
+<td>guestFirstName</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s first name</td>
+</tr>
+<tr>
+<td>guestLastName</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s last name.</td>
+</tr>
+<tr>
+<td>guestEmail</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s email address.</td>
+</tr>
+<tr>
+<td>guestPhoneCountry</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s phone number country code.</td>
+</tr>
+<tr>
+<td>guestPhoneArea</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s phone number area code.</td>
+</tr>
+<tr>
+<td>guestPhoneNumber</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s phone number (without country or area code)</td>
+</tr>
+<tr>
+<td>guestPhoneExtension</td>
+<td>string</td>
+<td>No</td>
+<td>Primary guest&#39;s phone number extension.</td>
+</tr>
+<tr>
+<td>guestMessage</td>
+<td>string</td>
+<td>No</td>
+<td>Guest special requests.</td>
+</tr>
+<tr>
+<td>addressAddress</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s address.</td>
+</tr>
+<tr>
+<td>addressCity</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s city.</td>
+</tr>
+<tr>
+<td>addressRegion</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s state / region.</td>
+</tr>
+<tr>
+<td>addressPostalCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s postal code.</td>
+</tr>
+<tr>
+<td>addressCountryCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>Primary guest&#39;s country code.</td>
+</tr>
+<tr>
+<td>roomCostPrice</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>roomCostTaxAmount</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>roomCostGatewayFee</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>roomCostTotalAmount</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>roomCostCurrencyCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>bookingFeeAmount</td>
+<td>decimal</td>
+<td>Yes</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>creditCardType</td>
+<td>string</td>
+<td>Yes</td>
+<td>Credit card type (&quot;AMEX&quot;, &quot;MasterCard&quot;, &quot;VISA&quot;, etc.)</td>
+</tr>
+<tr>
+<td>creditCardNumber</td>
+<td>string</td>
+<td>Yes</td>
+<td>Credit card number.</td>
+</tr>
+<tr>
+<td>creditCardExpiration</td>
+<td>string</td>
+<td>Yes</td>
+<td>Credit card expiration date (format: <code>YYYY-MM</code>)</td>
+</tr>
+<tr>
+<td>creditCardCVV2</td>
+<td>int</td>
+<td>Yes</td>
+<td>Credit card CVV2 number.</td>
+</tr>
+<tr>
+<td>creditCardHolder</td>
+<td>string</td>
+<td>Yes</td>
+<td>Name on credit card.</td>
+</tr>
+<tr>
+<td>creditCardAddress</td>
+<td>string</td>
+<td>Yes</td>
+<td>Credit card billing address.</td>
+</tr>
+<tr>
+<td>creditCardCity</td>
+<td>string</td>
+<td>Yes</td>
+<td>Credit card billing city.</td>
+</tr>
+<tr>
+<td>creditCardRegion</td>
+<td>string</td>
+<td>Yes</td>
+<td>Credit card billing state / region.</td>
+</tr>
+<tr>
+<td>creditCardPostalCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>Credit card billing postal code.</td>
+</tr>
+<tr>
+<td>creditCardCountryCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>Credit card billing country code.</td>
+</tr>
+<tr>
+<td>ipAddress</td>
+<td>string</td>
+<td>Yes</td>
+<td>The IPv4 address of the person browsing your website. This is used for fraud checking and preventing booking failures.</td>
+</tr>
+<tr>
+<td>userAgent</td>
+<td>string</td>
+<td>Yes</td>
+<td>The userAgent of the app/browser of the person browsing your website. This is used for fraud checking and preventing booking failures.</td>
+</tr>
+<tr>
+<td>userLanguage</td>
+<td>string</td>
+<td>Yes</td>
+<td>The language of the browser of the person browsing your website. This is used for fraud checking and preventing booking failures.</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>No</td>
+<td>Specifies the response language. Default: &quot;US&quot;</td>
+</tr>
+<tr>
+<td>_type</td>
+<td>string/enum</td>
+<td>No</td>
+<td>The response format. One of <code>xml</code> or <code>json</code>. Default: <code>json</code>.</td>
+</tr>
+</tbody></table>
+<h4 id='campaigncode'><code>campaignCode</code></h4>
+<p>You may pass in a string which you want to persist with the reservation.  This is analagous to a &quot;subid&quot; and can be used for reconciling with your own marketing campaigns, or really anything else you want to do with it.  The string you provide in this parameter will be added to the reservation being made and available in available reporting.</p>
+<h4 id='roomcostprice'><code>roomCostPrice</code></h4>
+<p>Send the exact same information received from the Hotel Detail Request (assuming the same <code>currency</code> designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.</p>
+<h4 id='roomcosttaxamount'><code>roomCostTaxAmount</code></h4>
+<p>Send the exact same information received from the Hotel Detail Request (assuming the same <code>currency</code> designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.</p>
+<h4 id='roomcostgatewayfee'><code>roomCostGatewayFee</code></h4>
+<p>Send the exact same information received from the Hotel Detail Request (assuming the same <code>currency</code> designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.</p>
+<h4 id='roomcosttotalamount'><code>roomCostTotalAmount</code></h4>
+<p>Send the exact same information received from the Hotel Detail Request (assuming the same <code>currency</code> designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.</p>
+<h4 id='roomcostcurrencycode'><code>roomCostCurrencyCode</code></h4>
+<p>Send the exact same information received from the Hotel Detail Request (assuming the same <code>currency</code> designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.</p>
+<h4 id='bookingfeeamount'><code>bookingFeeAmount</code></h4>
+<p>Send the exact same information received from the Hotel Detail Request (assuming the same <code>currency</code> designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.</p>
+<h2 id='hotel-reservation-cancellation'>Hotel Reservation Cancellation</h2>
+<p>To cancel a reservation you will need the <code>reservationId</code> and <code>itineraryId</code> returned in the reservation creation response.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
+username=API-USERNAME</span><span class="se">\</span><span class="s2">
+&amp;password=API-PASSWORD</span><span class="se">\</span><span class="s2">
+&amp;siteid=SITEID</span><span class="se">\</span><span class="s2">
+&amp;reservationId=915892</span><span class="se">\</span><span class="s2">
+&amp;itineraryId=733525</span><span class="se">\</span><span class="s2">
+&amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
+&amp;userAgent=shell</span><span class="se">\</span><span class="s2">
+&amp;userLanguage=en</span><span class="se">\</span><span class="s2">
+&amp;_type=json"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this (edited for brevity):</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ArnResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SITEID"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API-USERNAME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T19:16:35.581"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T19:16:36.065"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.travsrv.com/hotel.aspx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@RequestID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52AEC4E5-BBB9-44CB-BF09-CFEE7462FE97"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Cancellation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@DisplayCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@ItineraryID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"733525"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"HotelCancellation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"@Success"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@CancelGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T19:16:36.065"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@CancellationID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN342559-C"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@InDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@OutDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-12"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Rooms"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Adults"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Children"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@ReservationID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"915892"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@CustomerConfirmationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN342559"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Hotel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"@HotelID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"219295"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internet Special"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3979"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double Room"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double Room - one double bed, satellite television, minibar, coffee maker, in-room safe, work desk, air conditioning, hairdryer, private bathroom, complimentary breakfast buffet. Rate includes transportation from the airport to the hotel. Please enter your Airline and Flight Number in the 'Other Special Requests' field when placing your reservation. Rates based on single or double occupancy. (Maximum 2 people)"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@USDMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T17:15:03.443"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@MaximumBookable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"NightlyRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-10"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144.00"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Tax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.80"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"GatewayFee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.80"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@IncludesBookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"BookingFee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.60"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@RoomCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T17:15:03.443"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"Policy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"ExtraPersonPrice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Adult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Child"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@USDMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T17:15:03.443"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Guarantee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No prices or hotel availability are guaranteed until full payment is received. Booking fee is not included in the total and it's value is expressed in United States Dollars. Booking fee will be charged at the time of the booking."</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Cancel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You must cancel your reservation before 2:00 pm hotel time at least 1 day(s) prior to check-in or you will be charged for one night's room plus taxes &amp; fees."</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@LatestCancelTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-08T14:00:00.000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@GMTOffSet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@RoomCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T17:15:03.443"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"Penalty"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.80"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@DisplayCurrencyMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@USDMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T17:15:03.443"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Deposit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit card is charged for the total cost of the room at the time of booking."</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tax is included in the total."</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Room Cost includes tax recovery charge and fees."</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This discount rate requires full payment of reservation at time of booking."</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment will appear on your credit card under Alliance Reservations Network, Phoenix, AZ"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rooms are guaranteed once full payment is received."</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"Property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check-In Time"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1600"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check-Out Time"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"@Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1100"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"Guests"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"Primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"@Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@FirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mary"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@MiddleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andersen"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-smoking room requested."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karianan@xxx.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@PhoneCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0047"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@PhoneArea"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@PhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555555"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@PhoneExtension"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@AgeGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adult"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vaar Frue gt 2"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zeud"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Region"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@PostalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7013"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@CountryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NO"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@ExtraInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"Service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"@ExchangeGMT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T17:15:03.443"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"RoomCurrency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Cost"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.80"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@GatewayFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@BookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.60"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.40"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmountIncludesBookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"Charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.40"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Due"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"DisplayCurrency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Cost"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.80"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@GatewayFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@BookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.60"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.40"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmountIncludesBookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"Charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.40"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Due"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"USD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Cost"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.80"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@GatewayFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@BookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.60"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.40"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@TotalAmountIncludesBookingFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"Charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"@Paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.40"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Due"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://api.travsrv.com/hotel.aspx?type=Cancellation</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>siteid</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>reservationId</td>
+<td>string</td>
+<td>Yes</td>
+<td>The <code>reservationId</code> from the reservation creation response.</td>
+</tr>
+<tr>
+<td>itineraryId</td>
+<td>string</td>
+<td>Yes</td>
+<td>The <code>itineraryId</code> from the reservation creation response.</td>
+</tr>
+<tr>
+<td>_type</td>
+<td>string/enum</td>
+<td>No</td>
+<td>The response format. One of <code>xml</code> or <code>json</code>. Default: <code>json</code>.</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The Hotels for Hope API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -445,31 +1978,31 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request sucks.</td>
+<td>Bad Request -- Your request is invalid.</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>Unauthorized -- Your API credentials are wrong.</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- You are not allowed in there.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The specified hotel or endpoint could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access an endpoint with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json or xml.</td>
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>Gone -- The hotel requested has been removed from our servers.</td>
 </tr>
 <tr>
 <td>418</td>
@@ -477,7 +2010,7 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You are sending requests too often! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -493,9 +2026,6 @@ Remember — a happy kitten is an authenticated kitten!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
