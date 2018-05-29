@@ -606,17 +606,20 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <p>Using the Site Admin&#39;s token you may create a new member by POSTing a <em>URL encoded</em> JSON string to this endpoint.</p>
 
 <p>The JSON data to stringify may look something like this (formatted for readability, not encoded):</p>
-<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-    <span class="s2">"Names"</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">"ReferralId"</span><span class="p">:</span> <span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span>
-        <span class="s2">"FirstName"</span><span class="p">:</span> <span class="s2">"Testme"</span><span class="p">,</span>
-        <span class="s2">"LastName"</span><span class="p">:</span> <span class="s2">"Tester"</span><span class="p">,</span>
-        <span class="s2">"Email"</span><span class="p">:</span> <span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span>
-        <span class="s2">"Address1"</span><span class="p">:</span> <span class="s2">"123 Main Street"</span><span class="p">,</span>
-        <span class="s2">"HomePhone"</span><span class="p">:</span> <span class="s2">"5551231212"</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl  -X POST <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
+
+<pre>
+{
+    "Names": [{
+        "ReferralId": "mytestuser1@gmail.com",
+        "FirstName": "Testme",
+        "LastName": "Tester",
+        "Email": "mytestuser1@gmail.com",
+        "Address1": "123 Main Street",
+        "HomePhone": "5551231212"
+    }]
+}
+</pre>
+<pre class="highlight shell tab-shell"><code>curl  -X POST <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;token={ADMIN-TOKEN}"</span> -d <span class="s2">"siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;token={ADMIN-TOKEN}</span><span class="se">\</span><span class="s2">
