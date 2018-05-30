@@ -592,19 +592,22 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"ArnResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"Info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"@SiteID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{SITEID}"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@Username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{API-USERNAME}"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"> 
-      </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T16:01:13.510"</span><span class="p">,</span><span class="w"> 
-      </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T16:01:13.651"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"FIXME"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"...................... member information and token"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"MemberId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Rewards"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Points"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"RedemptionMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EarnMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Names"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retrieval Time: 1ms"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No User Profile: "</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"CurrentToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"TransactionResponse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MetaTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">MemberId</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">Rewards</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">Points</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">RedemptionMultiplier</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">EarnMultiplier</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">Names</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">DebugData</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">Error</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">No User Profile: </span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">CurrentToken</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">TransactionResponse</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">MetaTag</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">MemberUsername</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">MemberProvider</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">ReserveTravel</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">IsArnProvider</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">AdditionalInfo</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">MemberType</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Invalid</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReserveTravel"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.travsrv.com/MemberAPI.aspx</code></p>
