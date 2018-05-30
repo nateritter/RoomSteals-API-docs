@@ -165,19 +165,23 @@ username={API-USERNAME}\
 
 ```json
 {
-  "ArnResponse": {
-    "Info": {
-      "@SiteID": "{SITEID}",
-      "@Username": "{API-USERNAME}",
-      "@IpAddress": "127.0.0.1", 
-      "@TimeReceived": "2018-04-13T16:01:13.510", 
-      "@TimeCompleted": "2018-04-13T16:01:13.651",
-      "@Version": "1.0.0.0"
-    },
-    "FIXME": {
-      "...................... member information and token"
-    }
-  }
+    "FIXME": "......... This is what an invalid response would look like",
+    "MemberId": 0,
+    "Rewards": null,
+    "Points": null,
+    "RedemptionMultiplier": null,
+    "EarnMultiplier": null,
+    "Names": null,
+    "DebugData": "Retrieval Time: 1ms",
+    "Error": "No User Profile: ",
+    "CurrentToken": null,
+    "TransactionResponse": null,
+    "MetaTag": "{\"MemberId\":0,\"Rewards\":null,\"Points\":null,\"RedemptionMultiplier\":null,\"EarnMultiplier\":null,\"Names\":null,\"DebugData\":null,\"Error\":\"No User Profile: \",\"CurrentToken\":null,\"TransactionResponse\":null,\"MetaTag\":null,\"MemberUsername\":null,\"MemberProvider\":\"ReserveTravel\",\"IsArnProvider\":false,\"AdditionalInfo\":null,\"MemberType\":\"Invalid\"}",
+    "MemberUsername": null,
+    "MemberProvider": "ReserveTravel",
+    "IsArnProvider": false,
+    "AdditionalInfo": null,
+    "MemberType": "Invalid"
 }
 ```
 
