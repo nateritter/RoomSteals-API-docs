@@ -28,10 +28,25 @@ Hotels For Hope uses a querystring username and password to allow access to the 
 
 The API credentials are expected in all API requests to the server in the querystring like the following:
 
-`&username=API-USERNAME&password=API-PASSWORD&siteid=SITEID`
+`&username={API-USERNAME}&password={API-PASSWORD}&siteid={SITEID}`
 
 <aside class="notice">
-You must replace <code>API-USERNAME</code>, <code>API-PASSWORD</code>, and <code>SITEID</code> with your personal API credentials and Site ID.
+You must replace <code>{API-USERNAME}</code>, <code>{API-PASSWORD}</code>, and <code>{SITEID}</code> with your personal API credentials and Site ID respectively.
+</aside>
+
+## Single Sign On (SSO)
+
+If you wish to integrate our closed user group portal/site with your own applications and user group, you can utilize our SSO functionality.
+
+Process: 
+
+1. [Request a Site Admin](mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User) to be added to your closed user group site (if you don't already have one)
+2. Get a token for the Site Admin
+3. Create a member using the Site Admin's token
+4. Use the member's token in queries on the user's behalf
+
+<aside class="notice">
+If you use our portal's UI and wanted to linking directly to a particuilar page without requiring login, use the parameter `memberToken={MEMBER-TOKEN}` in the URL (replacing <code>{MEMBER-TOKEN}</code> with the browsing user's token).
 </aside>
 
 # Common value maps
@@ -124,6 +139,216 @@ This is the `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Cod
 
 This is the `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.@Code` value specified in the Availability Search results for the rate plan you are interested in.
 
+# Closed user group users
+
+This section is only for those using the SSO Authentication feature and pertains to managing users and their authentication tokens.  
+
+You will need a Site Admin user in your closed user group site. If you don't already have one, please [request one](mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User) be added for your portal/site.
+
+## Get a Token for a Site Admin
+
+This endpoint returns an auth token for an administrative user, valid for 1 hour, which may be used to create or update new (non-administrative) users and their tokens.
+
+Along with the other common parameters to replace, additionally you must replace `{ADMIN-USERNAME}` with the username the Site Admin user uses to login to the site/portal.
+
+<aside class="notice">
+The token will be encoded to ensure a valid JSON response. Be sure to decode the token before using it in another API call.
+</aside>
+
+```shell
+curl "https://api.travsrv.com/MemberAPI.aspx?\
+username={API-USERNAME}\
+&password={API-PASSWORD}\
+&siteid={SITEID}\
+&token=ARNUSER-{ADMIN-USERNAME}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "ArnResponse": {
+    "Info": {
+      "@SiteID": "{SITEID}",
+      "@Username": "{API-USERNAME}",
+      "@IpAddress": "127.0.0.1", 
+      "@TimeReceived": "2018-04-13T16:01:13.510", 
+      "@TimeCompleted": "2018-04-13T16:01:13.651",
+      "@Version": "1.0.0.0"
+    },
+    "FIXME": {
+      "...................... member information and token"
+    }
+  }
+}
+```
+
+### HTTP Request
+
+`GET https://api.travsrv.com/MemberAPI.aspx`
+
+### Query Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+username | string | Yes | Provided by Hotels For Hope
+password | string | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by Hotels For Hope
+token | string | Yes | `ARNUSER-` concatonated with the Site Admin's username
+
+## Create a New Member
+
+Using the Site Admin's token you may create a new member (or generate a new token for an existing member) by POSTing a *URL encoded* JSON string to this endpoint.
+
+> The JSON data to stringify and encode may look something like this (not yet encoded):
+
+```json
+{
+    "Names": [{
+        "ReferralId": "mytestuser1@gmail.com",
+        "FirstName": "Testme",
+        "LastName": "Tester",
+        "Email": "mytestuser1@gmail.com",
+        "Address1": "123 Main Street",
+        "HomePhone": "5551231212"
+    }]
+}
+```
+
+> Encoded and POSTed via curl:
+
+```shell
+curl  -X POST "https://api.travsrv.com/MemberAPI.aspx?\
+&siteid={SITEID}\
+&token={ADMIN-TOKEN}" -d "siteid={SITEID}\
+&token={ADMIN-TOKEN}\
+&memberData=%7B+%22Names%22%3A+%5B+%7B+%22ReferralId%22%3A+%22mytestuser1%40gmail.com%22%2C+%22FirstName%22%3A+%22Testme%22%2C+%22LastName%22%3A+%22Tester%22%2C+%22Email%22%3A+%22mytestuser1%40gmail.com%22%2C+%22Address1%22%3A+%22123+Main+Street%22%2C+%22HomePhone%22%3A+%225551231212%22+%7D+%5D+%7D"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "MemberId": 554642,
+    "Rewards": 0,
+    "Points": 0,
+    "RedemptionMultiplier": 1.0,
+    "EarnMultiplier": 1.0,
+    "Names": [{
+        "FirstName": "Testme",
+        "LastName": "Tester",
+        "BirthDate": null,
+        "Email": "mytestuser1@gmail.com",
+        "Address1": "123 Main Street",
+        "Address2": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "Postal": null,
+        "Longitude": null,
+        "Latitude": null,
+        "HomePhone": "5551231212",
+        "Referral": null,
+        "ReferralId": "mytestuser1@gmail.com",
+        "Password": null,
+        "IsActive": true,
+        "DeleteMember": false,
+        "UpdateMemberUsername": false,
+        "FullName": "Testme Tester"
+    }],
+    "DebugData": " Successful creation of Member RT-mytestuser1@gmail.com",
+    "Error": null,
+    "CurrentToken": "E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d",
+    "TransactionResponse": "true",
+    "MetaTag": null,
+    "MemberUsername": "RT-mytestuser1@gmail.com",
+    "MemberProvider": null,
+    "IsArnProvider": true,
+    "MemberType": "Member"
+}
+```
+
+### HTTP Request
+
+`POST https://api.travsrv.com/MemberAPI.aspx`
+
+### memberData JSON Object Properties
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+siteid | integer | Yes | Provided by Hotels For Hope
+token | string | Yes | Site Admin Token
+ReferralId | string | Yes | The email address of the user (used as the "username")
+FirstName | string | Yes | The user's first name
+LastName | string | Yes | The user's last name
+Email | string | Yes | The email address of the user
+Address1 | string | No | The user's full address
+HomePhone | string | No | The user's phone number
+
+## Get a Member by Token
+
+This endpoint retrieves a member using their member token.
+
+```shell
+curl "https://api.travsrv.com/MemberAPI.aspx?\
+&siteid={SITEID}\
+&token={MEMBER-TOKEN}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "MemberId": 554642,
+    "Rewards": 0,
+    "Points": 0,
+    "RedemptionMultiplier": 1.0,
+    "EarnMultiplier": 1.0,
+    "Names": [{
+        "FirstName": "Testme",
+        "LastName": "Tester",
+        "BirthDate": null,
+        "Email": "mytestuser1@gmail.com",
+        "Address1": "123 Main Street",
+        "Address2": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "Postal": null,
+        "Longitude": null,
+        "Latitude": null,
+        "HomePhone": "5551231212",
+        "Referral": null,
+        "ReferralId": "mytestuser1@gmail.com",
+        "Password": null,
+        "IsActive": true,
+        "DeleteMember": false,
+        "UpdateMemberUsername": false,
+        "FullName": "Testme Tester"
+    }],
+    "DebugData": " Successful creation of Member RT-mytestuser1@gmail.com",
+    "Error": null,
+    "CurrentToken": "E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d",
+    "TransactionResponse": "true",
+    "MetaTag": null,
+    "MemberUsername": "RT-mytestuser1@gmail.com",
+    "MemberProvider": null,
+    "IsArnProvider": true,
+    "MemberType": "Member"
+}
+```
+
+### HTTP Request
+
+`GET https://api.travsrv.com/MemberAPI.aspx`
+
+### Query Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+siteid | integer | Yes | Provided by Hotels For Hope
+token | string | Yes | Token for the member (not Site Admin's)
+
 # Hotels
 
 ## Availability Search
@@ -148,9 +373,9 @@ If an availability search fails to return rates, we suggest not showing the hote
 
 ```shell
 curl "https://api.travsrv.com/hotel.aspx?\
-username=API-USERNAME\
-&password=API-PASSWORD\
-&siteid=SITEID\
+username={API-USERNAME}\
+&password={API-PASSWORD}\
+&siteid={SITEID}\
 &latitude=30.099016\
 &longitude=-81.601370\
 &radius=10\
@@ -172,13 +397,13 @@ username=API-USERNAME\
 {
   "ArnResponse": {
     "Info": {
-      "@SiteID": "SITEID",
-      "@Username": "API-USERNAME",
+      "@SiteID": "{SITEID}",
+      "@Username": "{API-USERNAME}",
       "@IpAddress": "127.0.0.1", 
       "@TimeReceived": "2018-04-13T16:01:13.510", 
       "@TimeCompleted": "2018-04-13T16:01:13.651",
       "@Version": "1.0.0.0",
-      "@ServiceUrl": "https://api.travsrv.com/hotel.aspx?inDate=2018-10-20&latitude=30.099016&longitude=-81.601370&maxResults=1&outDate=2018-10-22&password=API-PASSWORD&radius=10&siteid=SITEID&username=API-USERNAME",
+      "@ServiceUrl": "https://api.travsrv.com/hotel.aspx?inDate=2018-10-20&latitude=30.099016&longitude=-81.601370&maxResults=1&outDate=2018-10-22&password={API-PASSWORD}&radius=10&siteid={SITEID}&username={API-USERNAME}",
       "@RequestID": "436E177E-558F-4287-B55A-5DBD9F4C7579"
     },
     "Availability": {
@@ -321,9 +546,9 @@ All room prices are based on the number of adults per room specified in the requ
 
 ```shell
 curl "https://api.travsrv.com/hotel.aspx?\
-username=API-USERNAME\
-&password=API-PASSWORD\
-&siteid=SITEID\
+username={API-USERNAME}\
+&password={API-PASSWORD}\
+&siteid={SITEID}\
 &hotelIds=272393\
 &inDate=2018-10-20\
 &outDate=2018-10-22\
@@ -346,13 +571,13 @@ username=API-USERNAME\
 {
   "ArnResponse": {
     "Info": {
-      "@SiteID": "SITEID",
-      "@Username": "API-USERNAME",
+      "@SiteID": "{SITEID}",
+      "@Username": "{API-USERNAME}",
       "@IpAddress": "24.113.225.28",
       "@TimeReceived": "2018-04-17T00:41:27.367",
       "@TimeCompleted": "2018-04-17T00:41:27.804",
       "@Version": "1.0.0.0",
-      "@ServiceUrl": "http://api.travsrv.com/hotel.aspx?_type=json&adults=2&children=0&gateway=51&hotelIds=272393&inDate=2018-10-20&ipAddress=127.0.0.1&maxResults=1&outDate=2018-10-22&password=API-PASSWORD&ratePlanCode=&roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ&rooms=1&siteid=SITEID&userAgent=shell&userLanguage=en&username=API-USERNAME",
+      "@ServiceUrl": "http://api.travsrv.com/hotel.aspx?_type=json&adults=2&children=0&gateway=51&hotelIds=272393&inDate=2018-10-20&ipAddress=127.0.0.1&maxResults=1&outDate=2018-10-22&password={API-PASSWORD}&ratePlanCode=&roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ&rooms=1&siteid={SITEID}&userAgent=shell&userLanguage=en&username={API-USERNAME}",
       "@RequestID": "2999AB6A-6DB9-4FFF-9586-BBED51BB6108"
     },
     "Availability": {
@@ -455,9 +680,9 @@ Generally speaking this call should be self explanatory. The parameters you will
 
 ```shell
 curl -X POST "https://api.travsrv.com/hotel.aspx?\
-username=API-USERNAME\
-&password=API-PASSWORD\
-&siteid=SITEID\
+username={API-USERNAME}\
+&password={API-PASSWORD}\
+&siteid={SITEID}\
 &rooms=1\
 &hotelIds=10731\
 &rooms=1\
@@ -506,8 +731,8 @@ username=API-USERNAME\
 {
   "ArnResponse": {
     "Info": {
-      "@SiteID": "SITEID",
-      "@Username": "API-USERNAME",
+      "@SiteID": "{SITEID}",
+      "@Username": "{API-USERNAME}",
       "@IpAddress": "127.0.0.1",
       "@TimeReceived": "2007-03-30T22:14:28.484",
       "@TimeCompleted": "2007-03-30T22:14:32.046",
@@ -796,9 +1021,9 @@ To cancel a reservation you will need the `reservationId` and `itineraryId` retu
 
 ```shell
 curl -X POST "https://api.travsrv.com/hotel.aspx?\
-username=API-USERNAME\
-&password=API-PASSWORD\
-&siteid=SITEID\
+username={API-USERNAME}\
+&password={API-PASSWORD}\
+&siteid={SITEID}\
 &reservationId=915892\
 &itineraryId=733525\
 &ipAddress=127.0.0.1\
@@ -813,8 +1038,8 @@ username=API-USERNAME\
 {
   "ArnResponse": {
     "Info": {
-      "@SiteID": "SITEID",
-      "@Username": "API-USERNAME",
+      "@SiteID": "{SITEID}",
+      "@Username": "{API-USERNAME}",
       "@IpAddress": "127.0.0.1",
       "@TimeReceived": "2018-04-01T19:16:35.581",
       "@TimeCompleted": "2018-04-01T19:16:36.065",
