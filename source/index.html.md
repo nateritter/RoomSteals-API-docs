@@ -196,7 +196,7 @@ username={API-USERNAME}\
     ],
     "DebugData": "Retrieval Time: 3ms",
     "Error": null,
-    "CurrentToken": "%2bzkm8%2feXTB11eE0%2fIoDmDQruFMVpaxVX7WHx%2bT%2fT%2bkUPwOEtWBPPI3mKIItze5fXabC*(&ehmkxTPbnCvp4llCDhxS37DyiKrSiaLHUeydpMnzU3Wc4AusJZHzaylHUNmDfhMs%2fpG39VDoeQ47T0wehE%2fVjWV%2f3bZ5qUARYGzAvLP884khJxCYWvopS5w1V%2bXtSWXQeBw4Sqvz9Fz4dr7Oc58%2bKLuF99D8t3VfJvOMt9y%2bGdUK87DAXzQ0kpmLbR1vUCMpmPx3KDBtapqow8RoYInQtICzMUV18%2fv8jp6wgyyySJm3wg4GPFPfy7X3n8GcMyj3HPfibBqlP054zu3c%2fmnk07EvtFpeHy4uAR6CEIg7wZa52I3xBJQeaQwKtp6Ju8Y4FbcHsewPPlSMpkSFHFGSeyK62U4PsPEWMEWwlUR28gZ0VcBBriuySb5pwZ8OHqBmCMr9NPsywSnqBRkI22cihTHmDL5wKvSkPAmxuf0Y3xmG3E9Pe7HTHhVD%2b7K2pE5iaQwtYD5H3yoTHwQNxDqmGuFQIVEZxjysyVNM1ddfqNnVenT%2fT1RMZpoPOIEQKzMKldPBn67UTYDNs489XbwOxg86WqYNM5il%2fv79ebducj8htsAViLxuT7sFp%2fVGvUdkcP3bN3%2ftqNg",
+    "CurrentToken": "%2bzkm8%2feXTB11eE0%2fIoDmDQruFMVpaxVX7WHx%2bT%2fT%2bkUPwOEtWBPPI3mKIItze5fXabC*(&ehmkxTPbnCvp4llCDhxS37DyiKrSiaLHUeydpMnzU3Wc4AusJZHzaylHUNmDfhMs%2fpG39VDoeQ47T0wehE%2fVjWV%2f3bZ5qUARYGzAvLP884khJxCYWvopS5w1V%2bXtSWXQeBw4Sqvz9Fz4dr7Oc58%2bKLuF99D8t3VfJvOMt9y%2bGdUK87DAXzQ0kpmLbR1vUCMpmPx3KDBtapqow8RoYInQtICzMUV18%2fv8jp6wgg4GPFPfy7X3n8GcMyj3HPfibBqlP054zu3c%2fmnk07EvtFpeHy4uAR6CEIg7wZa52I3xBJQeaQwKtp6Ju8Y4FbcHsewPPlSMpkSFHFGSeyK62U4PsPEWMEWwlUR28gZ0VcBBriuySb5pwZ8OHqBmCMr9NPsywSnqBRkI22cihTHmDL5wKvSkPAmxuf0Y3xmG3E9Pe7HTHhVD%2b7K2pE5iaQwtYD5H3yoTHwQNxDqmGuFQIVEZxjysyVNM1ddfqNnVenT%2fT1RMZpoPOIEQKzMKldPBn67UTYDNs489XbwOxg86WqYNM5il%2fv79ebducj8htsAViLxuT7sFp%2fVGvUdkcP3bN3%2ftqNg",
     "TransactionResponse": null,
     "MetaTag": "{\"MemberId\":918236,\"Rewards\":0,\"Points\":0,\"RedemptionMultiplier\":1.0,\"EarnMultiplier\":1.0,\"Names\":[{\"FirstName\":\"Joe\",\"LastName\":\"Schmoe\",\"BirthDate\":null,\"Email\":\"joe@whatever.com\",\"Address1\":\"\",\"Address2\":null,\"City\":\"\",\"State\":null,\"Country\":null,\"Postal\":\"\",\"Longitude\":null,\"Latitude\":null,\"HomePhone\":null,\"Referral\":\"\",\"ReferralId\":\"\",\"Password\":null,\"IsActive\":true,\"DeleteMember\":false,\"UpdateMemberUsername\":false,\"FullName\":\"Joe Schmoe\"}],\"DebugData\":null,\"Error\":null,\"CurrentToken\":null,\"TransactionResponse\":null,\"MetaTag\":null,\"MemberUsername\":\"joe@whatever.com\",\"MemberProvider\":\"ReserveTravel\",\"IsArnProvider\":true,\"AdditionalInfo\":null,\"MemberType\":\"Wholesale\"}",
     "MemberUsername": "joe@whatever.com",
@@ -222,7 +222,9 @@ token | string | Yes | `ARNUSER-` concatonated with the Site Admin's username
 
 ## Create a New Member
 
-Using the Site Admin's token you may create a new member (or generate a new token for an existing member) by POSTing a *URL encoded* JSON string to this endpoint.
+Using the Site Admin's token you may create a new member by POSTing a *URL encoded* JSON string to this endpoint. Calling this endpoint successfully generates a member token, found in the `CurrentToken` property, which you should save for them if you want to use the "Get a Member by Token" call.
+
+You may notice this call is exactly the same as the "Update an Existing Member" call.
 
 > The JSON data to stringify and encode may look something like this (not yet encoded):
 
@@ -255,7 +257,7 @@ curl -X POST \
 
 ```json
 {
-    "MemberId": 554642,
+    "MemberId": 54321,
     "Rewards": 0,
     "Points": 0,
     "RedemptionMultiplier": 1.0,
@@ -282,12 +284,105 @@ curl -X POST \
         "UpdateMemberUsername": false,
         "FullName": "Testme Tester"
     }],
-    "DebugData": " Successful creation of Member RT-mytestuser1@gmail.com",
+    "DebugData": " Successful creation of Member RT-12345-mytestuser1@gmail.com",
     "Error": null,
     "CurrentToken": "E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d",
     "TransactionResponse": "true",
     "MetaTag": null,
-    "MemberUsername": "RT-mytestuser1@gmail.com",
+    "MemberUsername": "RT-12345-mytestuser1@gmail.com",
+    "MemberProvider": null,
+    "IsArnProvider": true,
+    "MemberType": "Member"
+}
+```
+
+### HTTP Request
+
+`POST https://api.travsrv.com/MemberAPI.aspx`
+
+### memberData JSON Object Properties
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+siteid | integer | Yes | Provided by Hotels For Hope
+token | string | Yes | Site Admin Token
+ReferralId | string | Yes | The email address of the user (used as the "username")
+FirstName | string | Yes | The user's first name
+LastName | string | Yes | The user's last name
+Email | string | Yes | The email address of the user
+Address1 | string | No | The user's full address
+HomePhone | string | No | The user's phone number
+
+## Update an Existing Member
+
+Using the Site Admin's token you may update an existing member by POSTing a *URL encoded* JSON string to this endpoint. Successfully calling this endpoint also generates a new member token for the user in the `CurrentToken` property, which you should save for them if you want to use the "Get a Member by Token" call.
+
+You may notice this call is exactly the same as the "Create a New Member" call.
+
+> The JSON data to stringify and encode may look something like this (not yet encoded):
+
+```json
+{
+    "Names": [{
+        "ReferralId": "mytestuser1@gmail.com",
+        "FirstName": "Testme",
+        "LastName": "Tester",
+        "Email": "mytestuser1@gmail.com",
+        "Address1": "123 Main Street",
+        "HomePhone": "5551231212"
+    }]
+}
+```
+
+> Encoded and POSTed via curl:
+
+```shell
+curl -X POST \
+  https://api.travsrv.com/MemberAPI.aspx \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'siteid={SITEID}\
+&token={ADMIN-TOKEN}\
+&memberData=%7B%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123MainStreet%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "MemberId": 54321,
+    "Rewards": 0,
+    "Points": 0,
+    "RedemptionMultiplier": 1.0,
+    "EarnMultiplier": 1.0,
+    "Names": [{
+        "FirstName": "Testme",
+        "LastName": "Tester",
+        "BirthDate": null,
+        "Email": "mytestuser1@gmail.com",
+        "Address1": "123 Main Street",
+        "Address2": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "Postal": null,
+        "Longitude": null,
+        "Latitude": null,
+        "HomePhone": "5551231212",
+        "Referral": null,
+        "ReferralId": "mytestuser1@gmail.com",
+        "Password": null,
+        "IsActive": true,
+        "DeleteMember": false,
+        "UpdateMemberUsername": false,
+        "FullName": "Testme Tester"
+    }],
+    "DebugData": " Successful Existing Member RT-12345-mytestuser1@gmail.com",
+    "Error": null,
+    "CurrentToken": "E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPubiUEmc223Z4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDUhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXKn83CdkKJDjeGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d",
+    "TransactionResponse": "true",
+    "MetaTag": null,
+    "MemberUsername": "RT-12345-mytestuser1@gmail.com",
     "MemberProvider": null,
     "IsArnProvider": true,
     "MemberType": "Member"
@@ -313,7 +408,7 @@ HomePhone | string | No | The user's phone number
 
 ## Get a Member by Token
 
-This endpoint retrieves a member using their member token.
+This endpoint retrieves a member using their member token. Successfully calling this endpoint also generates a new member token for the user in the `CurrentToken` property, which you should save for them if you want to call this endpoint again in the future.
 
 ```shell
 curl "https://api.travsrv.com/MemberAPI.aspx?\
@@ -325,7 +420,7 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
 
 ```json
 {
-    "MemberId": 554642,
+    "MemberId": 54321,
     "Rewards": 0,
     "Points": 0,
     "RedemptionMultiplier": 1.0,
@@ -352,12 +447,12 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
         "UpdateMemberUsername": false,
         "FullName": "Testme Tester"
     }],
-    "DebugData": " Successful creation of Member RT-mytestuser1@gmail.com",
+    "DebugData": " Successful creation of Member RT-12345-mytestuser1@gmail.com",
     "Error": null,
-    "CurrentToken": "E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d",
+    "CurrentToken": "E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWYyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d",
     "TransactionResponse": "true",
     "MetaTag": null,
-    "MemberUsername": "RT-mytestuser1@gmail.com",
+    "MemberUsername": "RT-12345-mytestuser1@gmail.com",
     "MemberProvider": null,
     "IsArnProvider": true,
     "MemberType": "Member"
