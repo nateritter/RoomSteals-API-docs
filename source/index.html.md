@@ -63,37 +63,9 @@ Supported currencies are located in our static database files. Request access if
 
 ## `gateway`
 
-Optional filter. This should be either left empty to return all sources of supply or specified by a single integer or comma separated list of integers represented by the following:
+Optional filter. This should be either left empty to return all sources of supply or specified by a single integer or comma separated list of integers. 
 
-Gateway ID | Gateway Name
---------- | ------- 
-1 | ARN Hotel Wholesale
-2 | Travelport Negotiated Commissionable
-3 | Travelport Wholesale
-4 | Travelport Commissionable
-5 | Tourico Hotel Wholesale
-16 | ARN Group Commissionable
-17 | ARN Hotel Commissionable
-20 | ARN On-Hold Commissionable
-30 | Expedia
-31 | Miki
-32 | GetARoom
-33 | ARN Group Wholesale
-34 | HotelBeds
-35 | Bonotel
-36 | GTA
-37 | CiiRUS
-38 | Interval International
-39 | RCI
-40 | Priceline Wholesale
-41 | Priceline Commissionable
-42 | Priceline Booking.com​
-43 | Mark International
-44 | Amadeus Commitionable
-45 | Amadeus Negotiated Commissionable
-47 | Lots Of Hotels
-48 | Jack Travel
-49 | Travellanda
+Please [contact us](mailto:hello@hotelsforhope.com?Subject=Request%20for%20API%20Gateway%20Codes) for an updated list of gateways.
 
 ## `propertyAmenities`
 
