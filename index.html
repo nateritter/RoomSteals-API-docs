@@ -672,7 +672,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 </tr>
 </tbody></table>
 <h2 id='create-a-new-member'>Create a New Member</h2>
-<p>Using the Site Admin&#39;s token you may create a new member (or generate a new token for an existing member) by POSTing a <em>URL encoded</em> JSON string to this endpoint.</p>
+<p>Using the Site Admin&#39;s token you may create a new member by POSTing a <em>URL encoded</em> JSON string to this endpoint.</p>
+
+<p>You may notice this call is exactly the same as the &quot;Update an Existing Member&quot; call.</p>
 
 <blockquote>
 <p>The JSON data to stringify and encode may look something like this (not yet encoded):</p>
@@ -801,7 +803,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 </tr>
 </tbody></table>
 <h2 id='update-an-existing-member'>Update an Existing Member</h2>
-<p>Using the member&#39;s token you may update an existing member (which also generates a new token) by POSTing a <em>URL encoded</em> JSON string to this endpoint.</p>
+<p>Using the Site Admin&#39;s token you may update an existing member (which also generates a new member token for the user, which you should save for them) by POSTing a <em>URL encoded</em> JSON string to this endpoint.</p>
+
+<p>You may notice this call is exactly the same as the &quot;Create a New Member&quot; call.</p>
 
 <blockquote>
 <p>The JSON data to stringify and encode may look something like this (not yet encoded):</p>
