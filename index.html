@@ -688,10 +688,13 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <blockquote>
 <p>Encoded and POSTed via curl:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.travsrv.com/MemberAPI.aspx"</span>
--d <span class="s2">"siteid={SITEID}</span><span class="se">\</span><span class="s2">
-&amp;token={ADMIN-TOKEN}</span><span class="se">\</span><span class="s2">
-&amp;memberData=%7B+%22Names%22%3A+%5B+%7B+%22ReferralId%22%3A+%22mytestuser1%40gmail.com%22%2C+%22FirstName%22%3A+%22Testme%22%2C+%22LastName%22%3A+%22Tester%22%2C+%22Email%22%3A+%22mytestuser1%40gmail.com%22%2C+%22Address1%22%3A+%22123+Main+Street%22%2C+%22HomePhone%22%3A+%225551231212%22+%7D+%5D+%7D"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://api.travsrv.com/MemberAPI.aspx <span class="se">\</span>
+  -H <span class="s1">'Cache-Control: no-cache'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  -d <span class="s1">'siteid={SITEID}\
+&amp;token={ADMIN-TOKEN}\
+&amp;memberData=%7B%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123MainStreet%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
