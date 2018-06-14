@@ -295,6 +295,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 siteid | integer | Yes | Provided by Hotels For Hope
 token | string | Yes | Site Admin Token
+Points | integer | No | Number of points for the user
 ReferralId | string | Yes | The email address of the user (used as the "username")
 FirstName | string | Yes | The user's first name
 LastName | string | Yes | The user's last name
@@ -397,6 +398,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 siteid | integer | Yes | Provided by Hotels For Hope
 token | string | Yes | Site Admin Token
+Points | integer | No | Number of points for the user
 ReferralId | string | Yes | The email address of the user (used as the "username")
 FirstName | string | Yes | The user's first name
 LastName | string | Yes | The user's last name
