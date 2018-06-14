@@ -586,12 +586,10 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 </span></code></pre>
 <aside class="notice">
 The `Points` attribute is only necessary if you want to update the number of points for the member specified. Please note that it will update the member's points to the value specified, not increment or decrement.
-
-Additionally, the JSON structure includes an array of `Names`, which seems to infer the ability to create more than one person. However, in reality, you should only send this call for one member at a time.
 </aside>
 
 <aside class="notice">
-
+The JSON structure includes an array of `Names`, which seems to infer the ability to create more than one person. However, in reality, you should only send this call for one member at a time.
 </aside>
 
 <blockquote>
@@ -715,6 +713,7 @@ Additionally, the JSON structure includes an array of `Names`, which seems to in
 <p>The JSON data to stringify and encode may look something like this (not yet encoded):</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Points"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Names"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
         </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme"</span><span class="p">,</span><span class="w">
@@ -725,6 +724,14 @@ Additionally, the JSON structure includes an array of `Names`, which seems to in
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<aside class="notice">
+The `Points` attribute is only necessary if you want to update the number of points for the member specified. Please note that it will update the member's points to the value specified, not increment or decrement.
+</aside>
+
+<aside class="notice">
+The JSON structure includes an array of `Names`, which seems to infer the ability to create more than one person. However, in reality, you should only send this call for one member at a time.
+</aside>
+
 <blockquote>
 <p>Encoded and POSTed via curl:</p>
 </blockquote>
@@ -734,7 +741,7 @@ Additionally, the JSON structure includes an array of `Names`, which seems to in
   -H <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
   -d <span class="s1">'siteid={SITEID}\
 &amp;token={ADMIN-TOKEN}\
-&amp;memberData=%7B%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123MainStreet%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'</span>
+&amp;memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123MainStreet%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -742,7 +749,7 @@ Additionally, the JSON structure includes an array of `Names`, which seems to in
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"MemberId"</span><span class="p">:</span><span class="w"> </span><span class="mi">54321</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Rewards"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Points"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Points"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="s2">"RedemptionMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"EarnMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Names"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
