@@ -128,7 +128,7 @@ This endpoint returns an auth token for an administrative user, valid for 1 hour
 Along with the other common parameters to replace, additionally you must replace `{ADMIN-USERNAME}` with the username the Site Admin user uses to login to the site/portal.
 
 <aside class="notice">
-The token will be encoded to ensure a valid JSON response. Be sure to decode the token before using it in another API call.
+The token will be URI encoded to ensure a valid JSON response. Be sure to decode the token before using it in another API call.
 </aside>
 
 ```shell
@@ -200,7 +200,7 @@ token | string | Yes | `ARNUSER-` concatonated with the Site Admin's username
 
 ## Create a New Member
 
-Using the Site Admin's token you may create a new member by POSTing a *URL encoded* JSON string to this endpoint. Calling this endpoint successfully generates a member token, found in the `CurrentToken` property, which you should save for them if you want to use the "Get a Member by Token" call.
+Using the Site Admin's token you may create a new member by POSTing a *URI encoded* JSON string to this endpoint. Calling this endpoint successfully generates a member token, found in the `CurrentToken` property, which you should save for them if you want to use the "Get a Member by Token" call.
 
 You may notice this call is exactly the same as the "Update an Existing Member" call.
 
@@ -303,7 +303,7 @@ HomePhone | string | No | The user's phone number
 
 ## Update an Existing Member
 
-Using the Site Admin's token you may update an existing member by POSTing a *URL encoded* JSON string to this endpoint. Successfully calling this endpoint also generates a new member token for the user in the `CurrentToken` property, which you should save for them if you want to use the "Get a Member by Token" call.
+Using the Site Admin's token you may update an existing member by POSTing a *URI encoded* JSON string to this endpoint. Successfully calling this endpoint also generates a new member token for the user in the `CurrentToken` property, which you should save for them if you want to use the "Get a Member by Token" call.
 
 You may notice this call is exactly the same as the "Create a New Member" call.
 
