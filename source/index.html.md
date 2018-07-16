@@ -622,7 +622,7 @@ username | string | Yes | Provided by Hotels For Hope
 password | string | Yes | Provided by Hotels For Hope
 siteid | integer | Yes | Provided by Hotels For Hope
 type | string | Yes | `get` (see above), or `redeem` (in this case)
-couponcode | string | Yes | The code to lookup
+couponcode | string | Yes | The code to invalidate
 
 # Hotels
 
