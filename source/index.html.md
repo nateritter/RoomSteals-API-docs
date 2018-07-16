@@ -117,7 +117,7 @@ This is the `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Cod
 
 This is the `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.@Code` value specified in the Availability Search results for the rate plan you are interested in.
 
-# Closed user group users
+# Closed user groups
 
 This section is only for those using the SSO Authentication feature and pertains to managing users and their authentication tokens.  
 
