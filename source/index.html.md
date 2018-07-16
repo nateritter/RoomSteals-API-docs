@@ -466,6 +466,164 @@ Parameter | Type | Required | Description
 siteid | integer | Yes | Provided by Hotels For Hope
 token | string | Yes | Token for the member (not Site Admin's)
 
+## Get a Coupon/Code
+
+"Coupons" or "Codes" can be used to give users a pre-defined number of "Points" (in API requests/responses). The points (1 point = 1 USD) may be used to discount select purchases within a closed user group.  The codes may either be used during checkout, or easier, added to a user account and automatically applied at checkout for the user for the maximum discount allowed for that transaction.
+
+<aside class="notice">
+Currently codes are pre-generated for you.  Please contact us to request the quantities and values desired.  There is no limit to the number or values you may request.
+</aside>
+
+This endpoint retrieves the data related to a single coupon/code. The response will validate the code is legitimate, whether the code has been used already or not, the expiration date, and the discount (in points) that is available.
+
+<aside class="notice">
+Notice the `type=get`, which is the difference between this endpoint call and the call which is used to redeem a code, as noted below.
+</aside>
+
+```shell
+curl "https://api.travsrv.com/Coupon.aspx?\
+username={API-USERNAME}\
+&password={API-PASSWORD}\
+&siteid={SITEID}\
+&type=get
+&couponcode={COUPON-CODE}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "IsValid": true,
+  "Code": "123-4567890",
+  "SiteId": 12345,
+  "Message": "Is Valid For Up To 500.00 Off Purchase",
+  "Data": {
+    "IsActive": true,
+    "IsUsed": false,
+    "Discount": 500,
+    "MinNights": 1,
+    "ExpiresOn": "11/6/2018",
+    "MaxUses": 1,
+    "IsPercentage": false,
+    "Terms": null
+  }
+}
+```
+
+> Codes which have been used would return something like this:
+
+```json
+{
+  "IsValid": false,
+  "Code": "114-4567890",
+  "SiteId": 12345,
+  "Message": "Is Already Used",
+  "Data": {
+    "IsActive": true,
+    "IsUsed": true,
+    "Discount": 500,
+    "MinNights": 1,
+    "ExpiresOn": "11/6/2018",
+    "MaxUses": 1,
+    "IsPercentage": false,
+    "Terms": null
+  }
+}
+```
+
+### HTTP Request
+
+`GET https://api.travsrv.com/Coupon.aspx`
+
+### Query Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+username | string | Yes | Provided by Hotels For Hope
+password | string | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by Hotels For Hope
+type | string | Yes | `get` (in this case), or `redeem` (see below)
+couponcode | string | Yes | The code to lookup
+
+## Redeem a Coupon/Code
+
+"Coupons" or "Codes" can be used to give users a pre-defined number of "Points" (in API requests/responses). The points (1 point = 1 USD) may be used to discount select purchases within a closed user group.  The codes may either be used during checkout, or easier, added to a user account and automatically applied at checkout for the user for the maximum discount allowed for that transaction.
+
+<aside class="notice">
+Currently codes are pre-generated for you.  Please contact us to request the quantities and values desired.  There is no limit to the number or values you may request.
+</aside>
+
+This endpoint sets a single coupon/code to `isValid: false`, effectively indicating it's been used and should not be able to be used again. If the code is valid and the call is successfull, the response will look the same as if you were calling a `type=get` (as specified above under "Get a Coupon/Code"). Successive calls to either `type=get` or `type=redeem` will return a response indicating the code is no longer valid.
+
+<aside class="notice">
+Notice the `type=redeem`, which is the difference between this endpoint call and the call which is used to simply retrieve the data for a single coupon/code, as noted above.
+</aside>
+
+```shell
+curl "https://api.travsrv.com/Coupon.aspx?\
+username={API-USERNAME}\
+&password={API-PASSWORD}\
+&siteid={SITEID}\
+&type=redeem
+&couponcode={COUPON-CODE}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "IsValid": true,
+  "Code": "123-4567890",
+  "SiteId": 12345,
+  "Message": "Is Valid For Up To 500.00 Off Purchase",
+  "Data": {
+    "IsActive": true,
+    "IsUsed": false,
+    "Discount": 500,
+    "MinNights": 1,
+    "ExpiresOn": "11/6/2018",
+    "MaxUses": 1,
+    "IsPercentage": false,
+    "Terms": null
+  }
+}
+```
+
+> Subsequent calls will return the following:
+
+```json
+{
+  "IsValid": false,
+  "Code": "123-4567890",
+  "SiteId": 12345,
+  "Message": "Is Already Used",
+  "Data": {
+    "IsActive": true,
+    "IsUsed": true,
+    "Discount": 500,
+    "MinNights": 1,
+    "ExpiresOn": "11/6/2018",
+    "MaxUses": 1,
+    "IsPercentage": false,
+    "Terms": null
+  }
+}
+```
+
+### HTTP Request
+
+`GET https://api.travsrv.com/Coupon.aspx`
+
+### Query Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+username | string | Yes | Provided by Hotels For Hope
+password | string | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by Hotels For Hope
+type | string | Yes | `get` (see above), or `redeem` (in this case)
+couponcode | string | Yes | The code to lookup
+
 # Hotels
 
 ## Availability Search
