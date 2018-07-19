@@ -681,6 +681,12 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>Number of points for the user</td>
 </tr>
 <tr>
+<td>Names</td>
+<td>string</td>
+<td>Yes</td>
+<td>Stringified, URI encoded JSON array of JSON object containing the params below</td>
+</tr>
+<tr>
 <td>ReferralId</td>
 <td>string</td>
 <td>Yes</td>
@@ -825,6 +831,12 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>Number of points for the user</td>
 </tr>
 <tr>
+<td>Names</td>
+<td>string</td>
+<td>Yes</td>
+<td>Stringified, URI encoded JSON array of JSON object containing the params below</td>
+</tr>
+<tr>
 <td>ReferralId</td>
 <td>string</td>
 <td>Yes</td>
@@ -932,8 +944,6 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>Token for the member (not Site Admin&#39;s)</td>
 </tr>
 </tbody></table>
-
-<p>///////////////////////////////////////////</p>
 <h2 id='create-update-a-coupon-code'>Create/Update a Coupon/Code</h2>
 <p>&quot;Coupons&quot; or &quot;Codes&quot; can be used to give users a pre-defined number of &quot;Points&quot; (in API requests/responses). The points (1 point = 1 USD) may be used to discount select purchases within a closed user group.  The codes may either be used during checkout, or easier, added to a user account and automatically applied at checkout for the user for the maximum discount allowed for that transaction.</p>
 
@@ -1011,7 +1021,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.travsrv.com/Coupon.aspx</code></p>
+<p><code>POST https://api.travsrv.com/Coupon.aspx</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1043,17 +1053,81 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>type</td>
 <td>string</td>
 <td>Yes</td>
-<td><code>get</code> (in this case), or <code>redeem</code> (see below)</td>
+<td><code>save</code></td>
 </tr>
 <tr>
-<td>couponcode</td>
+<td>coupon</td>
 <td>string</td>
 <td>Yes</td>
-<td>The code to lookup</td>
+<td>Stringified, URI encoded JSON object containing the params below</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>string</td>
+<td>Yes</td>
+<td>The code string you want generated</td>
+</tr>
+<tr>
+<td>SiteId</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>object</td>
+<td>Yes</td>
+<td>JSON object containing the params below</td>
+</tr>
+<tr>
+<td>IsActive</td>
+<td>boolean</td>
+<td>Yes</td>
+<td><code>true</code> if not expired and not redeemed</td>
+</tr>
+<tr>
+<td>IsUsed</td>
+<td>boolean</td>
+<td>Yes</td>
+<td><code>true</code> if not yet redeemed</td>
+</tr>
+<tr>
+<td>Discount</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Amount the coupon is worth</td>
+</tr>
+<tr>
+<td>MinNights</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Min requirement of nights to be able to use the code</td>
+</tr>
+<tr>
+<td>ExpiresOn</td>
+<td>date</td>
+<td>Yes</td>
+<td>Expiration date of this code (format: <code>YYYY-MM-DD</code> based on UTC -7 (MST) time zone)</td>
+</tr>
+<tr>
+<td>MaxUses</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Maximum number of times this code may be used</td>
+</tr>
+<tr>
+<td>IsPercentage</td>
+<td>boolean</td>
+<td>Yes</td>
+<td><code>true</code> if Discount is a percentage of reservation amount. <code>false</code> if Discount is a real amount (1 = 1 USD).</td>
+</tr>
+<tr>
+<td>Terms</td>
+<td>string</td>
+<td>Yes</td>
+<td>Terms of coupon usage. May be set to <code>&quot;&quot;</code>.</td>
 </tr>
 </tbody></table>
-
-<p>///////////////////////////////////////////////////////////////////</p>
 <h2 id='get-a-coupon-code'>Get a Coupon/Code</h2>
 <p>&quot;Coupons&quot; or &quot;Codes&quot; can be used to give users a pre-defined number of &quot;Points&quot; (in API requests/responses). The points (1 point = 1 USD) may be used to discount select purchases within a closed user group.  The codes may either be used during checkout, or easier, added to a user account and automatically applied at checkout for the user for the maximum discount allowed for that transaction.</p>
 
