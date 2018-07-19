@@ -274,6 +274,9 @@
                     <a href="#get-a-member-by-token" class="toc-h2 toc-link" data-title="get-a-member-by-token">Get a Member by Token</a>
                   </li>
                   <li>
+                    <a href="#create-update-a-coupon-code" class="toc-h2 toc-link" data-title="create-update-a-coupon-code">Create/Update a Coupon/Code</a>
+                  </li>
+                  <li>
                     <a href="#get-a-coupon-code" class="toc-h2 toc-link" data-title="get-a-coupon-code">Get a Coupon/Code</a>
                   </li>
                   <li>
@@ -929,24 +932,44 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>Token for the member (not Site Admin&#39;s)</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-coupon-code'>Get a Coupon/Code</h2>
+
+<p>///////////////////////////////////////////</p>
+<h2 id='create-update-a-coupon-code'>Create/Update a Coupon/Code</h2>
 <p>&quot;Coupons&quot; or &quot;Codes&quot; can be used to give users a pre-defined number of &quot;Points&quot; (in API requests/responses). The points (1 point = 1 USD) may be used to discount select purchases within a closed user group.  The codes may either be used during checkout, or easier, added to a user account and automatically applied at checkout for the user for the maximum discount allowed for that transaction.</p>
 
+<p>This endpoint creates a single coupon/code.</p>
+
+<blockquote>
+<p>The JSON data to stringify and encode may look something like this (not yet encoded):</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-4567890"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"SiteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IsUsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MinNights"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ExpiresOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-06-2018"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MaxUses"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IsPercentage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Terms"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <aside class="notice">
-Currently codes are pre-generated for you.  Please contact us to request the quantities and values desired.  There is no limit to the number or values you may request.
+Notice the `type=save` (and `POST` type), which are the differences between this endpoint call and others used to get or redeem a code, as noted below.
 </aside>
 
-<p>This endpoint retrieves the data related to a single coupon/code. The response will validate the code is legitimate, whether the code has been used already or not, the expiration date, and the discount (in points) that is available.</p>
-
 <aside class="notice">
-Notice the `type=get`, which is the difference between this endpoint call and the call which is used to redeem a code, as noted below.
+If the code already exists this call will update the info as provided.
 </aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/Coupon.aspx?</span><span class="se">\</span><span class="s2">
 username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 &amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
-&amp;type=get
-&amp;couponcode={COUPON-CODE}"</span>
+&amp;type=save</span><span class="se">\</span><span class="s2">
+&amp;coupon=%7B%22Code%22%3A%22123-4567890%22%2C%22SiteId%22%3A12345%2C%22Data%22%3A%7B%22IsActive%22%3Atrue%2C%22IsUsed%22%3Afalse%2C%22Discount%22%3A500%2C%22MinNights%22%3A1%2C%22ExpiresOn%22%3A%2211-06-2018%22%2C%22MaxUses%22%3A1%2C%22IsPercentage%22%3Afalse%2C%22Terms%22%3A%22%22%7D%7D"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -955,13 +978,13 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
   </span><span class="s2">"IsValid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-4567890"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"SiteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Is Valid For Up To 500.00 Off Purchase"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Is Valid For Up To 500 Off Purchase"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"Data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"IsUsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MinNights"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ExpiresOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11/6/2018"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ExpiresOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1/1/2018"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MaxUses"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"IsPercentage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Terms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
@@ -973,7 +996,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"IsValid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114-4567890"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-4567890"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"SiteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Is Already Used"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"Data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1029,12 +1052,106 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>The code to lookup</td>
 </tr>
 </tbody></table>
-<h2 id='redeem-a-coupon-code'>Redeem a Coupon/Code</h2>
+
+<p>///////////////////////////////////////////////////////////////////</p>
+<h2 id='get-a-coupon-code'>Get a Coupon/Code</h2>
 <p>&quot;Coupons&quot; or &quot;Codes&quot; can be used to give users a pre-defined number of &quot;Points&quot; (in API requests/responses). The points (1 point = 1 USD) may be used to discount select purchases within a closed user group.  The codes may either be used during checkout, or easier, added to a user account and automatically applied at checkout for the user for the maximum discount allowed for that transaction.</p>
 
+<p>This endpoint retrieves the data related to a single coupon/code. The response will validate the code is legitimate, whether the code has been used already or not, the expiration date, and the discount (in points) that is available.</p>
+
 <aside class="notice">
-Currently codes are pre-generated for you.  Please contact us to request the quantities and values desired.  There is no limit to the number or values you may request.
+Notice the `type=get`, which is the difference between this endpoint call and the call which is used to redeem a code, as noted below.
 </aside>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/Coupon.aspx?</span><span class="se">\</span><span class="s2">
+username={API-USERNAME}</span><span class="se">\</span><span class="s2">
+&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
+&amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
+&amp;type=get</span><span class="se">\</span><span class="s2">
+&amp;couponcode={COUPON-CODE}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"IsValid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-4567890"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"SiteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Is Valid For Up To 500.00 Off Purchase"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IsUsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MinNights"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ExpiresOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11/6/2018"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MaxUses"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IsPercentage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Terms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Codes which have been used would return something like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"IsValid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114-4567890"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"SiteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Is Already Used"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IsUsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MinNights"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ExpiresOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11/6/2018"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MaxUses"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IsPercentage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Terms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://api.travsrv.com/Coupon.aspx</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>siteid</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Yes</td>
+<td><code>get</code> (in this case), or <code>redeem</code> (see below)</td>
+</tr>
+<tr>
+<td>couponcode</td>
+<td>string</td>
+<td>Yes</td>
+<td>The code to lookup</td>
+</tr>
+</tbody></table>
+<h2 id='redeem-a-coupon-code'>Redeem a Coupon/Code</h2>
+<p>&quot;Coupons&quot; or &quot;Codes&quot; can be used to give users a pre-defined number of &quot;Points&quot; (in API requests/responses). The points (1 point = 1 USD) may be used to discount select purchases within a closed user group.  The codes may either be used during checkout, or easier, added to a user account and automatically applied at checkout for the user for the maximum discount allowed for that transaction.</p>
 
 <p>This endpoint sets a single coupon/code to <code>isValid: false</code>, effectively indicating it&#39;s been used and should not be able to be used again. If the code is valid and the call is successfull, the response will look the same as if you were calling a <code>type=get</code> (as specified above under &quot;Get a Coupon/Code&quot;). Successive calls to either <code>type=get</code> or <code>type=redeem</code> will return a response indicating the code is no longer valid.</p>
 
@@ -1045,7 +1162,7 @@ Notice the `type=redeem`, which is the difference between this endpoint call and
 username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 &amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
-&amp;type=redeem
+&amp;type=redeem</span><span class="se">\</span><span class="s2">
 &amp;couponcode={COUPON-CODE}"</span>
 </code></pre>
 <blockquote>
@@ -1087,9 +1204,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"Terms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-6'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://api.travsrv.com/Coupon.aspx</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1244,9 +1361,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-7'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://api.travsrv.com/hotel.aspx</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1566,9 +1683,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-8'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://api.travsrv.com/hotel.aspx</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1940,9 +2057,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-9'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://api.travsrv.com/hotel.aspx?type=Reservation</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2488,9 +2605,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-10'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://api.travsrv.com/hotel.aspx?type=Cancellation</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
