@@ -130,7 +130,7 @@ This endpoint returns an auth token for an administrative user, valid for 1 hour
 Along with the other common parameters to replace, additionally you must replace `{ADMIN-USERNAME}` with the username the Site Admin user uses to login to the site/portal.
 
 <aside class="notice">
-The token will be URI encoded to ensure a valid JSON response. Be sure to decode the token before using it in another API call.
+The token (`CurrentToken`) will be URI encoded to ensure a valid JSON response. When using it in a POST-based API call, be sure to decode it.  If using it in URLs, when creating/using a SSO link for example, leave it encoded.
 </aside>
 
 ```shell
