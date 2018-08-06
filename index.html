@@ -485,7 +485,7 @@ If you use our portal's UI and wanted to linking directly to a particuilar page 
 <p>Along with the other common parameters to replace, additionally you must replace <code>{ADMIN-USERNAME}</code> with the username the Site Admin user uses to login to the site/portal.</p>
 
 <aside class="notice">
-The token will be URI encoded to ensure a valid JSON response. Be sure to decode the token before using it in another API call.
+The token (`CurrentToken`) will be URI encoded to ensure a valid JSON response. When using it in a POST-based API call, be sure to decode it.  If using it in URLs, when creating/using a SSO link for example, leave it encoded.
 </aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
 username={API-USERNAME}</span><span class="se">\</span><span class="s2">
