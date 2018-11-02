@@ -519,7 +519,7 @@ username={API-USERNAME}\
   "Data": {
     "IsActive": true,
     "IsUsed": false,
-    "Discount": 500,
+    "Discount": 500.0,
     "MinNights": 1,
     "ExpiresOn": "1/1/2018",
     "MaxUses": 1,
@@ -540,7 +540,7 @@ username={API-USERNAME}\
   "Data": {
     "IsActive": true,
     "IsUsed": true,
-    "Discount": 500,
+    "Discount": 500.0,
     "MinNights": 1,
     "ExpiresOn": "11/6/2018",
     "MaxUses": 1,
@@ -568,7 +568,7 @@ SiteId | integer | Yes | Provided by Hotels For Hope
 Data | object | Yes | JSON object containing the params below
 IsActive | boolean | Yes | `true` if not expired and not redeemed
 IsUsed | boolean | Yes | `true` if not yet redeemed 
-Discount | integer | Yes | Amount the coupon is worth
+Discount | decimal | Yes | Amount the coupon is worth
 MinNights | integer | Yes | Min requirement of nights to be able to use the code
 ExpiresOn | date | Yes | Expiration date of this code (format: `YYYY-MM-DD` based on UTC -7 (MST) time zone)
 MaxUses | integer | Yes | Maximum number of times this code may be used
@@ -606,7 +606,7 @@ username={API-USERNAME}\
   "Data": {
     "IsActive": true,
     "IsUsed": false,
-    "Discount": 500,
+    "Discount": 500.0,
     "MinNights": 1,
     "ExpiresOn": "11/6/2018",
     "MaxUses": 1,
@@ -627,7 +627,7 @@ username={API-USERNAME}\
   "Data": {
     "IsActive": true,
     "IsUsed": true,
-    "Discount": 500,
+    "Discount": 500.0,
     "MinNights": 1,
     "ExpiresOn": "11/6/2018",
     "MaxUses": 1,
@@ -681,7 +681,7 @@ username={API-USERNAME}\
   "Data": {
     "IsActive": true,
     "IsUsed": false,
-    "Discount": 500,
+    "Discount": 500.0,
     "MinNights": 1,
     "ExpiresOn": "11/6/2018",
     "MaxUses": 1,
@@ -702,7 +702,7 @@ username={API-USERNAME}\
   "Data": {
     "IsActive": true,
     "IsUsed": true,
-    "Discount": 500,
+    "Discount": 500.0
     "MinNights": 1,
     "ExpiresOn": "11/6/2018",
     "MaxUses": 1,
