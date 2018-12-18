@@ -751,6 +751,10 @@ The `Points` attribute is only necessary if you want to update the number of poi
 The JSON structure includes an array of `Names`, which seems to infer the ability to create more than one person. However, in reality, you should only send this call for one member at a time.
 </aside>
 
+<aside class="notice">
+`"DeleteMember":true` will delete a member, or deactivate a member if the user has made reservations. The JSON response will simply show a `MemberId:0` instead of what the `MemberId` once was, but if you try to get that member by it's token, it will respond appropriately that the member no longer exists and/or is deactivated.
+</aside>
+
 <blockquote>
 <p>Encoded and POSTed via curl:</p>
 </blockquote>
