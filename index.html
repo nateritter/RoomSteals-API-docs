@@ -872,6 +872,18 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>No</td>
 <td>The user&#39;s phone number</td>
 </tr>
+<tr>
+<td>DeleteMember</td>
+<td>boolean</td>
+<td>No</td>
+<td>Set to <code>true</code> to delete/deactivate a member</td>
+</tr>
+<tr>
+<td>ReactivateMember</td>
+<td>boolean</td>
+<td>No</td>
+<td>Set to <code>true</code> to reactivate a deactivated member</td>
+</tr>
 </tbody></table>
 <h2 id='get-a-member-by-token'>Get a Member by Token</h2>
 <p>This endpoint retrieves a member using their member token. Successfully calling this endpoint also generates a new member token for the user in the <code>CurrentToken</code> property, which you should save for them if you want to call this endpoint again in the future.</p>
