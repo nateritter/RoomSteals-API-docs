@@ -403,6 +403,9 @@ LastName | string | Yes | The user's last name
 Email | string | Yes | The email address of the user
 Address1 | string | No | The user's full address
 HomePhone | string | No | The user's phone number
+DeleteMember | boolean | No | Set to `true` to delete/deactivate a member
+ReactivateMember | boolean | No | Set to `true` to reactivate a deactivated member
+
 
 ## Get a Member by Token
 
