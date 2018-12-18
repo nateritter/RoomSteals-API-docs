@@ -333,7 +333,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 </aside>
 
 <aside class="notice">
-`"DeleteMember":true` will delete a member, or deactivate a member if the user has made reservations. The resulting JSON structure will simply show a `MemberId:0` instead of what the `MemberId` once was.  
+`"DeleteMember":true` will delete a member, or deactivate a member if the user has made reservations. The JSON response will simply show a `MemberId:0` instead of what the `MemberId` once was, but if you try to get that member by it's token, it will respond appropriately that the member no longer exists and/or is deactivated.
 </aside>
 
 > Encoded and POSTed via curl:
