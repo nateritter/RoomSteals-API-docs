@@ -22,6 +22,10 @@ includes:
   - cug-upsert_coupon_code
   - cug-get_coupon_code
   - cug-redeem_coupon_code
+  - cug-holds
+  - cug-holds-get_all_holds
+  - cug-holds-get_by_room_id
+  - cug-holds-get_property
   - hotels
   - hotels-search
   - hotels-get_hotel
