@@ -285,6 +285,20 @@
               </ul>
           </li>
           <li>
+            <a href="#inventory-on-hold" class="toc-h1 toc-link" data-title="inventory-on-hold">Inventory On Hold</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-holds" class="toc-h2 toc-link" data-title="get-all-holds">Get All Holds</a>
+                  </li>
+                  <li>
+                    <a href="#get-hold-by-room-id" class="toc-h2 toc-link" data-title="get-hold-by-room-id">Get Hold by Room ID</a>
+                  </li>
+                  <li>
+                    <a href="#get-property-info" class="toc-h2 toc-link" data-title="get-property-info">Get Property Info</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#hotels" class="toc-h1 toc-link" data-title="hotels">Hotels</a>
               <ul class="toc-list-h2">
                   <li>
@@ -306,7 +320,7 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://github.com/lord/slate'>Docs powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -1334,6 +1348,198 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>string</td>
 <td>Yes</td>
 <td>The code to invalidate</td>
+</tr>
+</tbody></table>
+<h1 id='inventory-on-hold'>Inventory On Hold</h1>
+<p>This section is only for those using the SSO Authentication feature and pertains to managing contracted inventory, specifically that which has been placed &quot;on hold&quot;.  </p>
+
+<p>You will need a Site Admin user in your closed user group site. If you don&#39;t already have one, please <a href="mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User">request one</a> be added for your portal/site.</p>
+
+<aside class="warning">
+Please note the Authentication method for these calls is not consistent with other calls. For these calls, all calls must include a basic authentication header using the username (email address) and password of an authorized user for the `siteId` you are querying.
+
+Ref: https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication
+
+Simply put, include a header in your requests using the base 64 encoded string of the user's email address and password like so: `-H 'Authorization: Basic {BASE64-ENCODED-STRING}'`.
+</aside>
+
+<aside class="warning">
+Just as the authentication for this set of endpoints is different, please note that the endpoint domain is also different. 
+
+`https://groups.alliancereservations.com/services/external` is the base path for this set of endpoints.
+</aside>
+<h2 id='get-all-holds'>Get All Holds</h2>
+<p>You may retrieve a list of the room types on hold via <code>GET</code> request, (authorized, as mentioned above, using a basic authentication header) to this endpoint. Calling this endpoint successfully will return an array of API endpoing URIs for each room type currently on hold.</p>
+
+<p>You may use the resulting URI (and the <code>roomTypeId</code> specified within) to retrieve specific hold / room type information.</p>
+
+<aside class="notice">
+Either the `affiliateId` or `siteId` must be passsed into this endpoint.  This example uses `siteId`, which is the most likely use case.
+</aside>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?&amp;siteId={SITE-ID}"</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"TotalOnHoldRoomTypes"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"OnHoldRoomTypes"</span><span class="p">:[</span><span class="w">
+        </span><span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?roomTypeId=1111"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?roomTypeId=2222"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?roomTypeId=3333"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?roomTypeId=4444"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://groups.alliancereservations.com/services/external/roomtypesonhold</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>siteId</td>
+<td>integer</td>
+<td>No</td>
+<td>Provided by Hotels for Hope</td>
+</tr>
+<tr>
+<td>affiliateId</td>
+<td>integer</td>
+<td>No</td>
+<td>Provided by Hotels For Hope</td>
+</tr>
+<tr>
+<td>includeExpired</td>
+<td>void</td>
+<td>No</td>
+<td>Response includes expired holds</td>
+</tr>
+</tbody></table>
+<h2 id='get-hold-by-room-id'>Get Hold by Room ID</h2>
+<p>You may retrieve a specific hold / room type via <code>GET</code> request, (authorized, as mentioned above, using a basic authentication header) to this endpoint. Calling this endpoint successfully will return a specific hold / room type information.</p>
+
+<p>Included in a successful response will be a <code>PropertyInfoLink</code> which is the API endpoint URI for the specific property information this hold / room type is related to.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?&amp;roomTypeId={ROOM-TYPE-ID}"</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"SiteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EventId"</span><span class="p">:</span><span class="w"> </span><span class="mi">67890</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EventName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Crazy Awesome Event"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EventStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-09T00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"RoomTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">888888</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"PropertyInfoLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://groups.alliancereservations.com/services/external/property?id=987654"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 Double beds with mini-fridge, microwave, coffee maker, and 32-inch TV. No breakfast included. Rate based on occupancy of 4 persons per room. You must be at least 21 years old to check into room."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"GroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BandMembers-Doubles"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MaxOccupancy"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"BaseOccupancy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AdultExtraCharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ChildExtraCharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ExtraAdultAge"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReleaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-21T00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"PaymentPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"CancellationPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You must change or cancel your reservation before 2:00 pm hotel time at least 3 day(s) prior to check-in or you will be charged for one night's room plus taxes &amp; fees unless otherwise noted in the room description."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"FullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Donna Summers"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"donna.summers@awesomeevent.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"DaytimePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(888) 555-1212"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"EveningPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(888) 555-1212"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"IsPrimary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"BlockDates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"BlockDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-08T00:00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">129</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"MinimumNights"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"QuantityAvailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"BlockDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-09T00:00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">129</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"MinimumNights"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"QuantityAvailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"BlockDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-10T00:00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">129</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"MinimumNights"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"QuantityAvailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"BlockDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-11T00:00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">129</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"MinimumNights"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"QuantityAvailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://groups.alliancereservations.com/services/external/roomtypesonhold</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>roomTypeId</td>
+<td>integer</td>
+<td>Yes</td>
+<td>The hold / room type id</td>
+</tr>
+</tbody></table>
+<h2 id='get-property-info'>Get Property Info</h2>
+<p>You may retrieve specific property information via <code>GET</code> request, (authorized, as mentioned above, using a basic authentication header) to this endpoint. Calling this endpoint successfully will return a specific hold / room type&#39;s associated property information.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<span class="s2">"https://groups.alliancereservations.com/services/external/property?id={PROPERTY-ID}"</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10165</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Courtyard by Marriott Orlando Lake Mary/North"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"135 International Pkwy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lake Mary"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Postal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32746"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 800 555 9000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"someone@thisproperty.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://groups.alliancereservations.com/services/external/property</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Yes</td>
+<td>The property id</td>
 </tr>
 </tbody></table>
 <h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
