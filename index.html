@@ -1419,18 +1419,6 @@ Just as the authentication for this set of endpoints is different, please note t
 </tr>
 </thead><tbody>
 <tr>
-<td>roomTypeId</td>
-<td>integer</td>
-<td>Yes</td>
-<td><code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code</code> from an Availability Search (parent block)</td>
-</tr>
-<tr>
-<td>createHold</td>
-<td>void</td>
-<td>Yes</td>
-<td>Specifies this is a create</td>
-</tr>
-<tr>
 <td>blockDescription</td>
 <td>string</td>
 <td>Yes</td>
@@ -1660,6 +1648,28 @@ Either the `affiliateId` or `siteId` must be passsed into this endpoint.  This e
 <td>integer</td>
 <td>Yes</td>
 <td><code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code</code> from an Availability Search (parent block)</td>
+</tr>
+<tr>
+<td>cancelHold</td>
+<td>void</td>
+<td>Yes</td>
+<td>Specifies this is a cancellation</td>
+</tr>
+</tbody></table>
+<h3 id='post-form-data-parameters'>POST form-data Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cancellationReason</td>
+<td>string</td>
+<td>Yes</td>
+<td>Reason for cancellation</td>
 </tr>
 </tbody></table>
 <h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
