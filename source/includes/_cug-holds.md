@@ -4,6 +4,8 @@ This section is only for those using the SSO Authentication feature and pertains
 
 You will need a Site Admin user in your closed user group site. If you don't already have one, please [request one](mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User) be added for your portal/site.
 
+To book a reservation for any held room type, simply use the `roomTypeId` identfier when creating a reservation.
+
 <aside class="warning">
 Please note the Authentication method for these calls is not consistent with other calls. For these calls, all calls must include a basic authentication header using the username (email address) and password of an authorized user for the `siteId` you are querying.
 
