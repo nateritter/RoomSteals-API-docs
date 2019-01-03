@@ -1,4 +1,4 @@
-# Inventory On Hold
+# Inventory on hold
 
 This section is only for those using the SSO Authentication feature and pertains to managing contracted inventory, specifically that which has been placed "on hold".  
 
