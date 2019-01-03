@@ -9,6 +9,24 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - intro
+  - auth
+  - auth-query_string
+  - auth-sso
+  - common_value_maps
+  - cug
+  - cug-get_site_admin_token
+  - cug-create_member
+  - cug-update_member
+  - cug-get_member
+  - cug-upsert_coupon_code
+  - cug-get_coupon_code
+  - cug-redeem_coupon_code
+  - hotels
+  - hotels-search
+  - hotels-get_hotel
+  - hotels-create_reservation
+  - hotels-cancel_reservation
   - errors
 
 search: true
