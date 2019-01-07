@@ -1378,6 +1378,12 @@ Just as the authentication for this set of endpoints is different, please note t
 </aside>
 <h2 id='create-a-hold'>Create a Hold</h2>
 <p>You may retrieve a list of the room types (you&#39;ll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway <code>16</code> (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. Calling this endpoint successfully will return a 200 response code, but no body.</p>
+
+<p>NOTE: When seting the POST form-data Parameters (seen below), be sure the number of values in the comma separated list specified for &quot;roomCountPerNight&quot; match the number of nights (inclusive) specified in the &quot;blockStartDate&quot; / &quot;blockEndDate&quot; range.</p>
+
+<p>For instance, if the &quot;blockStartDate&quot; = &quot;12/01/2019&quot; and the &quot;blockEndDate&quot; = &quot;12/03/2019&quot;, the &quot;roomCountPerNight&quot; should have 3 values, like &quot;1,1,1&quot;.  </p>
+
+<p>Additionally, the &quot;blockStartDate&quot; and &quot;blockEndDate&quot; need to be within the parent room type&#39;s block dates or the system won&#39;t be able to allocate rooms from the parent to hold block.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
 <span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?&amp;roomTypeId={PARENT-BLOCK-ROOM-TYPE-ID}&amp;createHold"</span> <span class="se">\</span>
 -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
@@ -1434,13 +1440,13 @@ Just as the authentication for this set of endpoints is different, please note t
 <td>blockStartDate</td>
 <td>date</td>
 <td>Yes</td>
-<td>Start date of held rooms</td>
+<td>Start date of held rooms (format: mm/dd/yyyy)</td>
 </tr>
 <tr>
 <td>blockEndDate</td>
 <td>date</td>
 <td>Yes</td>
-<td>End date of held rooms</td>
+<td>End date of held rooms (format: mm/dd/yyyy)</td>
 </tr>
 <tr>
 <td>blockReleaseDate</td>
