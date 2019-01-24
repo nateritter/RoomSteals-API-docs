@@ -61,7 +61,18 @@ username={API-USERNAME}\
         "@Children": "0",
         "Hotel": {
           "@HotelID": "272393",
-          "@IsEphemeral": "true",
+          "@HotelInfo": "https://api.travsrv.com/api/content/findpropertyinfo?propertyid=272393&locale={{locale}}",
+          "@Latitude": "30.2334",
+          "@Longitude": "-97.74027",
+          "@Name": "La Quinta Inn Austin Oltorf",
+          "@Address1": "1603 East Oltorf Blvd",
+          "@City": "Austin",
+          "@CountryCode": "US",
+          "@ImageThumbnail": "https://media.travsrv.com/272393/124017095_70.jpg",
+          "@LocationDescription": "Near South Congress Avenue",
+          "@TripAdvisorReviewCount": "377",
+          "@TripAdvisorRating": "2.5",
+          "@PriceClass": "2 Stars"
           "RatePlan": [
             {
               "@Code": "F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935",
