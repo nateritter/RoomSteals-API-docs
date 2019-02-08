@@ -137,6 +137,7 @@ refHotelId | int | No | See below.
 latitude | float | No | See below.
 longitude | float | No | See below.
 radius | float | No | See below.
+candidatesearch | boolean | No | See below.
 rooms | int | Yes | Number of rooms needed. When searching for more than one room, responses are based on the same room type and occupancy for every room. Maximum: 9 (best results with no more than 4).
 inDate | date | Yes | Desired check-in date (format: `YYYY-MM-DD` based on UTC -7 (MST) time zone)
 outDate | date | Yes | Desired check-out date (format: `YYYY-MM-DD` based on UTC -7 (MST) time zone)
@@ -163,8 +164,9 @@ One of the following is required:
 * `hotelIds`: A list of integers, separated by commas if more than one. Max of 50 hotel IDs may be specified at one time. May be substituted with `refHotelId` or `locationId` or `latitude`+`longitude`+`radius`.
 * `refHotelId`: A single hotel ID used to look up the city and return results from that city, as if we had searched by `locationId`. May be substituted with `hotelIds` or `locationId` or `latitude`+`longitude`+`radius`.
 * `locationId`: A location ID used to return hotels from within the location's city. May be substituted with `hotelIds` or `refHotelId` or `latitude`+`longitude`+`radius`.
-* `latitude` + `longitude` + `radius` (Do not send `radius` if doing `latitude`/`longitude` based deal search)
+* `latitude` + `longitude` + `radius` (and maybe `candidatesearch`) (Do not send `radius` if doing `latitude`/`longitude` based deal search)
 ** `radius`: Measured in miles.  NOTE: If doing a market deal search, leave off radius and just pass `latitude` and `longitude`.
+** `candidatesearch`: If a location based search is being made, this attribute can be sent to specify that no rates and availability should be returned. When set to true, and in conjunction with a location based search, only the list of candidate properties are returned (very fast). This allows calls to be made for each individual property asynchronously for actual rates and availability.
 
 #### `sortType`
 
