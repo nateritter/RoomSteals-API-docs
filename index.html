@@ -1865,6 +1865,12 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>See below.</td>
 </tr>
 <tr>
+<td>candidatesearch</td>
+<td>boolean</td>
+<td>No</td>
+<td>See below.</td>
+</tr>
+<tr>
 <td>rooms</td>
 <td>int</td>
 <td>Yes</td>
@@ -1980,8 +1986,9 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <li><code>hotelIds</code>: A list of integers, separated by commas if more than one. Max of 50 hotel IDs may be specified at one time. May be substituted with <code>refHotelId</code> or <code>locationId</code> or <code>latitude</code>+<code>longitude</code>+<code>radius</code>.</li>
 <li><code>refHotelId</code>: A single hotel ID used to look up the city and return results from that city, as if we had searched by <code>locationId</code>. May be substituted with <code>hotelIds</code> or <code>locationId</code> or <code>latitude</code>+<code>longitude</code>+<code>radius</code>.</li>
 <li><code>locationId</code>: A location ID used to return hotels from within the location&#39;s city. May be substituted with <code>hotelIds</code> or <code>refHotelId</code> or <code>latitude</code>+<code>longitude</code>+<code>radius</code>.</li>
-<li><code>latitude</code> + <code>longitude</code> + <code>radius</code> (Do not send <code>radius</code> if doing <code>latitude</code>/<code>longitude</code> based deal search)
-** <code>radius</code>: Measured in miles.  NOTE: If doing a market deal search, leave off radius and just pass <code>latitude</code> and <code>longitude</code>.</li>
+<li><code>latitude</code> + <code>longitude</code> + <code>radius</code> (and maybe <code>candidatesearch</code>) (Do not send <code>radius</code> if doing <code>latitude</code>/<code>longitude</code> based deal search)
+** <code>radius</code>: Measured in miles.  NOTE: If doing a market deal search, leave off radius and just pass <code>latitude</code> and <code>longitude</code>.
+** <code>candidatesearch</code>: If a location based search is being made, this attribute can be sent to specify that no rates and availability should be returned. When set to true, and in conjunction with a location based search, only the list of candidate properties are returned (very fast). This allows calls to be made for each individual property asynchronously for actual rates and availability.</li>
 </ul>
 <h4 id='sorttype'><code>sortType</code></h4>
 <table><thead>
