@@ -33,6 +33,10 @@ includes:
   - hotels-get_hotel
   - hotels-create_reservation
   - hotels-cancel_reservation
+  - deals
+  - deals-featured-locations
+  - deals-featured-hotels
+  - deals-locationid-search
   - errors
 
 search: true
