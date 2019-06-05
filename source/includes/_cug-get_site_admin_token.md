@@ -70,7 +70,7 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by Hotels For Hope
-password | string | Yes | Provided by Hotels For Hope
-siteid | integer | Yes | Provided by Hotels For Hope
+username | string | Yes | Provided by RoomSteals
+password | string | Yes | Provided by RoomSteals
+siteid | integer | Yes | Provided by RoomSteals
 token | string | Yes | `ARNUSER-` concatonated with the Site Admin's username

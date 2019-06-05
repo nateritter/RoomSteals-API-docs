@@ -127,9 +127,9 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by Hotels For Hope
-password | string | Yes | Provided by Hotels For Hope
-siteid | integer | Yes | Provided by Hotels For Hope
+username | string | Yes | Provided by RoomSteals
+password | string | Yes | Provided by RoomSteals
+siteid | integer | Yes | Provided by RoomSteals
 timeout | int | No | Maximum time to allow for searching gateways, measured in seconds. Default: 15
 maxResults | int | No | Number of results to return. Default: 20. Maximum: 50.
 hotelIds | int* | No | See below.

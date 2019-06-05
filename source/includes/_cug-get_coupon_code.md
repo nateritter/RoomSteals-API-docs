@@ -67,8 +67,8 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by Hotels For Hope
-password | string | Yes | Provided by Hotels For Hope
-siteid | integer | Yes | Provided by Hotels For Hope
+username | string | Yes | Provided by RoomSteals
+password | string | Yes | Provided by RoomSteals
+siteid | integer | Yes | Provided by RoomSteals
 type | string | Yes | `get` (in this case), or `redeem` (see below)
 couponcode | string | Yes | The code to lookup

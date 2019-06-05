@@ -89,7 +89,7 @@ curl -X POST \
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-siteid | integer | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by RoomSteals
 token | string | Yes | Site Admin Token
 Points | integer | No | Number of points for the user
 Names | string | Yes | Stringified, URI encoded JSON array of JSON object containing the params below

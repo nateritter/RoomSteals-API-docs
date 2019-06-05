@@ -234,9 +234,9 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by Hotels For Hope
-password | string | Yes | Provided by Hotels For Hope
-siteid | integer | Yes | Provided by Hotels For Hope
+username | string | Yes | Provided by RoomSteals
+password | string | Yes | Provided by RoomSteals
+siteid | integer | Yes | Provided by RoomSteals
 reservationId | string | Yes | The `reservationId` from the reservation creation response.
 itineraryId | string | Yes | The `itineraryId` from the reservation creation response.
 _type | string/enum | No | The response format. One of `xml` or `json`. Default: `json`.
