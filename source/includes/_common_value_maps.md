@@ -8,7 +8,7 @@ Supported currencies are located in our static database files. Request access if
 
 Optional filter. This should be either left empty to return all sources of supply or specified by a single integer or comma separated list of integers. 
 
-Please [contact us](mailto:hello@hotelsforhope.com?Subject=Request%20for%20API%20Gateway%20Codes) for an updated list of gateways.
+Please [contact us](mailto:hello@roomsteals.com?Subject=Request%20for%20API%20Gateway%20Codes) for an updated list of gateways.
 
 ## `propertyAmenities`
 

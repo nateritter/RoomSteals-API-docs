@@ -1,6 +1,6 @@
 ## Query String
 
-Hotels For Hope uses a querystring username and password to allow access to the API. You can request Hotels For Hope API credentials by partnering with us and emailing [support](mailto:hello@hotelsforhope.com).
+RoomSteals uses a querystring username and password to allow access to the API. You can request RoomSteals API credentials by partnering with us and emailing [support](mailto:hello@roomsteals.com).
 
 The API credentials are expected in all API requests to the server in the querystring like the following:
 
