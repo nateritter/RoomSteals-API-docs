@@ -36,6 +36,6 @@ curl -X GET \
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-siteId | integer | No | Provided by Hotels for Hope
-affiliateId | integer | No | Provided by Hotels For Hope
+siteId | integer | No | Provided by RoomSteals
+affiliateId | integer | No | Provided by RoomSteals
 includeExpired | void | No | Response includes expired holds

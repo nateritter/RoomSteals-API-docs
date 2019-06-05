@@ -2,7 +2,7 @@
 
 This section is only for those using the SSO Authentication feature and pertains to managing contracted inventory, specifically that which has been placed "on hold".  
 
-You will need a Site Admin user in your closed user group site. If you don't already have one, please [request one](mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User) be added for your portal/site.
+You will need a Site Admin user in your closed user group site. If you don't already have one, please [request one](mailto:hello@roomsteals.com?Subject=Request%20for%20Site%20Admin%20User) be added for your portal/site.
 
 To book a reservation for any held room type, simply use the `roomTypeId` identfier when creating a reservation.
 

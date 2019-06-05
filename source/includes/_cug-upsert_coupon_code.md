@@ -93,7 +93,7 @@ siteid | integer | Yes | Provided by Hotels For Hope
 type | string | Yes | `save`
 coupon | string | Yes | Stringified, URI encoded JSON object containing the params below
 Code | string | Yes | The code string you want generated
-SiteId | integer | Yes | Provided by Hotels For Hope
+SiteId | integer | Yes | Provided by RoomSteals
 Data | object | Yes | JSON object containing the params below
 IsActive | boolean | Yes | `true` if not expired and not redeemed
 IsUsed | boolean | Yes | `true` if not yet redeemed 

@@ -1,5 +1,5 @@
 # Errors
-The Hotels for Hope API uses the following error codes:
+The RoomSteals API uses the following error codes:
 
 Error Code | Meaning
 ---------- | -------
