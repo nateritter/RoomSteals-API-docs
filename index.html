@@ -347,11 +347,11 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Hotels For Hope API! You can use our API to access Hotels For Hope API endpoints, which can get information on hundreds of thousands of hotels, their availability, details, as well as create and cancel reservations.</p>
+<p>Welcome to the RoomSteals API! You can use our API to access RoomSteals API endpoints, which can get information on hundreds of thousands of hotels, their availability, details, as well as create and cancel reservations.</p>
 
 <p>We have examples using a shell. You can view code examples in the dark area to the right, and (when languages become available) you can switch the programming language of the examples with the tabs in the top right.</p>
 <h1 id='authentication'>Authentication</h1><h2 id='query-string'>Query String</h2>
-<p>Hotels For Hope uses a querystring username and password to allow access to the API. You can request Hotels For Hope API credentials by partnering with us and emailing <a href="mailto:hello@hotelsforhope.com">support</a>.</p>
+<p>RoomSteals uses a querystring username and password to allow access to the API. You can request RoomSteals API credentials by partnering with us and emailing <a href="mailto:hello@roomsteals.com">support</a>.</p>
 
 <p>The API credentials are expected in all API requests to the server in the querystring like the following:</p>
 
@@ -370,7 +370,7 @@ Considering the sensitive nature of query string based API calls, we highly sugg
 <p>Process: </p>
 
 <ol>
-<li><a href="mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User">Request a Site Admin</a> to be added to your closed user group site (if you don&#39;t already have one)</li>
+<li><a href="mailto:hello@roomsteals.com?Subject=Request%20for%20Site%20Admin%20User">Request a Site Admin</a> to be added to your closed user group site (if you don&#39;t already have one)</li>
 <li>Get a token for the Site Admin</li>
 <li>Create a member using the Site Admin&#39;s token</li>
 <li>Use the member&#39;s token in queries on the user&#39;s behalf</li>
@@ -384,7 +384,7 @@ If you use our portal's UI and wanted to linking directly to a particuilar page 
 <h2 id='gateway'><code>gateway</code></h2>
 <p>Optional filter. This should be either left empty to return all sources of supply or specified by a single integer or comma separated list of integers. </p>
 
-<p>Please <a href="mailto:hello@hotelsforhope.com?Subject=Request%20for%20API%20Gateway%20Codes">contact us</a> for an updated list of gateways.</p>
+<p>Please <a href="mailto:hello@roomsteals.com?Subject=Request%20for%20API%20Gateway%20Codes">contact us</a> for an updated list of gateways.</p>
 <h2 id='propertyamenities'><code>propertyAmenities</code></h2>
 <p>Optional filter. This should either be an integer or a list of comma separated integers represented by the following:</p>
 
@@ -512,7 +512,7 @@ If you use our portal's UI and wanted to linking directly to a particuilar page 
 <h1 id='closed-user-groups'>Closed user groups</h1>
 <p>This section is only for those using the SSO Authentication feature and pertains to managing users and their authentication tokens.  </p>
 
-<p>You will need a Site Admin user in your closed user group site. If you don&#39;t already have one, please <a href="mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User">request one</a> be added for your portal/site.</p>
+<p>You will need a Site Admin user in your closed user group site. If you don&#39;t already have one, please <a href="mailto:hello@roomsteals.com?Subject=Request%20for%20Site%20Admin%20User">request one</a> be added for your portal/site.</p>
 <h2 id='get-a-token-for-a-site-admin'>Get a Token for a Site Admin</h2>
 <p>This endpoint returns an auth token for an administrative user, valid for 1 hour, which may be used to create or update new (non-administrative) users and their tokens.</p>
 
@@ -586,19 +586,19 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>username</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>token</td>
@@ -700,7 +700,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>token</td>
@@ -854,7 +854,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>token</td>
@@ -985,7 +985,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>token</td>
@@ -1085,19 +1085,19 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>username</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>type</td>
@@ -1121,7 +1121,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>SiteId</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>Data</td>
@@ -1247,19 +1247,19 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>username</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>type</td>
@@ -1343,19 +1343,19 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>username</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>type</td>
@@ -1373,7 +1373,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <h1 id='inventory-on-hold'>Inventory on hold</h1>
 <p>This section is only for those using the SSO Authentication feature and pertains to managing contracted inventory, specifically that which has been placed &quot;on hold&quot;.  </p>
 
-<p>You will need a Site Admin user in your closed user group site. If you don&#39;t already have one, please <a href="mailto:hello@hotelsforhope.com?Subject=Request%20for%20Site%20Admin%20User">request one</a> be added for your portal/site.</p>
+<p>You will need a Site Admin user in your closed user group site. If you don&#39;t already have one, please <a href="mailto:hello@roomsteals.com?Subject=Request%20for%20Site%20Admin%20User">request one</a> be added for your portal/site.</p>
 
 <p>To book a reservation for any held room type, simply use the <code>roomTypeId</code> identfier when creating a reservation.</p>
 
@@ -1508,13 +1508,13 @@ Either the `affiliateId` or `siteId` must be passsed into this endpoint.  This e
 <td>siteId</td>
 <td>integer</td>
 <td>No</td>
-<td>Provided by Hotels for Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>affiliateId</td>
 <td>integer</td>
 <td>No</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>includeExpired</td>
@@ -1822,19 +1822,19 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>username</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>timeout</td>
@@ -2162,19 +2162,19 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>username</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>timeout</td>
@@ -2536,19 +2536,19 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>username</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>hotelIds</td>
@@ -3084,19 +3084,19 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>username</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Provided by Hotels For Hope</td>
+<td>Provided by RoomSteals</td>
 </tr>
 <tr>
 <td>reservationId</td>
@@ -3402,7 +3402,7 @@ type=cities</span><span class="se">\</span><span class="s2">
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
-<p>The Hotels for Hope API uses the following error codes:</p>
+<p>The RoomSteals API uses the following error codes:</p>
 
 <table><thead>
 <tr>
