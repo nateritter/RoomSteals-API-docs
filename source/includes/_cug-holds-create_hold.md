@@ -2,7 +2,7 @@
 
 You may retrieve a list of the room types (you'll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway `16` (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. Calling this endpoint successfully will return a 200 response code, but no body.
 
-NOTE: When seting the POST form-data Parameters (seen below), be sure the number of values in the comma separated list specified for "roomCountPerNight" match the number of nights (inclusive) specified in the "blockStartDate" / "blockEndDate" range.
+NOTE: When setting the POST form-data Parameters (seen below), be sure the number of values in the comma separated list specified for "roomCountPerNight" match the number of nights (inclusive) specified in the "blockStartDate" / "blockEndDate" range.
 
 For instance, if the "blockStartDate" = "12/01/2019" and the "blockEndDate" = "12/03/2019", the "roomCountPerNight" should have 3 values, like "1,1,1".  
 
@@ -14,10 +14,7 @@ curl -X POST \
 -H 'Authorization: Basic {BASE64-ENCODED-STRING}'
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-```
+> There will be no response from the server if the hold is successful other than a 200 OK status header.
 
 ### HTTP Request
 
