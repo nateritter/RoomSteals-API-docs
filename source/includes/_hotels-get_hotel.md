@@ -119,12 +119,6 @@ username={API-USERNAME}\
                   "@ExchangeGMT": "2018-04-17T00:00:06.027"
                 }
               }
-            },
-            {
-              //... Another Rate Plan object would go here
-              //
-              // NOTE: If there is only one RatePlan, this would
-              // be a single object, not an array of objects.
             }
           ]
         }
