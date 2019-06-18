@@ -73,7 +73,7 @@ type=findfeaturedhoteldeals\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-type | string | Yes | Always "findfeaturedlocationdeals"
+type | string | Yes | Always "findfeaturedhoteldeals"
 locationid | int | No | Found via [locationid search](#location-id-search)
 mindiscount | int | No | Return only results >= this value
 maxdiscount | int | No | Return only results <= this value
