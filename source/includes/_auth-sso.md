@@ -10,5 +10,5 @@ Process:
 4. Use the member's token in queries on the user's behalf
 
 <aside class="notice">
-If you use our portal's UI and wanted to linking directly to a particuilar page without requiring login, use the parameter `memberToken={MEMBER-TOKEN}` in the URL (replacing <code>{MEMBER-TOKEN}</code> with the browsing user's token).
+If you use our portal's UI and wanted to link directly to a particuilar page without requiring login, use the parameter `memberToken={MEMBER-TOKEN}` in the URL (replacing <code>{MEMBER-TOKEN}</code> with the browsing user's token).
 </aside>
