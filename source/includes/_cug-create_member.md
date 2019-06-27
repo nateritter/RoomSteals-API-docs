@@ -61,7 +61,7 @@ curl -X POST \
         "Longitude": null,
         "Latitude": null,
         "HomePhone": "5551231212",
-        "Referral": null,
+        "Referral": "partnerdomain.com",
         "ReferralId": "mytestuser1@gmail.com",
         "Password": null,
         "IsActive": true,
@@ -97,5 +97,6 @@ ReferralId | string | Yes | The email address of the user (used as the "username
 FirstName | string | Yes | The user's first name
 LastName | string | Yes | The user's last name
 Email | string | Yes | The email address of the user
+Referral | string | Yes | Your domain name (no www or protocol)
 Address1 | string | No | The user's full address
 HomePhone | string | No | The user's phone number

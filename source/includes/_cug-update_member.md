@@ -65,7 +65,7 @@ curl -X POST \
         "Longitude": null,
         "Latitude": null,
         "HomePhone": "5551231212",
-        "Referral": null,
+        "Referral": "partnerdomain.com",
         "ReferralId": "mytestuser1@gmail.com",
         "Password": null,
         "IsActive": true,
@@ -103,5 +103,6 @@ LastName | string | Yes | The user's last name
 Email | string | Yes | The email address of the user
 Address1 | string | No | The user's full address
 HomePhone | string | No | The user's phone number
+Referral | string | Yes | Your domain name (no www or protocol)
 DeleteMember | boolean | No | Set to `true` to delete/deactivate a member
 ReactivateMember | boolean | No | Set to `true` to reactivate a deactivated member

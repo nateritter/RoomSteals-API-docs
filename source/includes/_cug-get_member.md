@@ -31,7 +31,7 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
         "Longitude": null,
         "Latitude": null,
         "HomePhone": "5551231212",
-        "Referral": null,
+        "Referral": "partnerdomain.com",
         "ReferralId": "mytestuser1@gmail.com",
         "Password": null,
         "IsActive": true,
