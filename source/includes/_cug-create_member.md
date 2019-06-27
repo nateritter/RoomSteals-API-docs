@@ -14,6 +14,7 @@ You may notice this call is exactly the same as the "Update an Existing Member" 
         "FirstName": "Testme",
         "LastName": "Tester",
         "Email": "mytestuser1@gmail.com",
+        "Referral": "partnerdomain.com",
         "Address1": "123 Main Street",
         "HomePhone": "5551231212"
     }]
