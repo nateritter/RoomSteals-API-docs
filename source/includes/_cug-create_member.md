@@ -62,8 +62,13 @@ curl -X POST \
         "Longitude": null,
         "Latitude": null,
         "HomePhone": "5551231212",
+<<<<<<< HEAD
         "Referral": null,
         "ReferralId": "777",
+=======
+        "Referral": "partnerdomain.com",
+        "ReferralId": "mytestuser1@gmail.com",
+>>>>>>> Adding partnerdomain.com to Referral
         "Password": null,
         "IsActive": true,
         "DeleteMember": false,
@@ -98,5 +103,6 @@ ReferralId | string | Yes | The id of the user in your system
 FirstName | string | Yes | The user's first name
 LastName | string | Yes | The user's last name
 Email | string | Yes | The email address of the user
+Referral | string | Yes | Your domain name (no www or protocol)
 Address1 | string | No | The user's full address
 HomePhone | string | No | The user's phone number

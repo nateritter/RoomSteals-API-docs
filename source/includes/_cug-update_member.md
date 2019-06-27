@@ -66,8 +66,13 @@ curl -X POST \
         "Longitude": null,
         "Latitude": null,
         "HomePhone": "5551231212",
+<<<<<<< HEAD
         "Referral": null,
         "ReferralId": "777",
+=======
+        "Referral": "partnerdomain.com",
+        "ReferralId": "mytestuser1@gmail.com",
+>>>>>>> Adding partnerdomain.com to Referral
         "Password": null,
         "IsActive": true,
         "DeleteMember": false,
@@ -104,5 +109,10 @@ LastName | string | Yes | The user's last name
 Email | string | Yes | The email address of the user
 Address1 | string | No | The user's full address
 HomePhone | string | No | The user's phone number
+<<<<<<< HEAD
 DeleteMember | boolean | No | Set to `true` to deactivate a member
+=======
+Referral | string | Yes | Your domain name (no www or protocol)
+DeleteMember | boolean | No | Set to `true` to delete/deactivate a member
+>>>>>>> Adding partnerdomain.com to Referral
 ReactivateMember | boolean | No | Set to `true` to reactivate a deactivated member

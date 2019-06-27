@@ -32,8 +32,13 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
         "Longitude": null,
         "Latitude": null,
         "HomePhone": "5551231212",
+<<<<<<< HEAD
         "Referral": null,
         "ReferralId": "777",
+=======
+        "Referral": "partnerdomain.com",
+        "ReferralId": "mytestuser1@gmail.com",
+>>>>>>> Adding partnerdomain.com to Referral
         "Password": null,
         "IsActive": true,
         "DeleteMember": false,
