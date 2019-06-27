@@ -68,7 +68,7 @@ curl -X POST \
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-roomTypeId | integer | Yes | `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code` from an Availability Search (parent block)
+roomTypeId | integer | Yes | `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code` from an Availability Search (parent block) (strip off the prefixed `ARN` string if it exists)
 createHold | void | Yes | Specifies this is a create
 
 ### POST form-data Parameters
