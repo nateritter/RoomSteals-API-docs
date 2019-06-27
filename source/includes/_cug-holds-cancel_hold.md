@@ -21,7 +21,7 @@ curl -X POST \
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-roomTypeId | integer | Yes | `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code` from an Availability Search (parent block)
+roomTypeId | integer | Yes | `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code` from an Availability Search (parent block) (strip off the prefixed `ARN` string if it exists)
 cancelHold | void | Yes | Specifies this is a cancellation
 
 ### POST form-data Parameters
