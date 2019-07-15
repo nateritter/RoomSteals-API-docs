@@ -130,7 +130,7 @@ curl "https://api.travsrv.com/hotel.aspx?\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-siteid | integer | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by RoomSteals
 timeout | int | No | Maximum time to allow for searching gateways, measured in seconds. Default: 15
 maxResults | int | No | Number of results to return. Default: 20. Maximum: 50.
 hotelIds | int* | No | See below.

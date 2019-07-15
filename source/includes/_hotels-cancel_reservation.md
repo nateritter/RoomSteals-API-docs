@@ -233,7 +233,7 @@ curl -X POST "https://api.travsrv.com/hotel.aspx?\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-siteid | integer | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by RoomSteals
 reservationId | string | Yes | The `reservationId` from the reservation creation response.
 itineraryId | string | Yes | The `itineraryId` from the reservation creation response.
 _type | string/enum | No | The response format. One of `xml` or `json`. Default: `json`.

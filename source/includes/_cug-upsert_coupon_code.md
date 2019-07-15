@@ -89,7 +89,7 @@ curl "https://api.travsrv.com/Coupon.aspx?\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-siteid | integer | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by RoomSteals
 type | string | Yes | `save`
 coupon | string | Yes | Stringified, URI encoded JSON object containing the params below
 Code | string | Yes | The code string you want generated
