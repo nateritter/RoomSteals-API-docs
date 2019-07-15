@@ -33,11 +33,10 @@ If the code already exists this call will update the info as provided.
 
 ```shell
 curl "https://api.travsrv.com/Coupon.aspx?\
-username={API-USERNAME}\
-&password={API-PASSWORD}\
 &siteid={SITEID}\
 &type=save\
-&coupon=%7B%22Code%22%3A%22123-4567890%22%2C%22SiteId%22%3A12345%2C%22Data%22%3A%7B%22IsActive%22%3Atrue%2C%22IsUsed%22%3Afalse%2C%22Discount%22%3A500%2C%22MinNights%22%3A1%2C%22ExpiresOn%22%3A%222018-11-06%22%2C%22MaxUses%22%3A1%2C%22IsPercentage%22%3Afalse%2C%22Terms%22%3A%22%22%7D%7D"
+&coupon=%7B%22Code%22%3A%22123-4567890%22%2C%22SiteId%22%3A12345%2C%22Data%22%3A%7B%22IsActive%22%3Atrue%2C%22IsUsed%22%3Afalse%2C%22Discount%22%3A500%2C%22MinNights%22%3A1%2C%22ExpiresOn%22%3A%222018-11-06%22%2C%22MaxUses%22%3A1%2C%22IsPercentage%22%3Afalse%2C%22Terms%22%3A%22%22%7D%7D" \
+  -H 'Authorization: Basic {BASE64-ENCODED-STRING}'
 ```
 
 > The above command returns JSON structured like this:
@@ -90,8 +89,6 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by Hotels For Hope
-password | string | Yes | Provided by Hotels For Hope
 siteid | integer | Yes | Provided by Hotels For Hope
 type | string | Yes | `save`
 coupon | string | Yes | Stringified, URI encoded JSON object containing the params below

@@ -10,10 +10,9 @@ The token (`CurrentToken`) will be URI encoded to ensure a valid JSON response. 
 
 ```shell
 curl "https://api.travsrv.com/MemberAPI.aspx?\
-username={API-USERNAME}\
-&password={API-PASSWORD}\
 &siteid={SITEID}\
-&token=ARNUSER-{ADMIN-USERNAME}"
+&token=ARNUSER-{ADMIN-USERNAME}" \
+  -H 'Authorization: Basic {BASE64-ENCODED-STRING}'
 ```
 
 > The above command returns JSON structured like this:
@@ -70,7 +69,5 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by Hotels For Hope
-password | string | Yes | Provided by Hotels For Hope
 siteid | integer | Yes | Provided by Hotels For Hope
 token | string | Yes | `ARNUSER-` concatonated with the Site Admin's username

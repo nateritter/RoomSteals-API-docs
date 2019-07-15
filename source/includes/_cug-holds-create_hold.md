@@ -2,15 +2,15 @@
 
 You may retrieve a list of the room types (you'll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway `16` (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. 
 
-NOTE: When setting the POST form-data Parameters (seen below), be sure the number of values in the comma separated list specified for "roomCountPerNight" match the number of nights (inclusive) specified in the "blockStartDate" / "blockEndDate" range.
+NOTE: When setting the POST form-data Parameters (seen below), be sure the number of values in the comma separated list specified for "roomCountPerNight" match the number of nights (inclusive) specified in the "blockStartDate" / "blockEndDate" range.  Further, the "blockStartDate" (ie, check-in date) must be > today's date. "blockEndDate" (ie, the day before the check-out date) must be > "blockStartDate".  "blockReleaseDate" must be < "blockStartDate" and > today.
 
-For instance, if the "blockStartDate" = "12/01/2019" and the "blockEndDate" = "12/03/2019", the "roomCountPerNight" should have 3 values, like "1,1,1".  
+For instance, (assuming today's date is < Nov 30, 2019) if the "blockStartDate" = "12/01/2019" and the "blockEndDate" = "12/03/2019", the "roomCountPerNight" should have 3 values, like "1,1,1".  The "blockReleaseDate" must be prior or equal to "11/30/2019".
 
 Additionally, the "blockStartDate" and "blockEndDate" need to be within the parent room type's block dates or the system won't be able to allocate rooms from the parent to hold block.
 
 ```shell
 curl -X POST \
-"https://groups.alliancereservations.com/services/external/roomtypesonhold?&roomTypeId={PARENT-BLOCK-ROOM-TYPE-ID}&createHold" \
+"https://groups.alliancereservations.com/services/external/roomtypesonhold?&roomTypeId={ROOM-TYPE-ID}&createHold" \
 -H 'Authorization: Basic {BASE64-ENCODED-STRING}'
 ```
 
@@ -68,15 +68,15 @@ curl -X POST \
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-roomTypeId | integer | Yes | `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code` from an Availability Search (parent block) (strip off the prefixed `ARN` string if it exists)
-createHold | void | Yes | Specifies this is a create
+roomTypeId | integer | Yes | `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room@Code` from an Availability Search (parent block). This is specifying the room from the parent block that you want to create a hold (sub-block) out of.
+createHold | void | Yes | Specifies this is a create action
 
 ### POST form-data Parameters
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-blockDescription | string | Yes | Name this on hold block
-roomCountPerNight | integer | Yes | Number of rooms to hold
-blockStartDate | date | Yes | Start date of held rooms (format: mm/dd/yyyy)
-blockEndDate | date | Yes | End date of held rooms (format: mm/dd/yyyy)
-blockReleaseDate | date | Yes | Date when hold will expire
+blockDescription | string | Yes | Name this on hold block (anything you would like)
+roomCountPerNight | integer | Yes | Comma delimited list of the number of rooms to hold for each night. (ie., "1,1,1" would be 1 room for all 3 nights of the date range)
+blockStartDate | date | Yes | Start date of held rooms (ie., check-in date) (format: mm/dd/yyyy) (must be > today's date)
+blockEndDate | date | Yes | Last night to hold (ie., the date prior to the check-out date) (format: mm/dd/yyyy) (must be > blockStartDate)
+blockReleaseDate | date | Yes | Date when hold will expire (must be > today and < blockStartDate).

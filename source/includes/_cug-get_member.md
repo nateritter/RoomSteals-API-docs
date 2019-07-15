@@ -5,7 +5,8 @@ This endpoint retrieves a member using their member token. Successfully calling 
 ```shell
 curl "https://api.travsrv.com/MemberAPI.aspx?\
 &siteid={SITEID}\
-&token={MEMBER-TOKEN}"
+&token={MEMBER-TOKEN}" \
+  -H 'Authorization: Basic {BASE64-ENCODED-STRING}'
 ```
 
 > The above command returns JSON structured like this:
