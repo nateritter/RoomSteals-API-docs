@@ -52,10 +52,16 @@ Property Type ID | Property Type
 9 | Bed and breakfast
 12 | Vacation rental
 
-## `roomCode`
+## `roomCode` / `roomTypeId`
 
-This is the `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code` value specified in the Availability Search results for the room type you are interested.
+This is the `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room@Code` value specified in the Availability Search results for the room type you are interested.
+
+The terms `roomCode` and `roomTypeId` are synonymous.
 
 ## `ratePlanCode`
 
-This is the `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.@Code` value specified in the Availability Search results for the rate plan you are interested in.
+This is the `ArnResponse.Availability.HotelAvailability.Hotel.RatePlan@Code` value specified in the Availability Search results for the rate plan you are interested in.  It's simply the `roomCode` / `roomTypeId` with a prefixed "ARN" string in front of it.
+
+## `HotelId` / `PropertyID`
+
+These two terms and their values are synonymous.  You may use the values of these properties in a resulting `hotelids` parameter (comma-delimited).

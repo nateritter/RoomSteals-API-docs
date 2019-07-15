@@ -1,18 +1,17 @@
 ## Hotel Reservation Cancellation
 
-To cancel a reservation you will need the `reservationId` and `itineraryId` returned in the reservation creation response.
+To cancel a reservation you will need the `reservationId` and `itineraryId` returned in the reservation creation response.  These values are mapped 1-to-1, so both are needed and they likely will not be the same values, but will be related to each other.
 
 ```shell
 curl -X POST "https://api.travsrv.com/hotel.aspx?\
-username={API-USERNAME}\
-&password={API-PASSWORD}\
 &siteid={SITEID}\
 &reservationId=915892\
 &itineraryId=733525\
 &ipAddress=127.0.0.1\
 &userAgent=shell\
 &userLanguage=en\
-&_type=json"
+&_type=json" \
+  -H 'Authorization: Basic {BASE64-ENCODED-STRING}' \
 ```
 
 > The above command returns JSON structured like this (edited for brevity):
@@ -47,11 +46,11 @@ username={API-USERNAME}\
         "Hotel": {
           "@HotelID": "219295",
           "RatePlan": {
-            "@Code": "ARN",
+            "@Code": "ARN987654321",
             "@Description": "Internet Special",
             "@Gateway": "1",
             "Room": {
-              "@Code": "3979",
+              "@Code": "987654321",
               "@Name": "Double Room",
               "@Description": "Double Room - one double bed, satellite television, minibar, coffee maker, in-room safe, work desk, air conditioning, hairdryer, private bathroom, complimentary breakfast buffet. Rate includes transportation from the airport to the hotel. Please enter your Airline and Flight Number in the 'Other Special Requests' field when placing your reservation. Rates based on single or double occupancy. (Maximum 2 people)",
               "@CurrencyCode": "USD",
@@ -234,8 +233,6 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by Hotels For Hope
-password | string | Yes | Provided by Hotels For Hope
 siteid | integer | Yes | Provided by Hotels For Hope
 reservationId | string | Yes | The `reservationId` from the reservation creation response.
 itineraryId | string | Yes | The `itineraryId` from the reservation creation response.

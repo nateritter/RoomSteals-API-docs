@@ -10,11 +10,10 @@ Notice the `type=redeem`, which is the difference between this endpoint call and
 
 ```shell
 curl "https://api.travsrv.com/Coupon.aspx?\
-username={API-USERNAME}\
-&password={API-PASSWORD}\
 &siteid={SITEID}\
 &type=redeem\
-&couponcode={COUPON-CODE}"
+&couponcode={COUPON-CODE}" \
+  -H 'Authorization: Basic {BASE64-ENCODED-STRING}'
 ```
 
 > The above command returns JSON structured like this:
@@ -67,8 +66,6 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by Hotels For Hope
-password | string | Yes | Provided by Hotels For Hope
 siteid | integer | Yes | Provided by Hotels For Hope
 type | string | Yes | `get` (see above), or `redeem` (in this case)
 couponcode | string | Yes | The code to invalidate
