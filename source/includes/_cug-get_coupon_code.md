@@ -66,6 +66,6 @@ curl "https://api.travsrv.com/Coupon.aspx?\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-siteid | integer | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by RoomSteals
 type | string | Yes | `get` (in this case), or `redeem` (see below)
 couponcode | string | Yes | The code to lookup

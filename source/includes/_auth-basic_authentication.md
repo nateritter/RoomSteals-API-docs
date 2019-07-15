@@ -1,6 +1,6 @@
 ## Basic Authentication
 
-Hotels For Hope uses Basic Authentication to allow access to the API. You can request Hotels For Hope API credentials by partnering with us and emailing [support](mailto:hello@hotelsforhope.com).
+RoomSteals uses Basic Authentication to allow access to the API. You can request RoomSteals API credentials by partnering with us and emailing [support](mailto:hello@hotelsforhope.com).
 
 All examples using CURL in this documentation specify the Basic Authentication header with the following: `-H 'Authorization: Basic {BASE64-ENCODED-STRING}'`
 

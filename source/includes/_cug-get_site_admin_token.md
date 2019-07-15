@@ -69,5 +69,5 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-siteid | integer | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by RoomSteals
 token | string | Yes | `ARNUSER-` concatonated with the Site Admin's username

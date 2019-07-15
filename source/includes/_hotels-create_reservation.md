@@ -260,7 +260,7 @@ curl -X POST "https://api.travsrv.com/hotel.aspx?\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-siteid | integer | Yes | Provided by Hotels For Hope
+siteid | integer | Yes | Provided by RoomSteals
 hotelIds | int | Yes | The particular hotel id to reserve the room at.
 agentRefNumber | string | No | A reference ID you may use for your own tracking purposes. This is included in a reservation webhook, if used.
 rooms | int | Yes | Number of rooms needed. Maximum: 9.
