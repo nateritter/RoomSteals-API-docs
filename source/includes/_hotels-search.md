@@ -18,10 +18,12 @@ We do not advise programming in a gateway-specific manner. Gateways may respond 
 If an availability search fails to return rates, we suggest not showing the hotel in your user interface.
 </aside>
 
+<aside class="notice">
+For the `children` parameter, we always suggest sending in a value of "0". Many older GDS do not accept this parameter at all, and including it may return inconsistent pricing because of this.
+</aside>
+
 ```shell
 curl "https://api.travsrv.com/hotel.aspx?\
-username={API-USERNAME}\
-&password={API-PASSWORD}\
 &siteid={SITEID}\
 &latitude=30.099016\
 &longitude=-81.601370\
@@ -35,7 +37,8 @@ username={API-USERNAME}\
 &ipAddress=127.0.0.1\
 &userAgent=shell\
 &userLanguage=en\
-&_type=json"
+&_type=json" \
+  -H 'Authorization: Basic {BASE64-ENCODED-STRING}'
 ```
 
 > The above command returns JSON structured like this (edited for brevity):
@@ -50,7 +53,7 @@ username={API-USERNAME}\
       "@TimeReceived": "2018-04-13T16:01:13.510", 
       "@TimeCompleted": "2018-04-13T16:01:13.651",
       "@Version": "1.0.0.0",
-      "@ServiceUrl": "https://api.travsrv.com/hotel.aspx?inDate=2018-10-20&latitude=30.099016&longitude=-81.601370&maxResults=1&outDate=2018-10-22&password={API-PASSWORD}&radius=10&siteid={SITEID}&username={API-USERNAME}",
+      "@ServiceUrl": "https://api.travsrv.com/hotel.aspx?inDate=2018-10-20&latitude=30.099016&longitude=-81.601370&maxResults=1&outDate=2018-10-22&radius=10&siteid={SITEID}",
       "@RequestID": "436E177E-558F-4287-B55A-5DBD9F4C7579"
     },
     "Availability": {
@@ -127,9 +130,7 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by RoomSteals
-password | string | Yes | Provided by RoomSteals
-siteid | integer | Yes | Provided by RoomSteals
+siteid | integer | Yes | Provided by Hotels For Hope
 timeout | int | No | Maximum time to allow for searching gateways, measured in seconds. Default: 15
 maxResults | int | No | Number of results to return. Default: 20. Maximum: 50.
 hotelIds | int* | No | See below.
@@ -142,7 +143,7 @@ rooms | int | Yes | Number of rooms needed. When searching for more than one roo
 inDate | date | Yes | Desired check-in date (format: `YYYY-MM-DD` based on UTC -7 (MST) time zone)
 outDate | date | Yes | Desired check-out date (format: `YYYY-MM-DD` based on UTC -7 (MST) time zone)
 adults | int | Yes | Total number of adults. For instance, if `rooms=2&adults=2`, the search is for 1 room per adult. Maximum 8 adults per room. Uneven/odd numbers of adults/rooms will be rounded up to support legacy providers.
-children | int | Yes | Total number of children. Maximum: 8. Note: Some legacy providers do not honor the `children` parameter.
+children | int | Yes | Total number of children. Maximum: 8. Note: Some legacy providers do not honor the `children` parameter. We suggest usually setting this to `0`.
 sortType | string/enum | No | One of `bestvalue`, `dealpercent`, `dealamount`. Default: `bestvalue`. See below.
 currency | string | No | Default: `USD`. See common value map.
 name | string | No | Partial hotel name filter. E.g., passing "ilton" would return properties like "Hilton Garden Inn", etc.

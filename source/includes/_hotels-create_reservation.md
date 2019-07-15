@@ -4,19 +4,17 @@ Generally speaking this call should be self explanatory. The parameters you will
 
 ```shell
 curl -X POST "https://api.travsrv.com/hotel.aspx?\
-username={API-USERNAME}\
-&password={API-PASSWORD}\
 &siteid={SITEID}\
-&gateway=16\
+&gateway=20\
 &rooms=1\
 &hotelIds=10731\
 &rooms=1\
 &inDate=2007-03-30\
 &outDate=2007-03-31\
 &adults=2\
-&children=1\
-&ratePlanCode=AAA\
-&roomCode=Z303AAA\
+&children=0\
+&ratePlanCode=ARN987654321\
+&roomCode=987654321\
 &guestFirstName=Eddie\
 &guestLastName=Collins\
 &guestEmail=nobody@yahoo.com\
@@ -34,9 +32,9 @@ username={API-USERNAME}\
 &roomCostGatewayFee=0.00\
 &roomCostTotalAmount=103.95\
 &roomCostCurrencyCode=USD\
-&creditCardType=VISA\
+&creditCardType=VI\
 &creditCardNumber=4242424242424242\
-&creditCardExpiration=2018-12\
+&creditCardExpiration=01/21\
 &creditCardCVV2=123\
 &creditCardHolder=Eddie Collins\
 &creditCardAddress=123 Main Street\
@@ -47,7 +45,8 @@ username={API-USERNAME}\
 &ipAddress=127.0.0.1\
 &userAgent=shell\
 &userLanguage=en\
-&_type=json"
+&_type=json" \
+  -H 'Authorization: Basic {BASE64-ENCODED-STRING}'
 ```
 
 > The above command returns JSON structured like this (edited for brevity):
@@ -80,11 +79,11 @@ username={API-USERNAME}\
         "Hotel": {
           "@HotelID": "10731",
           "RatePlan": {
-            "@Code": "AAA",
+            "@Code": "ARN987654321",
             "@Description": "QUALIFYING MEMBER RATE: Aaa/CAA Rate 1 King Bed /1 Room Suite/Partial Room Divider /Microwave Refrigerator/Computer Hookup Guest Must Show Some Form Of Aaa Membership Rate Is Applicable To AAA Members Only And Only On Rooms They Stay In Themselv",
             "@Gateway": "4",
             "Room": {
-              "@Code": "Z303AAA",
+              "@Code": "987654321",
               "@Name": "Room",
               "@Description": "QUALIFYING MEMBER RATE: Aaa/CAA Rate 1 King Bed /1 Room Suite/Partial Room Divider /Microwave Refrigerator/Computer Hookup Guest Must Show Some Form Of Aaa Membership Rate Is Applicable To AAA Members Only And Only On Rooms They Stay In Themselv",
               "@CurrencyCode": "USD",
@@ -261,16 +260,14 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by RoomSteals
-password | string | Yes | Provided by RoomSteals
-siteid | integer | Yes | Provided by RoomSteals
+siteid | integer | Yes | Provided by Hotels For Hope
 hotelIds | int | Yes | The particular hotel id to reserve the room at.
 agentRefNumber | string | No | A reference ID you may use for your own tracking purposes. This is included in a reservation webhook, if used.
 rooms | int | Yes | Number of rooms needed. Maximum: 9.
 inDate | date | Yes | Desired check-in date (format: `YYYY-MM-DD` based on UTC -7 (MST) time zone)
 outDate | date | Yes | Desired check-out date (format: `YYYY-MM-DD` based on UTC -7 (MST) time zone)
 adults | int | Yes | Total number of adults. For instance, if `rooms=2&adults=2`, the search is for 1 room per adult. Maximum 8 adults per room. Uneven/odd numbers of adults/rooms will be rounded up to support legacy providers.
-children | int | Yes | Total number of children. Maximum: 8. Note: Some legacy providers do not honor the `children` parameter.
+children | int | Yes | Total number of children. Maximum: 8. Note: Some legacy providers do not honor the `children` parameter. We suggest setting this value to `0` for most inquiries.
 currency | string | No | Default: `USD`. See common value map.
 ratePlanCode | string | Yes | See common value map.
 roomCode | string | Yes | See common value map.
@@ -296,9 +293,10 @@ roomCostGatewayFee | decimal | Yes | See below.
 roomCostTotalAmount | decimal | Yes | See below.
 roomCostCurrencyCode | string | Yes | See below.
 bookingFeeAmount | decimal | Yes | See below.
-creditCardType | string | Yes | Credit card type ("AMEX", "MasterCard", "VISA", etc.)
+bookingFeeCurrencyCode | string | See common value map for `currency`.
+creditCardType | string | Yes | Options: "AX" (AMEX), "CA" (MasterCard), "VI" (Visa), "DC" (Discover)
 creditCardNumber | string | Yes | Credit card number.
-creditCardExpiration | string | Yes | Credit card expiration date (format: `YYYY-MM`)
+creditCardExpiration | string | Yes | Credit card expiration date (format: `MM/YY`)
 creditCardCVV2 | int | Yes | Credit card CVV2 number.
 creditCardHolder | string | Yes | Name on credit card.
 creditCardAddress | string | Yes | Credit card billing address.

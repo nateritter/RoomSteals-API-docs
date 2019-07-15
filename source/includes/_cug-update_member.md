@@ -38,6 +38,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 ```shell
 curl -X POST \
   https://api.travsrv.com/MemberAPI.aspx \
+  -H 'Authorization: Basic {BASE64-ENCODED-STRING}' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -d 'siteid={SITEID}&token={ADMIN-TOKEN}&memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123MainStreet%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'

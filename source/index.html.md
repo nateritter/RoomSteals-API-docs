@@ -11,7 +11,7 @@ toc_footers:
 includes:
   - intro
   - auth
-  - auth-query_string
+  - auth-basic_authentication
   - auth-sso
   - common_value_maps
   - cug
@@ -28,7 +28,7 @@ includes:
   - cug-holds-get_by_room_id
   - cug-holds-get_property
   - cug-holds-cancel_hold
-  - hotels
+  - hotels-and-availability
   - hotels-search
   - hotels-get_hotel
   - hotels-create_reservation

@@ -12,13 +12,11 @@ Failed responses indicate the rate is sold out. Subsequent availability calls wi
 
 **All fees, penalties, and policies from this response must be shown to the user before creating a reservation.**
 
-All room prices are based on the number of adults per room specified in the request.  A response containing an extra adult fee of `0` may simply mean the pricing is not available. Adding more than the specified number of adults to the room because the extra adult fee is `0` will likely incur a price difference when the guest arrives at the hotel. To avoid this, we advise not depend on the extra adult fee specified in the response when it comes to pricing.
+All room prices are based on the number of adults per room specified in the request.  A response containing an extra adult fee of `0` may simply mean the pricing is not available. Adding more than the specified number of adults to the room because the extra adult fee is `0` will likely incur a price difference when the guest arrives at the hotel. To avoid this, we advise not to depend on the extra adult fee specified in the response when it comes to pricing.
 
 
 ```shell
 curl "https://api.travsrv.com/hotel.aspx?\
-username={API-USERNAME}\
-&password={API-PASSWORD}\
 &siteid={SITEID}\
 &hotelIds=272393\
 &inDate=2018-10-20\
@@ -28,12 +26,13 @@ username={API-USERNAME}\
 &adults=2\
 &children=0\
 &gateway=51\
-&ratePlanCode=F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935\
+&ratePlanCode=987654321\
 &roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ\
 &ipAddress=127.0.0.1\
 &userAgent=shell\
 &userLanguage=en\
-&_type=json"
+&_type=json" \
+  -H 'Authorization: Basic {BASE64-ENCODED-STRING}' \
 ```
 
 > The above command returns JSON structured like this (edited for brevity):
@@ -48,7 +47,7 @@ username={API-USERNAME}\
       "@TimeReceived": "2018-04-17T00:41:27.367",
       "@TimeCompleted": "2018-04-17T00:41:27.804",
       "@Version": "1.0.0.0",
-      "@ServiceUrl": "http://api.travsrv.com/hotel.aspx?_type=json&adults=2&children=0&gateway=51&hotelIds=272393&inDate=2018-10-20&ipAddress=127.0.0.1&maxResults=1&outDate=2018-10-22&password={API-PASSWORD}&ratePlanCode=&roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ&rooms=1&siteid={SITEID}&userAgent=shell&userLanguage=en&username={API-USERNAME}",
+      "@ServiceUrl": "http://api.travsrv.com/hotel.aspx?_type=json&adults=2&children=0&gateway=51&hotelIds=272393&inDate=2018-10-20&ipAddress=127.0.0.1&maxResults=1&outDate=2018-10-22&&ratePlanCode=&roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ&rooms=1&siteid={SITEID}&userAgent=shell&userLanguage=en",
       "@RequestID": "2999AB6A-6DB9-4FFF-9586-BBED51BB6108"
     },
     "Availability": {
@@ -75,14 +74,14 @@ username={API-USERNAME}\
           "@PriceClass": "2 Stars"
           "RatePlan": [
             {
-              "@Code": "F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935",
+              "@Code": "ARN987654321",
               "@Description": "Best Available",
               "@BuyerOnly": "false",
               "@Gateway": "41",
               "@CommissionStatus": "Commissionable",
               "@BalanceDueAtHotel": "false",
               "Room": {
-                "@Code": "",
+                "@Code": "987654321",
                 "@Name": "Standard room",
                 "@Description": "- 1 King Bed - Nonsmoking Room - Free Breakfast, Free Wifi, Fridge, Microwave",
                 "@CurrencyCode": "USD",
@@ -136,9 +135,7 @@ username={API-USERNAME}\
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-username | string | Yes | Provided by RoomSteals
-password | string | Yes | Provided by RoomSteals
-siteid | integer | Yes | Provided by RoomSteals
+siteid | integer | Yes | Provided by Hotels For Hope
 timeout | int | No | Maximum time to allow for searching gateways, measured in seconds. Default: 15
 hotelIds | int | No | The particular hotel id for which more detail is being requested.
 rooms | int | Yes | Number of rooms needed. When searching for more than one room, responses are based on the same room type and occupancy for every room. Maximum: 9 (best results with no more than 4).
