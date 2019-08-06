@@ -225,7 +225,7 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#query-string" class="toc-h2 toc-link" data-title="Query String">Query String</a>
+                    <a href="#basic-authentication" class="toc-h2 toc-link" data-title="Basic Authentication">Basic Authentication</a>
                   </li>
                   <li>
                     <a href="#single-sign-on-sso" class="toc-h2 toc-link" data-title="Single Sign On (SSO)">Single Sign On (SSO)</a>
@@ -251,10 +251,13 @@
                     <a href="#propertytypes" class="toc-h2 toc-link" data-title="propertyTypes"><code>propertyTypes</code></a>
                   </li>
                   <li>
-                    <a href="#roomcode" class="toc-h2 toc-link" data-title="roomCode"><code>roomCode</code></a>
+                    <a href="#roomcode-roomtypeid" class="toc-h2 toc-link" data-title="roomCode / roomTypeId"><code>roomCode</code> / <code>roomTypeId</code></a>
                   </li>
                   <li>
                     <a href="#rateplancode" class="toc-h2 toc-link" data-title="ratePlanCode"><code>ratePlanCode</code></a>
+                  </li>
+                  <li>
+                    <a href="#hotelid-propertyid" class="toc-h2 toc-link" data-title="HotelId / PropertyID"><code>HotelId</code> / <code>PropertyID</code></a>
                   </li>
               </ul>
           </li>
@@ -305,8 +308,11 @@
               </ul>
           </li>
           <li>
-            <a href="#hotels" class="toc-h1 toc-link" data-title="Hotels">Hotels</a>
+            <a href="#hotels-and-availability" class="toc-h1 toc-link" data-title="Hotels and availability">Hotels and availability</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#workflow-overview" class="toc-h2 toc-link" data-title="Workflow overview">Workflow overview</a>
+                  </li>
                   <li>
                     <a href="#availability-search" class="toc-h2 toc-link" data-title="Availability Search">Availability Search</a>
                   </li>
@@ -350,20 +356,12 @@
 <p>Welcome to the RoomSteals API! You can use our API to access RoomSteals API endpoints, which can get information on hundreds of thousands of hotels, their availability, details, as well as create and cancel reservations.</p>
 
 <p>We have examples using a shell. You can view code examples in the dark area to the right, and (when languages become available) you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='authentication'>Authentication</h1><h2 id='query-string'>Query String</h2>
-<p>RoomSteals uses a querystring username and password to allow access to the API. You can request RoomSteals API credentials by partnering with us and emailing <a href="mailto:hello@roomsteals.com">support</a>.</p>
+<h1 id='authentication'>Authentication</h1><h2 id='basic-authentication'>Basic Authentication</h2>
+<p>RoomSteals uses Basic Authentication to allow access to the API. You can request RoomSteals API credentials by partnering with us and emailing <a href="mailto:hello@hotelsforhope.com">support</a>.</p>
 
-<p>The API credentials are expected in all API requests to the server in the querystring like the following:</p>
+<p>All examples using CURL in this documentation specify the Basic Authentication header with the following: <code>-H &#39;Authorization: Basic {BASE64-ENCODED-STRING}&#39;</code></p>
 
-<p><code>&amp;username={API-USERNAME}&amp;password={API-PASSWORD}&amp;siteid={SITEID}</code></p>
-
-<aside class="notice">
-You must replace <code>{API-USERNAME}</code>, <code>{API-PASSWORD}</code>, and <code>{SITEID}</code> with your personal API credentials and Site ID respectively.
-</aside>
-
-<aside class="warning">
-Considering the sensitive nature of query string based API calls, we highly suggest not exposing these credentials by using them in client-side scripting languages like JavaScript. We recommend making calls with these credentials only using server-side technologies.
-</aside>
+<p>Please note that there are different domain names used in different endpoints described in this document. <code>api.travsrv.com​</code> may use different credentials than ​<code>groups.alliancereservations.com​</code>. In some cases they may be the same, however. Your case is specific to your organization. Please contact support if you need assistnace with these credentials.</p>
 <h2 id='single-sign-on-sso'>Single Sign On (SSO)</h2>
 <p>If you wish to integrate our closed user group portal/site with your own applications and user group, you can utilize our SSO functionality.</p>
 
@@ -505,10 +503,14 @@ If you use our portal's UI and wanted to link directly to a particuilar page wit
 <td>Vacation rental</td>
 </tr>
 </tbody></table>
-<h2 id='roomcode'><code>roomCode</code></h2>
-<p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code</code> value specified in the Availability Search results for the room type you are interested.</p>
+<h2 id='roomcode-roomtypeid'><code>roomCode</code> / <code>roomTypeId</code></h2>
+<p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room@Code</code> value specified in the Availability Search results for the room type you are interested.</p>
+
+<p>The terms <code>roomCode</code> and <code>roomTypeId</code> are synonymous.</p>
 <h2 id='rateplancode'><code>ratePlanCode</code></h2>
-<p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.@Code</code> value specified in the Availability Search results for the rate plan you are interested in.</p>
+<p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan@Code</code> value specified in the Availability Search results for the rate plan you are interested in.  It&#39;s simply the <code>roomCode</code> / <code>roomTypeId</code> with a prefixed &quot;ARN&quot; string in front of it.</p>
+<h2 id='hotelid-propertyid'><code>HotelId</code> / <code>PropertyID</code></h2>
+<p>These two terms and their values are synonymous.  You may use the values of these properties in a resulting <code>hotelids</code> parameter (comma-delimited).</p>
 <h1 id='closed-user-groups'>Closed user groups</h1>
 <p>This section is only for those using the SSO Authentication feature and pertains to managing users and their authentication tokens.  </p>
 
@@ -522,10 +524,9 @@ If you use our portal's UI and wanted to link directly to a particuilar page wit
 The token (`CurrentToken`) will be URI encoded to ensure a valid JSON response. When using it in a POST-based API call, be sure to decode it.  If using it in URLs, when creating/using a SSO link for example, leave it encoded.
 </aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
-username={API-USERNAME}</span><span class="se">\</span><span class="s2">
-&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
-&amp;token=ARNUSER-{ADMIN-USERNAME}"</span>
+&amp;token=ARNUSER-{ADMIN-USERNAME}"</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -583,18 +584,6 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 </tr>
 </thead><tbody>
 <tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
@@ -641,6 +630,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
   https://api.travsrv.com/MemberAPI.aspx <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span> <span class="se">\</span>
   -H <span class="s1">'Cache-Control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
   -d <span class="s1">'siteid={SITEID}&amp;token={ADMIN-TOKEN}&amp;memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123%20Main%20Street%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'</span>
@@ -802,6 +792,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
   https://api.travsrv.com/MemberAPI.aspx <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span> <span class="se">\</span>
   -H <span class="s1">'Cache-Control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
   -d <span class="s1">'siteid={SITEID}&amp;token={ADMIN-TOKEN}&amp;memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123MainStreet%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'</span>
@@ -941,7 +932,8 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <p>This endpoint retrieves a member using their member token. Successfully calling this endpoint also generates a new member token for the user in the <code>CurrentToken</code> property, which you should save for them if you want to call this endpoint again in the future.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/MemberAPI.aspx?</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
-&amp;token={MEMBER-TOKEN}"</span>
+&amp;token={MEMBER-TOKEN}"</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1039,11 +1031,10 @@ Notice the `type=save` (and `POST` type), which are the differences between this
 If the code already exists this call will update the info as provided.
 </aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/Coupon.aspx?</span><span class="se">\</span><span class="s2">
-username={API-USERNAME}</span><span class="se">\</span><span class="s2">
-&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;type=save</span><span class="se">\</span><span class="s2">
-&amp;coupon=%7B%22Code%22%3A%22123-4567890%22%2C%22SiteId%22%3A12345%2C%22Data%22%3A%7B%22IsActive%22%3Atrue%2C%22IsUsed%22%3Afalse%2C%22Discount%22%3A500%2C%22MinNights%22%3A1%2C%22ExpiresOn%22%3A%222018-11-06%22%2C%22MaxUses%22%3A1%2C%22IsPercentage%22%3Afalse%2C%22Terms%22%3A%22%22%7D%7D"</span>
+&amp;coupon=%7B%22Code%22%3A%22123-4567890%22%2C%22SiteId%22%3A12345%2C%22Data%22%3A%7B%22IsActive%22%3Atrue%2C%22IsUsed%22%3Afalse%2C%22Discount%22%3A500%2C%22MinNights%22%3A1%2C%22ExpiresOn%22%3A%222018-11-06%22%2C%22MaxUses%22%3A1%2C%22IsPercentage%22%3Afalse%2C%22Terms%22%3A%22%22%7D%7D"</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1095,18 +1086,6 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
@@ -1201,11 +1180,10 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 Notice the `type=get`, which is the difference between this endpoint call and the call which is used to redeem a code, as noted below.
 </aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/Coupon.aspx?</span><span class="se">\</span><span class="s2">
-username={API-USERNAME}</span><span class="se">\</span><span class="s2">
-&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;type=get</span><span class="se">\</span><span class="s2">
-&amp;couponcode={COUPON-CODE}"</span>
+&amp;couponcode={COUPON-CODE}"</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1258,18 +1236,6 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 </tr>
 </thead><tbody>
 <tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
@@ -1297,11 +1263,10 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 Notice the `type=redeem`, which is the difference between this endpoint call and the call which is used to simply retrieve the data for a single coupon/code, as noted above.
 </aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/Coupon.aspx?</span><span class="se">\</span><span class="s2">
-username={API-USERNAME}</span><span class="se">\</span><span class="s2">
-&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;type=redeem</span><span class="se">\</span><span class="s2">
-&amp;couponcode={COUPON-CODE}"</span>
+&amp;couponcode={COUPON-CODE}"</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1354,18 +1319,6 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 </tr>
 </thead><tbody>
 <tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
@@ -1407,13 +1360,13 @@ Just as the authentication for this set of endpoints is different, please note t
 <h2 id='create-a-hold'>Create a Hold</h2>
 <p>You may retrieve a list of the room types (you&#39;ll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway <code>16</code> (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. </p>
 
-<p>NOTE: When setting the POST form-data Parameters (seen below), be sure the number of values in the comma separated list specified for &quot;roomCountPerNight&quot; match the number of nights (inclusive) specified in the &quot;blockStartDate&quot; / &quot;blockEndDate&quot; range.</p>
+<p>NOTE: When setting the POST form-data Parameters (seen below), be sure the number of values in the comma separated list specified for &quot;roomCountPerNight&quot; match the number of nights (inclusive) specified in the &quot;blockStartDate&quot; / &quot;blockEndDate&quot; range.  Further, the &quot;blockStartDate&quot; (ie, check-in date) must be &gt; today&#39;s date. &quot;blockEndDate&quot; (ie, the day before the check-out date) must be &gt; &quot;blockStartDate&quot;.  &quot;blockReleaseDate&quot; must be &lt; &quot;blockStartDate&quot; and &gt; today.</p>
 
-<p>For instance, if the &quot;blockStartDate&quot; = &quot;12/01/2019&quot; and the &quot;blockEndDate&quot; = &quot;12/03/2019&quot;, the &quot;roomCountPerNight&quot; should have 3 values, like &quot;1,1,1&quot;.  </p>
+<p>For instance, (assuming today&#39;s date is &lt; Nov 30, 2019) if the &quot;blockStartDate&quot; = &quot;12/01/2019&quot; and the &quot;blockEndDate&quot; = &quot;12/03/2019&quot;, the &quot;roomCountPerNight&quot; should have 3 values, like &quot;1,1,1&quot;.  The &quot;blockReleaseDate&quot; must be prior or equal to &quot;11/30/2019&quot;.</p>
 
 <p>Additionally, the &quot;blockStartDate&quot; and &quot;blockEndDate&quot; need to be within the parent room type&#39;s block dates or the system won&#39;t be able to allocate rooms from the parent to hold block.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-<span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?&amp;roomTypeId={PARENT-BLOCK-ROOM-TYPE-ID}&amp;createHold"</span> <span class="se">\</span>
+<span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?&amp;roomTypeId={ROOM-TYPE-ID}&amp;createHold"</span> <span class="se">\</span>
 -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
@@ -1475,13 +1428,13 @@ Just as the authentication for this set of endpoints is different, please note t
 <td>roomTypeId</td>
 <td>integer</td>
 <td>Yes</td>
-<td><code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code</code> from an Availability Search (parent block)</td>
+<td><code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room@Code</code> from an Availability Search (parent block). This is specifying the room from the parent block that you want to create a hold (sub-block) out of.</td>
 </tr>
 <tr>
 <td>createHold</td>
 <td>void</td>
 <td>Yes</td>
-<td>Specifies this is a create</td>
+<td>Specifies this is a create action</td>
 </tr>
 </tbody></table>
 <h3 id='post-form-data-parameters'>POST form-data Parameters</h3>
@@ -1497,31 +1450,31 @@ Just as the authentication for this set of endpoints is different, please note t
 <td>blockDescription</td>
 <td>string</td>
 <td>Yes</td>
-<td>Name this on hold block</td>
+<td>Name this on hold block (anything you would like)</td>
 </tr>
 <tr>
 <td>roomCountPerNight</td>
 <td>integer</td>
 <td>Yes</td>
-<td>Number of rooms to hold</td>
+<td>Comma delimited list of the number of rooms to hold for each night. (ie., &quot;1,1,1&quot; would be 1 room for all 3 nights of the date range)</td>
 </tr>
 <tr>
 <td>blockStartDate</td>
 <td>date</td>
 <td>Yes</td>
-<td>Start date of held rooms (format: mm/dd/yyyy)</td>
+<td>Start date of held rooms (ie., check-in date) (format: mm/dd/yyyy) (must be &gt; today&#39;s date)</td>
 </tr>
 <tr>
 <td>blockEndDate</td>
 <td>date</td>
 <td>Yes</td>
-<td>End date of held rooms (format: mm/dd/yyyy)</td>
+<td>Last night to hold (ie., the date prior to the check-out date) (format: mm/dd/yyyy) (must be &gt; blockStartDate)</td>
 </tr>
 <tr>
 <td>blockReleaseDate</td>
 <td>date</td>
 <td>Yes</td>
-<td>Date when hold will expire</td>
+<td>Date when hold will expire (must be &gt; today and &lt; blockStartDate).</td>
 </tr>
 </tbody></table>
 <h2 id='get-all-holds'>Get All Holds</h2>
@@ -1699,15 +1652,16 @@ Either the `affiliateId` or `siteId` must be passsed into this endpoint.  This e
 </tr>
 </tbody></table>
 <h2 id='cancel-a-hold'>Cancel a Hold</h2>
-<p>You may retrieve a list of the room types (you&#39;ll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway <code>16</code> (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. Calling this endpoint successfully will return a 200 response code, but no body.</p>
+<p>You may retrieve a list of the room types (you&#39;ll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway <code>16</code> (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. <strong>IMPORTANT NOTE:</strong> Calling this endpoint successfully will return a string (URL), not JSON-encoded.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-<span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?&amp;roomTypeId={PARENT-BLOCK-ROOM-TYPE-ID}&amp;cancelHold"</span> <span class="se">\</span>
+<span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?&amp;roomTypeId={ROOM-TYPE-ID}&amp;cancelHold"</span> <span class="se">\</span>
 -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a string like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code></code></pre><h3 id='http-request'>HTTP Request</h3>
+<pre class="highlight plaintext"><code>https://groups.alliancereservations.com/services/external/roomtypesonhold?&amp;roomTypeId=111111
+</code></pre><h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://groups.alliancereservations.com/services/external/roomtypesonhold</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -1722,7 +1676,7 @@ Either the `affiliateId` or `siteId` must be passsed into this endpoint.  This e
 <td>roomTypeId</td>
 <td>integer</td>
 <td>Yes</td>
-<td><code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code</code> from an Availability Search (parent block)</td>
+<td>The RoomTypeId you want to cancel a hold on</td>
 </tr>
 <tr>
 <td>cancelHold</td>
@@ -1747,7 +1701,51 @@ Either the `affiliateId` or `siteId` must be passsed into this endpoint.  This e
 <td>Reason for cancellation</td>
 </tr>
 </tbody></table>
-<h1 id='hotels'>Hotels</h1><h2 id='availability-search'>Availability Search</h2>
+<h1 id='hotels-and-availability'>Hotels and availability</h1><h2 id='workflow-overview'>Workflow overview</h2><h3 id='creating-a-reservation'>Creating a reservation</h3>
+<p>This is the typical workflow for creating a reservation. Each step contains information you will need to create the reservation. These steps exist by design to reduce fraud.</p>
+
+<ol>
+<li>Get available inventory using an <a href="#availability-search">Availability Search</a></li>
+<li><a href="#hotel-detail">Get inventory details</a></li>
+<li><a href="#hotel-reservation-creation">Create a Reservation</a> based on details</li>
+</ol>
+<h3 id='creating-a-reservation-using-a-hold'>Creating a reservation using a hold</h3>
+<p><a href="#inventory-on-hold">Inventory on hold</a> is only useful only for that inventory which is RFP&#39;d and contracted using our Groups application.  It does not pertain to GDS, OTA, or any other type of inventory other than that which you contract and load into the Groups app.</p>
+
+<p>Once contracted inventory is added into the Groups app it becomes available in the API through an Availability Search using the parameter <code>​gateway=16​</code>.</p>
+
+<ol>
+<li>Add contracted inventory to the Groups app (RFP and accept a bid). <em>This is a pre-requisite manual step. All other steps can be done with this API.</em></li>
+<li>Get available inventory using an <a href="#availability-search">Availability Search</a> using <code>gateway=16</code> (to select from contracted inventory only)</li>
+<li><a href="#create-a-hold">Create a Hold</a> based on search results</li>
+<li><a href="#hotel-detail">Get inventory details</a> using <code>gateway=20</code> (to select from held inventory only)</li>
+<li><a href="#hotel-reservation-creation">Create a Reservation</a> based on details using <code>gateway=20</code> (to book against held inventory only)</li>
+</ol>
+
+<p>Optionally, you may want to be able to <a href="#cancel-hold">cancel/expire a Hold</a> and/or <a href="#cancel-reservation">cancel a Reservation</a>.</p>
+<h3 id='common-terms-in-this-section'>Common terms in this section</h3>
+<ul>
+<li><strong><code>RoomTypeId</code> = <code>RoomCode</code></strong>: The ID associated with a room type (as seen in Hold responses and Detail request params).</li>
+<li><strong><code>RatePlanCode</code></strong>: &quot;ARN&quot; + <code>RoomTypeId</code> (string concatenation) (as seen when creating a Reservation and Detail request params)</li>
+<li><strong><code>HotelId</code> = <code>PropertyId</code></strong>: These terms are synonmous (as seen in Availability Search responses, Detail responses, and used in a comma separated value list for the <code>hotelids</code> parameter value in a Detail request). You may also use these values to look up more details on an individual property using the Property Detail call.</li>
+</ul>
+
+<p>When creating a reservation, use this mapping to find the appropriate values to use for these required parameters:</p>
+
+<aside class="notice">
+All values are based on the Detail response and have a starting point of `ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room`
+</aside>
+
+<ul>
+<li><strong><code>roomCostCurrencyCode</code></strong>: <code>@CurrencyCode</code></li>
+<li><strong><code>roomCostPrice</code></strong>: <code>NightlyRate@Price</code></li>
+<li><strong><code>roomCostTaxAmount</code></strong>: <code>Tax@Amount</code></li>
+<li><strong><code>roomCostGatewayFee</code></strong>: <code>GatewayFee@Amount</code></li>
+<li><strong><code>roomCostTotalAmount</code></strong>: <code>Total@Amount</code></li>
+<li><strong><code>bookingFeeCurrencyCode</code></strong>: <code>BookingFee@CurrencyCode</code></li>
+<li><strong><code>bookingFeeAmount</code></strong>: <code>BookingFee@Amount</code></li>
+</ul>
+<h2 id='availability-search'>Availability Search</h2>
 <p>This endpoint retrieves all hotels which have availability for the dates and locations (or individual hotels) specified.</p>
 
 <p>Make this request for the total number of rooms and the total number of guests.  The response will return a maximum of 50 hotels per request, thus you must use pagination techniques if you need more than 50. That said, 50 is the maximum but may not be the best performing. Use smaller batches to get faster responses.</p>
@@ -1765,9 +1763,11 @@ We do not advise programming in a gateway-specific manner. Gateways may respond 
 <aside class="notice">
 If an availability search fails to return rates, we suggest not showing the hotel in your user interface.
 </aside>
+
+<aside class="notice">
+For the `children` parameter, we always suggest sending in a value of "0". Many older GDS do not accept this parameter at all, and including it may return inconsistent pricing because of this.
+</aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
-username={API-USERNAME}</span><span class="se">\</span><span class="s2">
-&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;latitude=30.099016</span><span class="se">\</span><span class="s2">
 &amp;longitude=-81.601370</span><span class="se">\</span><span class="s2">
@@ -1781,7 +1781,8 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 &amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
 &amp;userAgent=shell</span><span class="se">\</span><span class="s2">
 &amp;userLanguage=en</span><span class="se">\</span><span class="s2">
-&amp;_type=json"</span>
+&amp;_type=json"</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this (edited for brevity):</p>
@@ -1795,7 +1796,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
       </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T16:01:13.510"</span><span class="p">,</span><span class="w"> 
       </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T16:01:13.651"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.travsrv.com/hotel.aspx?inDate=2018-10-20&amp;latitude=30.099016&amp;longitude=-81.601370&amp;maxResults=1&amp;outDate=2018-10-22&amp;password={API-PASSWORD}&amp;radius=10&amp;siteid={SITEID}&amp;username={API-USERNAME}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.travsrv.com/hotel.aspx?inDate=2018-10-20&amp;latitude=30.099016&amp;longitude=-81.601370&amp;maxResults=1&amp;outDate=2018-10-22&amp;radius=10&amp;siteid={SITEID}"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@RequestID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"436E177E-558F-4287-B55A-5DBD9F4C7579"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1873,18 +1874,6 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
@@ -1967,7 +1956,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>children</td>
 <td>int</td>
 <td>Yes</td>
-<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter.</td>
+<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter. We suggest usually setting this to <code>0</code>.</td>
 </tr>
 <tr>
 <td>sortType</td>
@@ -2092,10 +2081,8 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 
 <p><strong>All fees, penalties, and policies from this response must be shown to the user before creating a reservation.</strong></p>
 
-<p>All room prices are based on the number of adults per room specified in the request.  A response containing an extra adult fee of <code>0</code> may simply mean the pricing is not available. Adding more than the specified number of adults to the room because the extra adult fee is <code>0</code> will likely incur a price difference when the guest arrives at the hotel. To avoid this, we advise not depend on the extra adult fee specified in the response when it comes to pricing.</p>
+<p>All room prices are based on the number of adults per room specified in the request.  A response containing an extra adult fee of <code>0</code> may simply mean the pricing is not available. Adding more than the specified number of adults to the room because the extra adult fee is <code>0</code> will likely incur a price difference when the guest arrives at the hotel. To avoid this, we advise not to depend on the extra adult fee specified in the response when it comes to pricing.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
-username={API-USERNAME}</span><span class="se">\</span><span class="s2">
-&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;hotelIds=272393</span><span class="se">\</span><span class="s2">
 &amp;inDate=2018-10-20</span><span class="se">\</span><span class="s2">
@@ -2105,12 +2092,13 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 &amp;adults=2</span><span class="se">\</span><span class="s2">
 &amp;children=0</span><span class="se">\</span><span class="s2">
 &amp;gateway=51</span><span class="se">\</span><span class="s2">
-&amp;ratePlanCode=F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935</span><span class="se">\</span><span class="s2">
+&amp;ratePlanCode=987654321</span><span class="se">\</span><span class="s2">
 &amp;roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ</span><span class="se">\</span><span class="s2">
 &amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
 &amp;userAgent=shell</span><span class="se">\</span><span class="s2">
 &amp;userLanguage=en</span><span class="se">\</span><span class="s2">
-&amp;_type=json"</span>
+&amp;_type=json"</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this (edited for brevity):</p>
@@ -2124,7 +2112,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
       </span><span class="s2">"@TimeReceived"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-17T00:41:27.367"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@TimeCompleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-17T00:41:27.804"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.travsrv.com/hotel.aspx?_type=json&amp;adults=2&amp;children=0&amp;gateway=51&amp;hotelIds=272393&amp;inDate=2018-10-20&amp;ipAddress=127.0.0.1&amp;maxResults=1&amp;outDate=2018-10-22&amp;password={API-PASSWORD}&amp;ratePlanCode=&amp;roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ&amp;rooms=1&amp;siteid={SITEID}&amp;userAgent=shell&amp;userLanguage=en&amp;username={API-USERNAME}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.travsrv.com/hotel.aspx?_type=json&amp;adults=2&amp;children=0&amp;gateway=51&amp;hotelIds=272393&amp;inDate=2018-10-20&amp;ipAddress=127.0.0.1&amp;maxResults=1&amp;outDate=2018-10-22&amp;&amp;ratePlanCode=&amp;roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ&amp;rooms=1&amp;siteid={SITEID}&amp;userAgent=shell&amp;userLanguage=en"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"@RequestID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2999AB6A-6DB9-4FFF-9586-BBED51BB6108"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2151,14 +2139,14 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
           </span><span class="s2">"@PriceClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 Stars"</span><span class="w">
           </span><span class="s2">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN987654321"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Available"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@BuyerOnly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@CommissionStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Commissionable"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@BalanceDueAtHotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"Room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"@Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard room"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"- 1 King Bed - Nonsmoking Room - Free Breakfast, Free Wifi, Fridge, Microwave"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -2213,18 +2201,6 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
@@ -2331,18 +2307,17 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <h2 id='hotel-reservation-creation'>Hotel Reservation Creation</h2>
 <p>Generally speaking this call should be self explanatory. The parameters you will be sending in regarding the fees and costs will come from the detail request you likely would have just made. This is used to double confirm the costs the user was given will match up with the costs in the suppliers / gateways.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
-username={API-USERNAME}</span><span class="se">\</span><span class="s2">
-&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
+&amp;gateway=20</span><span class="se">\</span><span class="s2">
 &amp;rooms=1</span><span class="se">\</span><span class="s2">
 &amp;hotelIds=10731</span><span class="se">\</span><span class="s2">
 &amp;rooms=1</span><span class="se">\</span><span class="s2">
 &amp;inDate=2007-03-30</span><span class="se">\</span><span class="s2">
 &amp;outDate=2007-03-31</span><span class="se">\</span><span class="s2">
 &amp;adults=2</span><span class="se">\</span><span class="s2">
-&amp;children=1</span><span class="se">\</span><span class="s2">
-&amp;ratePlanCode=AAA</span><span class="se">\</span><span class="s2">
-&amp;roomCode=Z303AAA</span><span class="se">\</span><span class="s2">
+&amp;children=0</span><span class="se">\</span><span class="s2">
+&amp;ratePlanCode=ARN987654321</span><span class="se">\</span><span class="s2">
+&amp;roomCode=987654321</span><span class="se">\</span><span class="s2">
 &amp;guestFirstName=Eddie</span><span class="se">\</span><span class="s2">
 &amp;guestLastName=Collins</span><span class="se">\</span><span class="s2">
 &amp;guestEmail=nobody@yahoo.com</span><span class="se">\</span><span class="s2">
@@ -2360,12 +2335,12 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 &amp;roomCostGatewayFee=0.00</span><span class="se">\</span><span class="s2">
 &amp;roomCostTotalAmount=103.95</span><span class="se">\</span><span class="s2">
 &amp;roomCostCurrencyCode=USD</span><span class="se">\</span><span class="s2">
-&amp;bookingFeeAmount=5.00</span><span class="se">\</span><span class="s2">
-&amp;creditCardType=VISA</span><span class="se">\</span><span class="s2">
+&amp;creditCardType=VI</span><span class="se">\</span><span class="s2">
 &amp;creditCardNumber=4242424242424242</span><span class="se">\</span><span class="s2">
-&amp;creditCardExpiration=2018-12</span><span class="se">\</span><span class="s2">
+&amp;creditCardExpiration=01/21</span><span class="se">\</span><span class="s2">
 &amp;creditCardCVV2=123</span><span class="se">\</span><span class="s2">
 &amp;creditCardHolder=Eddie Collins</span><span class="se">\</span><span class="s2">
+&amp;creditCardAddress=123 Main Street</span><span class="se">\</span><span class="s2">
 &amp;creditCardCity=Detroit</span><span class="se">\</span><span class="s2">
 &amp;creditCardRegion=MI</span><span class="se">\</span><span class="s2">
 &amp;creditCardPostalCode=48234</span><span class="se">\</span><span class="s2">
@@ -2373,7 +2348,8 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 &amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
 &amp;userAgent=shell</span><span class="se">\</span><span class="s2">
 &amp;userLanguage=en</span><span class="se">\</span><span class="s2">
-&amp;_type=json"</span>
+&amp;_type=json"</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this (edited for brevity):</p>
@@ -2405,11 +2381,11 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
         </span><span class="s2">"Hotel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"@HotelID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10731"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN987654321"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QUALIFYING MEMBER RATE: Aaa/CAA Rate 1 King Bed /1 Room Suite/Partial Room Divider /Microwave Refrigerator/Computer Hookup Guest Must Show Some Form Of Aaa Membership Rate Is Applicable To AAA Members Only And Only On Rooms They Stay In Themselv"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"@Gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Z303AAA"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QUALIFYING MEMBER RATE: Aaa/CAA Rate 1 King Bed /1 Room Suite/Partial Room Divider /Microwave Refrigerator/Computer Hookup Guest Must Show Some Form Of Aaa Membership Rate Is Applicable To AAA Members Only And Only On Rooms They Stay In Themselv"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -2588,18 +2564,6 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 </tr>
 </thead><tbody>
 <tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
@@ -2645,7 +2609,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>children</td>
 <td>int</td>
 <td>Yes</td>
-<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter.</td>
+<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter. We suggest setting this value to <code>0</code> for most inquiries.</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -2798,10 +2762,16 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>See below.</td>
 </tr>
 <tr>
+<td>bookingFeeCurrencyCode</td>
+<td>string</td>
+<td>See common value map for <code>currency</code>.</td>
+<td></td>
+</tr>
+<tr>
 <td>creditCardType</td>
 <td>string</td>
 <td>Yes</td>
-<td>Credit card type (&quot;AMEX&quot;, &quot;MasterCard&quot;, &quot;VISA&quot;, etc.)</td>
+<td>Options: &quot;AX&quot; (AMEX), &quot;CA&quot; (MasterCard), &quot;VI&quot; (Visa), &quot;DC&quot; (Discover)</td>
 </tr>
 <tr>
 <td>creditCardNumber</td>
@@ -2813,7 +2783,7 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <td>creditCardExpiration</td>
 <td>string</td>
 <td>Yes</td>
-<td>Credit card expiration date (format: <code>YYYY-MM</code>)</td>
+<td>Credit card expiration date (format: <code>MM/YY</code>)</td>
 </tr>
 <tr>
 <td>creditCardCVV2</td>
@@ -2903,17 +2873,16 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <h4 id='bookingfeeamount'><code>bookingFeeAmount</code></h4>
 <p>Send the exact same information received from the Hotel Detail Request (assuming the same <code>currency</code> designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.</p>
 <h2 id='hotel-reservation-cancellation'>Hotel Reservation Cancellation</h2>
-<p>To cancel a reservation you will need the <code>reservationId</code> and <code>itineraryId</code> returned in the reservation creation response.</p>
+<p>To cancel a reservation you will need the <code>reservationId</code> and <code>itineraryId</code> returned in the reservation creation response.  These values are mapped 1-to-1, so both are needed and they likely will not be the same values, but will be related to each other.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
-username={API-USERNAME}</span><span class="se">\</span><span class="s2">
-&amp;password={API-PASSWORD}</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;reservationId=915892</span><span class="se">\</span><span class="s2">
 &amp;itineraryId=733525</span><span class="se">\</span><span class="s2">
 &amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
 &amp;userAgent=shell</span><span class="se">\</span><span class="s2">
 &amp;userLanguage=en</span><span class="se">\</span><span class="s2">
-&amp;_type=json"</span>
+&amp;_type=json"</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this (edited for brevity):</p>
@@ -2947,11 +2916,11 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
         </span><span class="s2">"Hotel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"@HotelID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"219295"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN987654321"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internet Special"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"@Gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3979"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double Room"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double Room - one double bed, satellite television, minibar, coffee maker, in-room safe, work desk, air conditioning, hairdryer, private bathroom, complimentary breakfast buffet. Rate includes transportation from the airport to the hotel. Please enter your Airline and Flight Number in the 'Other Special Requests' field when placing your reservation. Rates based on single or double occupancy. (Maximum 2 people)"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -3135,18 +3104,6 @@ username={API-USERNAME}</span><span class="se">\</span><span class="s2">
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by RoomSteals</td>
-</tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
