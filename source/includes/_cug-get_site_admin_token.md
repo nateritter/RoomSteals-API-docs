@@ -39,8 +39,7 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
             "Longitude": null,
             "Latitude": null,
             "HomePhone": null,
-            "Referral": "",
-            "ReferralId": "",
+            "ReferralId": "RST-1",
             "Password": null,
             "IsActive": true,
             "DeleteMember": false,
@@ -56,7 +55,7 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
     "MemberUsername": "joe@whatever.com",
     "MemberProvider": "ReserveTravel",
     "IsArnProvider": true,
-    "AdditionalInfo": null,
+    "AdditionalInfo": "%7B%22partner%22%3A%22roomsteals.com%22%7D",
     "MemberType": "Wholesale"
 }
 ```

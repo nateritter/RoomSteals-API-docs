@@ -32,8 +32,7 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
         "Longitude": null,
         "Latitude": null,
         "HomePhone": "5551231212",
-        "Referral": "partnerdomain.com",
-        "ReferralId": "mytestuser1@gmail.com",
+        "ReferralId": "RST-1",
         "Password": null,
         "IsActive": true,
         "DeleteMember": false,
@@ -48,6 +47,7 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
     "MemberUsername": "RT-12345-mytestuser1@gmail.com",
     "MemberProvider": null,
     "IsArnProvider": true,
+    "AdditionalInfo": "{\"partner\":\"roomsteals.com\",\"id\":\"12345\",\"name\":\"Testme Tester\",\"email\":\"mytestuser1@gmail.com\"}"
     "MemberType": "Member"
 }
 ```
