@@ -552,8 +552,7 @@ The token (`CurrentToken`) will be URI encoded to ensure a valid JSON response. 
             </span><span class="s2">"Longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RST-1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"DeleteMember"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -569,7 +568,7 @@ The token (`CurrentToken`) will be URI encoded to ensure a valid JSON response. 
     </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joe@whatever.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReserveTravel"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"AdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"%7B%22partner%22%3A%22roomsteals.com%22%7D"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wholesale"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request'>HTTP Request</h3>
@@ -607,14 +606,14 @@ The token (`CurrentToken`) will be URI encoded to ensure a valid JSON response. 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"Points"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Names"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RST-1"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tester"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partnerdomain.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main Street"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551231212"</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"AdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">partner</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">roomsteals.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">12345</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Testme Tester</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">mytestuser1@gmail.com</span><span class="se">\"</span><span class="s2">}"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <aside class="notice">
@@ -625,15 +624,19 @@ The `Points` attribute is only necessary if you want to update the number of poi
 The JSON structure includes an array of `Names`, which seems to infer the ability to create more than one person. However, in reality, you should only send this call for one member at a time.
 </aside>
 
+<aside class="notice">
+To receive credit as a partner, you must include a slash escaped JSON string as the `AdditionalInfo` value which includes a key of `partner` and the agreed upon partner domain name to be recognized.  The example uses `roomsteals.com` to show how it should be formatted.  You may also send additional information if desired (such as `id`, `name`, `email`, etc.) which may be used for auditing purposes.
+</aside>
+
 <blockquote>
-<p>Encoded and POSTed via curl:</p>
+<p>URL Encoded and POSTed via curl:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
   https://api.travsrv.com/MemberAPI.aspx <span class="se">\</span>
   -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span> <span class="se">\</span>
   -H <span class="s1">'Cache-Control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  -d <span class="s1">'siteid={SITEID}&amp;token={ADMIN-TOKEN}&amp;memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123%20Main%20Street%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'</span>
+  -d <span class="s1">'siteid={SITEID}&amp;token={ADMIN-TOKEN}&amp;memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22RST-1%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123%20Main%20Street%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%2C%22AdditionalInfo%22%3A%22%7B%5C%22partner%5C%22%3A%5C%22roomsteals.com%5C%22%2C%5C%22id%5C%22%3A%5C%2212345%5C%22%2C%5C%22name%5C%22%3A%5C%22Testme%20Tester%5C%22%2C%5C%22email%5C%22%3A%5C%22mytestuser1%40gmail.com%5C%22%7D%22%7D'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -658,15 +661,14 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
         </span><span class="s2">"Longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551231212"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partnerdomain.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RST-1"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DeleteMember"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"UpdateMemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme Tester"</span><span class="w">
     </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful creation of Member RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful creation of Member RT-12345-RS-1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"CurrentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"TransactionResponse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
@@ -674,6 +676,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
     </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">partner</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">roomsteals.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">12345</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Testme Tester</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">mytestuser1@gmail.com</span><span class="se">\"</span><span class="s2">}"</span><span class="w">
     </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request'>HTTP Request</h3>
@@ -715,7 +718,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>ReferralId</td>
 <td>string</td>
 <td>Yes</td>
-<td>The email address of the user (used as the &quot;username&quot;)</td>
+<td>An agreed upon 3 letter partner prefix concatonated with a hyphen and the ID of the user on the partner&#39;s system</td>
 </tr>
 <tr>
 <td>FirstName</td>
@@ -736,12 +739,6 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>The email address of the user</td>
 </tr>
 <tr>
-<td>Referral</td>
-<td>string</td>
-<td>Yes</td>
-<td>Your domain name (no www or protocol)</td>
-</tr>
-<tr>
 <td>Address1</td>
 <td>string</td>
 <td>No</td>
@@ -752,6 +749,12 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>string</td>
 <td>No</td>
 <td>The user&#39;s phone number</td>
+</tr>
+<tr>
+<td>AdditionalInfo</td>
+<td>string</td>
+<td>Yes</td>
+<td>Slash-escaped JSON string including at lesat the <code>partner</code> key where the value is the partner&#39;s domain name</td>
 </tr>
 </tbody></table>
 <h2 id='update-an-existing-member'>Update an Existing Member</h2>
@@ -765,14 +768,14 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"Points"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Names"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RST-1"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tester"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partnerdomain.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main Street"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551231212"</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"AdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">partner</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">roomsteals.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">12345</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Testme Tester</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">mytestuser1@gmail.com</span><span class="se">\"</span><span class="s2">}"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <aside class="notice">
@@ -795,7 +798,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
   -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span> <span class="se">\</span>
   -H <span class="s1">'Cache-Control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  -d <span class="s1">'siteid={SITEID}&amp;token={ADMIN-TOKEN}&amp;memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123MainStreet%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'</span>
+  -d <span class="s1">'siteid={SITEID}&amp;token={ADMIN-TOKEN}&amp;memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22RST-1%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123%20Main%20Street%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%2C%22AdditionalInfo%22%3A%22%7B%5C%22partner%5C%22%3A%5C%22roomsteals.com%5C%22%2C%5C%22id%5C%22%3A%5C%2212345%5C%22%2C%5C%22name%5C%22%3A%5C%22Testme%20Tester%5C%22%2C%5C%22email%5C%22%3A%5C%22mytestuser1%40gmail.com%5C%22%7D%22%7D'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -820,15 +823,14 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
         </span><span class="s2">"Longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551231212"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partnerdomain.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RST-1"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DeleteMember"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"UpdateMemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme Tester"</span><span class="w">
     </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful Existing Member RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful Existing Member RT-12345-RST-1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"CurrentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPubiUEmc223Z4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDUhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXKn83CdkKJDjeGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"TransactionResponse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
@@ -836,6 +838,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
     </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">partner</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">roomsteals.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">12345</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Testme Tester</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">mytestuser1@gmail.com</span><span class="se">\"</span><span class="s2">}"</span><span class="w">
     </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request'>HTTP Request</h3>
@@ -877,7 +880,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>ReferralId</td>
 <td>string</td>
 <td>Yes</td>
-<td>The email address of the user (used as the &quot;username&quot;)</td>
+<td>An agreed upon (RoomSteals + partner) 3 letter partner prefix concatonated with a hyphen and the ID of the user on the partner&#39;s system</td>
 </tr>
 <tr>
 <td>FirstName</td>
@@ -958,8 +961,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
         </span><span class="s2">"Longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551231212"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partnerdomain.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RST-1"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DeleteMember"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -974,6 +976,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
     </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">partner</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">roomsteals.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">12345</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Testme Tester</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">mytestuser1@gmail.com</span><span class="se">\"</span><span class="s2">}"</span><span class="w">
     </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request'>HTTP Request</h3>
