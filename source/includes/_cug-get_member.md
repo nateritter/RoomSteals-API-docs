@@ -33,12 +33,16 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
         "Latitude": null,
         "HomePhone": "5551231212",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "Referral": null,
         "ReferralId": "777",
 =======
         "Referral": "partnerdomain.com",
         "ReferralId": "mytestuser1@gmail.com",
 >>>>>>> Adding partnerdomain.com to Referral
+=======
+        "ReferralId": "RST-1",
+>>>>>>> Updated to include AdditionalInfo req.
         "Password": null,
         "IsActive": true,
         "DeleteMember": false,
@@ -53,6 +57,7 @@ curl "https://api.travsrv.com/MemberAPI.aspx?\
     "MemberUsername": "RT-12345-777",
     "MemberProvider": null,
     "IsArnProvider": true,
+    "AdditionalInfo": "{\"partner\":\"roomsteals.com\",\"id\":\"12345\",\"name\":\"Testme Tester\",\"email\":\"mytestuser1@gmail.com\"}"
     "MemberType": "Member"
 }
 ```
