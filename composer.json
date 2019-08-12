@@ -1,0 +1,12 @@
+{
+    "name": "nateritter/slate.roomsteals",
+    "description": "Room Steals API documentation",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Nate Ritter",
+            "email": "nate@perfectspace.com"
+        }
+    ],
+    "require": {}
+}
