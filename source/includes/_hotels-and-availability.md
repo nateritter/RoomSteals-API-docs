@@ -43,7 +43,3 @@ When creating a reservation, use this mapping to find the appropriate values to 
 * **`roomCostTotalAmount`**: `Total@Amount`
 * **`bookingFeeCurrencyCode`**: `BookingFee@CurrencyCode`
 * **`bookingFeeAmount`**: `BookingFee@Amount`
-
-<aside class="notice">
-    If returned, the `NightlyRate` discount is pre-tax discount from the pre-tax price. The `Total.Discount` is a post-tax discount from post-tax total.
-</aside>
