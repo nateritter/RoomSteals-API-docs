@@ -22,6 +22,10 @@ If an availability search fails to return rates, we suggest not showing the hote
 For the `children` parameter, we always suggest sending in a value of "0". Many older GDS do not accept this parameter at all, and including it may return inconsistent pricing because of this.
 </aside>
 
+<aside class="notice">
+  If returned, the `NightlyRate` discount is pre-tax discount from the pre-tax price. The `Total.Discount` is a post-tax discount from post-tax total.
+</aside>
+
 ```shell
 curl "https://api.travsrv.com/hotel.aspx?\
 &siteid={SITEID}\
@@ -171,8 +175,12 @@ One of the following is required:
 
 #### `sortType`
 
+<aside class="notice">
+  Note the `dealpercent` and `dealamount` sorting are related to historical discounts, not currently listed discounts.  You must sort the results of an availability search by the calculated percentage or given discount amount yourself after receiving the results of the query.
+</aside>
+
 Sort Type | Description
 --------- | -------
 `bestvalue` | The default sort type, based on previous booking trends and manual sorting options.
-`dealpercent` | Sorts the hotel results based on prices last seen and returns the best percentage savings we have found historically for the specified dates.
-`dealamount` | Sorts the hotel results based on prices last seen and returns the best amount savings we have found historically and for those dates.
+`dealpercent` | Sorts the hotel results based on prices last seen and returns the best percentage savings we have found historically (not currently) for the specified dates.
+`dealamount` | Sorts the hotel results based on prices last seen and returns the best amount savings we have found historically (not currently) and for those dates.
