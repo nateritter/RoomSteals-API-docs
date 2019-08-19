@@ -33,7 +33,11 @@ Optionally, you may want to be able to [cancel/expire a Hold](#cancel-hold) and/
 When creating a reservation, use this mapping to find the appropriate values to use for these required parameters:
 
 <aside class="notice">
-All values are based on the Detail response and have a starting point of `ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room`
+    All values are based on the Detail response and have a starting point of `ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room`
+</aside>
+
+<aside class="notice">
+    If returned, the `NightlyRate` discount is pre-tax discount from the pre-tax price. The `Total.Discount` is a post-tax discount from post-tax total.
 </aside>
 
 * **`roomCostCurrencyCode`**: `@CurrencyCode`
