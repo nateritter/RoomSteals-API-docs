@@ -36,10 +36,6 @@ When creating a reservation, use this mapping to find the appropriate values to 
     All values are based on the Detail response and have a starting point of `ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room`
 </aside>
 
-<aside class="notice">
-    If returned, the `NightlyRate` discount is pre-tax discount from the pre-tax price. The `Total.Discount` is a post-tax discount from post-tax total.
-</aside>
-
 * **`roomCostCurrencyCode`**: `@CurrencyCode`
 * **`roomCostPrice`**: `NightlyRate@Price`
 * **`roomCostTaxAmount`**: `Tax@Amount`
@@ -47,3 +43,7 @@ When creating a reservation, use this mapping to find the appropriate values to 
 * **`roomCostTotalAmount`**: `Total@Amount`
 * **`bookingFeeCurrencyCode`**: `BookingFee@CurrencyCode`
 * **`bookingFeeAmount`**: `BookingFee@Amount`
+
+<aside class="notice">
+    If returned, the `NightlyRate` discount is pre-tax discount from the pre-tax price. The `Total.Discount` is a post-tax discount from post-tax total.
+</aside>
