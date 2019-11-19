@@ -94,7 +94,7 @@ siteid | integer | Yes | Provided by Hotels For Hope
 token | string | Yes | Site Admin Token
 Points | integer | No | Number of points for the user
 Names | string | Yes | Stringified, URI encoded JSON array of JSON object containing the params below
-ReferralId | string | Yes | The email address of the user (used as the "username")
+ReferralId | string | Yes | The id of the user in your system
 FirstName | string | Yes | The user's first name
 LastName | string | Yes | The user's last name
 Email | string | Yes | The email address of the user
