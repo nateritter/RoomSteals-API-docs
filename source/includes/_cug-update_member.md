@@ -67,6 +67,7 @@ curl -X POST \
         "Longitude": null,
         "Latitude": null,
         "HomePhone": "5551231212",
+        "Referral": null,
         "ReferralId": "RST-1",
         "Password": null,
         "IsActive": true,
@@ -79,7 +80,7 @@ curl -X POST \
     "CurrentToken": "E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPubiUEmc223Z4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDUhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXKn83CdkKJDjeGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d",
     "TransactionResponse": "true",
     "MetaTag": null,
-    "MemberUsername": "RT-12345-mytestuser1@gmail.com",
+    "MemberUsername": "RT-12345-RST-1",
     "MemberProvider": null,
     "IsArnProvider": true,
     "AdditionalInfo": "{\"partner\":\"roomsteals.com\",\"id\":\"12345\",\"name\":\"Testme Tester\",\"email\":\"mytestuser1@gmail.com\"}"
