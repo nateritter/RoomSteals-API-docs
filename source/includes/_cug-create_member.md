@@ -10,7 +10,7 @@ You may notice this call is exactly the same as the "Update an Existing Member" 
 {
     "Points": 100,
     "Names": [{
-        "ReferralId": "mytestuser1@gmail.com",
+        "ReferralId": "777",
         "FirstName": "Testme",
         "LastName": "Tester",
         "Email": "mytestuser1@gmail.com",
@@ -36,7 +36,7 @@ curl -X POST \
   -H 'Authorization: Basic {BASE64-ENCODED-STRING}' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'siteid={SITEID}&token={ADMIN-TOKEN}&memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123%20Main%20Street%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'
+  -d 'siteid={SITEID}&token={ADMIN-TOKEN}&memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22777%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123%20Main%20Street%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'
 ```
 
 > The above command returns JSON structured like this:
@@ -63,19 +63,19 @@ curl -X POST \
         "Latitude": null,
         "HomePhone": "5551231212",
         "Referral": null,
-        "ReferralId": "mytestuser1@gmail.com",
+        "ReferralId": "777",
         "Password": null,
         "IsActive": true,
         "DeleteMember": false,
         "UpdateMemberUsername": false,
         "FullName": "Testme Tester"
     }],
-    "DebugData": " Successful creation of Member RT-12345-mytestuser1@gmail.com",
+    "DebugData": " Successful creation of Member RT-12345-777",
     "Error": null,
     "CurrentToken": "E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d",
     "TransactionResponse": "true",
     "MetaTag": null,
-    "MemberUsername": "RT-12345-mytestuser1@gmail.com",
+    "MemberUsername": "RT-12345-777",
     "MemberProvider": null,
     "IsArnProvider": true,
     "MemberType": "Member"
