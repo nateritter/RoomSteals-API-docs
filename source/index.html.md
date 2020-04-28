@@ -5,8 +5,13 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
+<<<<<<< HEAD
   - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+=======
+  # - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://github.com/lord/slate'>Docs powered by Slate</a>
+>>>>>>> master
 
 includes:
   - intro
@@ -41,6 +46,7 @@ includes:
 
 search: true
 ---
+<<<<<<< HEAD
 
 # Introduction
 
@@ -1671,3 +1677,5 @@ siteid | integer | Yes | Provided by Hotels For Hope
 reservationId | string | Yes | The `reservationId` from the reservation creation response.
 itineraryId | string | Yes | The `itineraryId` from the reservation creation response.
 _type | string/enum | No | The response format. One of `xml` or `json`. Default: `json`.
+=======
+>>>>>>> master
